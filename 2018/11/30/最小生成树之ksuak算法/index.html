@@ -7,19 +7,20 @@
   
   
   
-  <title>Hello World | LDY博客</title>
+  <title>最小生成树之ksuak算法 | LDY博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="学习最小生成树算法之前我们先来了解下 下面这些概念： 树（Tree）：如果一个无向连通图中不存在回路，则这种图称为树。 生成树 （Spanning Tree）：无向连通图G的一个子图如果是一颗包含G的所有顶点的树，则该子图称为G的生成树。 生成树是连通图的极小连通子图。这里所谓极小是指：若在树中任意增加一条边，则将出现一条回路；若去掉一条边，将会使之变成非连通图。 最小生成树（Minimum Sp">
+<meta name="keywords" content="c++,算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://lkdnjhhb.github.io/2018/11/30/hello-world/index.html">
+<meta property="og:title" content="最小生成树之ksuak算法">
+<meta property="og:url" content="https://lkdnjhhb.github.io/2018/11/30/最小生成树之ksuak算法/index.html">
 <meta property="og:site_name" content="LDY博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="学习最小生成树算法之前我们先来了解下 下面这些概念： 树（Tree）：如果一个无向连通图中不存在回路，则这种图称为树。 生成树 （Spanning Tree）：无向连通图G的一个子图如果是一颗包含G的所有顶点的树，则该子图称为G的生成树。 生成树是连通图的极小连通子图。这里所谓极小是指：若在树中任意增加一条边，则将出现一条回路；若去掉一条边，将会使之变成非连通图。 最小生成树（Minimum Sp">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-30T04:54:12.122Z">
+<meta property="og:updated_time" content="2018-11-30T06:24:07.863Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="最小生成树之ksuak算法">
+<meta name="twitter:description" content="学习最小生成树算法之前我们先来了解下 下面这些概念： 树（Tree）：如果一个无向连通图中不存在回路，则这种图称为树。 生成树 （Spanning Tree）：无向连通图G的一个子图如果是一颗包含G的所有顶点的树，则该子图称为G的生成树。 生成树是连通图的极小连通子图。这里所谓极小是指：若在树中任意增加一条边，则将出现一条回路；若去掉一条边，将会使之变成非连通图。 最小生成树（Minimum Sp">
   
   
     <link rel="icon" href="/img/图标.png">
@@ -187,7 +188,7 @@
                             
                                 <a class="fl github" target="_blank" href="https://github.com/lkdnjhhb/lkdnjhhb.github.io" title="github">github</a>
                             
-                                <a class="fl weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                                <a class="fl weibo" target="_blank" href="https://weibo.com/" title="weibo">weibo</a>
                             
                                 <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
                             
@@ -197,7 +198,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
+                        <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/c/" style="font-size: 20px;">c++</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a>
                     </div>
                 </section>
                 
@@ -269,7 +270,7 @@
                     
                         <a class="github" target="_blank" href="https://github.com/lkdnjhhb/lkdnjhhb.github.io" title="github">github</a>
                     
-                        <a class="weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                        <a class="weibo" target="_blank" href="https://weibo.com/" title="weibo">weibo</a>
                     
                         <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
                     
@@ -278,11 +279,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-最小生成树之ksuak算法" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/11/30/hello-world/" class="article-date">
-      <time datetime="2018-11-30T04:54:12.122Z" itemprop="datePublished">2018-11-30</time>
+      <a href="/2018/11/30/最小生成树之ksuak算法/" class="article-date">
+      <time datetime="2018-11-30T06:18:09.000Z" itemprop="datePublished">2018-11-30</time>
 </a>
 
     </div>
@@ -296,7 +297,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      最小生成树之ksuak算法
     </h1>
   
 
@@ -305,8 +306,16 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/c-算法/">c++/算法</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -314,16 +323,24 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+        <p>学习最小生成树算法之前我们先来了解下 下面这些概念：</p>
+<p>树（Tree）：如果一个无向连通图中不存在回路，则这种图称为树。</p>
+<p>生成树 （Spanning Tree）：无向连通图G的一个子图如果是一颗包含G的所有顶点的树，则该子图称为G的生成树。</p>
+<p>生成树是连通图的极小连通子图。这里所谓极小是指：若在树中任意增加一条边，则将出现一条回路；若去掉一条边，将会使之变成非连通图。</p>
+<p>最小生成树（Minimum Spanning Tree，MST）：或者称为最小代价树Minimum-cost Spanning Tree:对无向连通图的生成树，各边的权值总和称为生成树的权，权最小的生成树称为最小生成树。</p>
+<p>构成生成树的准则有三条：</p>
+<p><1> 必须只使用该网络中的边来构造最小生成树。</1></p>
+<p><2> 必须使用且仅使用n-1条边来连接网络中的n个顶点</2></p>
+<p><3> 不能使用产生回路的边。</3></p>
+<p>构造最小生成树的算法主要有：克鲁斯卡尔（Kruskal）算法和普利姆（Prim）算法他们都遵循以上准则。</p>
+<p>接下分别讨论一下这两种算法以及判定最小生成树是否唯一的方法。</p>
+<p>克鲁斯卡尔算法</p>
+<p>克鲁斯卡尔算法的基本思想是以边为主导地位，始终选择当前可用（所选的边不能构成回路）的最小权植边。所以Kruskal算法的第一步是给所有的边按照从小到大的顺序排序。这一步可以直接使用库函数qsort或者sort。接下来从小到大依次考察每一条边（u，v）。</p>
+<p>具体实现过程如下：</p>
+<p><1>　设一个有n个顶点的连通网络为G（V,E），最初先构造一个只有n个顶点，没有边的非连通图T={V,空}，图中每个顶点自成一格连通分量。</1></p>
+<p><2>　在Ｅ中选择一条具有最小权植的边时，若该边的两个顶点落在不同的连通分量上，则将此边加入到Ｔ中；否则，即这条边的两个顶点落到同一连通分量      上，则将此边舍去（此后永不选用这条边），重新选择一条权植最小的边。</2></p>
+<p><3>　如此重复下去，直到所有顶点在同一连通分量上为止。</3></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">void Kruskal(MGraph&lt;VertexType, ArcType&gt; G) &#123;</span><br><span class="line">	EdgeType&lt; VertexType, ArcType&gt; *edge = new EdgeType&lt; VertexType, ArcType&gt;[G.arcNum*2];</span><br><span class="line">	//初始化边集数组</span><br><span class="line">	int k = 0;</span><br><span class="line">	for (int i = 0; i &lt; G.vertexNum; i++) &#123;</span><br><span class="line">		for (int j = 0; j &lt; G.vertexNum; j++) &#123;</span><br><span class="line">			if (G.arc[i][j] != MaxInt) &#123;</span><br><span class="line">				edge[k].from = G.vertex[i];</span><br><span class="line">				edge[k].to = G.vertex[j];</span><br><span class="line">				edge[k].weight = G.arc[i][j];</span><br><span class="line">				k++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	soft(edge, G.arcNum*2);</span><br><span class="line">	int *parent = new int[G.vertexNum];</span><br><span class="line">	for (int i = 0; i &lt; G.vertexNum; i++) parent[i] = -1;</span><br><span class="line">	for (int num = 0, i = 0; i &lt; G.arcNum*2; i++) &#123;</span><br><span class="line">		int vex1 = FindRoot(parent, G.LocateVex(edge[i].from));</span><br><span class="line">		int  vex2 = FindRoot(parent, G.LocateVex(edge[i].to));</span><br><span class="line">		if (vex1 != vex2) &#123;</span><br><span class="line">			cout &lt;&lt; &quot;(&quot; &lt;&lt; edge[i].from &lt;&lt; edge[i].to &lt;&lt; &quot;)&quot; &lt;&lt; edge[i].weight &lt;&lt; endl;</span><br><span class="line">			parent[vex2] = vex1;</span><br><span class="line">			num++;</span><br><span class="line">			if (num == G.vertexNum - 1) return;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">template&lt;class VertexType, class ArcType&gt;</span><br><span class="line">//对边集进行排序的函数</span><br><span class="line">void soft(EdgeType&lt; VertexType, ArcType&gt; *edge, int length) &#123;</span><br><span class="line">	for (int i = 0; i &lt; length - 1; i++) &#123;</span><br><span class="line">		for (int j = 0; j &lt; length - i - 1; j++) &#123;</span><br><span class="line">			if (edge[j].weight &gt; edge[j + 1].weight) &#123;</span><br><span class="line">				EdgeType&lt; VertexType, ArcType&gt; e;</span><br><span class="line">				e = edge[j];</span><br><span class="line">				edge[j] = edge[j + 1];</span><br><span class="line">				edge[j + 1] = e;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//寻找根节点</span><br><span class="line">static int FindRoot(int parent[], int v) &#123;</span><br><span class="line">	int t = v;</span><br><span class="line"></span><br><span class="line">	while(parent[t] &gt; -1) t = parent[t];</span><br><span class="line">	return t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -331,13 +348,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/11/30/hello-world/">Hello World</a></p>
+        <p><span>本文标题:</span><a href="/2018/11/30/最小生成树之ksuak算法/">最小生成树之ksuak算法</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 林德雨 的个人博客">林德雨</a></p>
-        <p><span>发布时间:</span>2018年11月30日 - 12时54分</p>
-        <p><span>最后更新:</span>2018年11月30日 - 12时54分</p>
+        <p><span>发布时间:</span>2018年11月30日 - 14时18分</p>
+        <p><span>最后更新:</span>2018年11月30日 - 14时24分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/11/30/hello-world/" title="Hello World">https://lkdnjhhb.github.io/2018/11/30/hello-world/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://lkdnjhhb.github.io/2018/11/30/hello-world/　　作者: 林德雨" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/11/30/最小生成树之ksuak算法/" title="最小生成树之ksuak算法">https://lkdnjhhb.github.io/2018/11/30/最小生成树之ksuak算法/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://lkdnjhhb.github.io/2018/11/30/最小生成树之ksuak算法/　　作者: 林德雨" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -366,7 +383,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+    
 </div>
 <style>
     .left-col .switch-btn {
@@ -520,7 +537,7 @@
             <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/最小生成树之ksuak算法/">最小生成树之ksuak算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/prim算法/">最小生成树之prim算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/图的完整操作/">图的完整操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/在hexo上写博客的模板/">在hexo上写博客的模板</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/如何用github-hexo搭建个人博客/">如何用github+hexo搭建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/java常用类库/">java常用类库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/prim算法/">最小生成树之prim算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/最小生成树之ksuak算法/">最小生成树之ksuak算法</a></li></ul>
     
 <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
 

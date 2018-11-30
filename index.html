@@ -186,7 +186,7 @@
                             
                                 <a class="fl github" target="_blank" href="https://github.com/lkdnjhhb/lkdnjhhb.github.io" title="github">github</a>
                             
-                                <a class="fl weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                                <a class="fl weibo" target="_blank" href="https://weibo.com/" title="weibo">weibo</a>
                             
                                 <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
                             
@@ -196,7 +196,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        
+                        <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/c/" style="font-size: 20px;">c++</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 15px;">算法</a>
                     </div>
                 </section>
                 
@@ -268,7 +268,7 @@
                     
                         <a class="github" target="_blank" href="https://github.com/lkdnjhhb/lkdnjhhb.github.io" title="github">github</a>
                     
-                        <a class="weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                        <a class="weibo" target="_blank" href="https://weibo.com/" title="weibo">weibo</a>
                     
                         <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
                     
@@ -279,11 +279,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-最小生成树-prim算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-图的完整操作" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/11/30/最小生成树-prim算法/" class="article-date">
-      <time datetime="2018-11-30T05:35:02.000Z" itemprop="datePublished">2018-11-30</time>
+      <a href="/2018/11/30/图的完整操作/" class="article-date">
+      <time datetime="2018-11-30T07:05:36.000Z" itemprop="datePublished">2018-11-30</time>
 </a>
 
     </div>
@@ -297,7 +297,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/30/最小生成树-prim算法/">最小生成树-prim算法</a>
+      <a class="article-title" href="/2018/11/30/图的完整操作/">图的完整操作</a>
     </h1>
   
 
@@ -308,7 +308,79 @@
     <div class="article-entry" itemprop="articleBody">
       
           
+        <p>#include”MGraph.h”<br>//———-构造图的邻接矩阵——————-<br>template<class vertextype,="" class="" arctype=""><br>MGraph&lt;VertexType, ArcType&gt;::MGraph(int n, int e) {<br>    vertexNum = n;<br>    arcNum = e;<br>    //开辟顶点集合边集<br>    vertex = new VertexType[vertexNum];<br>    arc = new ArcType*[vertexNum];<br>    visit = new int[vertexNum];<br>    for (int i = 0; i &lt; vertexNum; i++)<br>        arc[i] = new ArcType[vertexNum];<br>    for (int i = 0; i &lt; vertexNum; i++)<br>        for (int j = 0; j &lt; vertexNum; j++)<br>            arc[i][j] = MaxInt;<br>    //顶点、边集、标记数值赋值<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        VertexType elem;<br>        cin &gt;&gt; elem;<br>        vertex[i] = elem;<br>    }<br>    for (int k = 0; k &lt; arcNum; k++) {<br>        VertexType v1, v2;<br>        ArcType weight;<br>        cin &gt;&gt; v1 &gt;&gt; v2 &gt;&gt; weight;<br>        int i = LocateVex(v1);<br>        int j = LocateVex(v2);<br>        arc[i][j] = weight;<br>        arc[j][i] = weight;<br>    }<br>    for (int i = 0; i &lt; vertexNum; i++) visit[i] = 0;<br>}<br>//———-析构——————-<br>template<class vertextype,="" class="" arctype=""><br>MGraph&lt;VertexType, ArcType&gt;::~MGraph() {<br>    vertex = NULL;<br>    delete vertex;<br>    arc = NULL;<br>    delete[]arc;<br>}<br>//———-查找某顶点对应的存储序号——————-<br>template<class vertextype,="" class="" arctype=""><br>int MGraph&lt;VertexType, ArcType&gt;::LocateVex(VertexType elem) {<br>    for (int i = 0; i &lt; vertexNum; i++)<br>        if (vertex[i] == elem) return i;<br>    return -1;<br>}</class></class></class></p>
+<p>//———-若存储有向图，输出出度为零的顶底个数——————-<br>template<class vertextype,="" class="" arctype=""><br>int MGraph&lt;VertexType, ArcType&gt;::CountOD() {<br>    int count = 0;<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        for (int j = 0; j &lt; vertexNum; j++) {<br>            if (arc[i][j] != MaxInt) {<br>                count = count + 1;<br>                break;<br>            }<br>        }<br>    }</class></p>
+<pre><code>count = vertexNum - count;
+return count;
+</code></pre><p>}<br>//打印图<br>template<class vertextype,="" class="" arctype=""><br>void MGraph&lt;VertexType, ArcType&gt;::DisplayGraph() {<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        for (int j = 0; j &lt; vertexNum; j++) {<br>            if (arc[i][j] != MaxInt)<br>                cout &lt;&lt; arc[i][j] &lt;&lt; “ “;<br>            else<br>                cout &lt;&lt; “∞” &lt;&lt; “ “;<br>        }<br>        cout &lt;&lt; endl;<br>    }<br>}<br>template<class vertextype,="" class="" arctype=""><br>//深度优先遍历<br>void MGraph&lt;VertexType, ArcType&gt;::DFS(VertexType elem) {<br>    cout &lt;&lt; elem;<br>    visit[LocateVex(elem)] = 1;<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        if (arc[LocateVex(elem)][i] != MaxInt&amp;&amp;visit[i] != 1)<br>            DFS(vertex[i]);<br>    }<br>}<br>template<class vertextype,="" class="" arctype=""><br>//广度优先遍历<br>void MGraph&lt;VertexType, ArcType&gt;::BFS(VertexType elem) {<br>    queue<int> que;<br>    cout &lt;&lt; vertex[LocateVex(elem)];<br>    visit[LocateVex(elem)] = 1;<br>    que.push(LocateVex(elem));<br>    while (que.empty()==false) {<br>        int i = que.front();<br>        que.pop();<br>        for (int j = 0; j &lt; vertexNum; j++) {<br>            if (arc[i][j] != MaxInt&amp;&amp;visit[j] != 1) {<br>                cout &lt;&lt; vertex[j];<br>                visit[j] = 1;<br>                que.push(j);<br>            }<br>        }<br>    }<br>}<br>//prim算法<br>template<class vertextype,="" class="" arctype=""><br>void prim(MGraph&lt;VertexType,ArcType&gt; G) {<br>    shortEdge&lt;VertexType, ArcType&gt; *shortedge=new shortEdge&lt;VertexType, ArcType&gt;[G.vertexNum];<br>    for (int i = 0; i &lt; G.vertexNum; i++) {<br>        shortedge[i].lowcost = G.arc[0][i];<br>        shortedge[i].adjvex = G.vertex[0];<br>    }<br>    shortedge[0].lowcost = 0;<br>    for (int i = 1; i &lt; G.vertexNum; i++) {<br>        int k = MinEnge(shortedge, G.vertexNum);<br>        cout &lt;&lt; “(“ &lt;&lt; shortedge[k].adjvex &lt;&lt; G.vertex[k] &lt;&lt; “)” &lt;&lt; shortedge[k].lowcost &lt;&lt; endl;<br>        shortedge[k].lowcost = 0;<br>        for (int j = 1; j &lt; G.vertexNum; j++) {<br>            if (G.arc[k][j] &lt; shortedge[j].lowcost) {<br>                shortedge[j].lowcost = G.arc[k][j];<br>                shortedge[j].adjvex = G.vertex[k];<br>            }<br>        }<br>    }</class></int></class></class></class></p>
+<p>}<br>template<class vertextype,="" class="" arctype=""><br>//查找集合中最短边<br>int  MinEnge(shortEdge&lt;VertexType, ArcType&gt; shortenge[],int vertexNum) {<br>    int k;<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        if (shortenge[i].lowcost != 0) {<br>            k = i;<br>        }<br>    }<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        if (shortenge[i].lowcost != 0 &amp;&amp; shortenge[i].lowcost &lt; shortenge[k].lowcost)<br>            k = i;<br>    }<br>    return k;<br>};<br>template<class vertextype,="" class="" arctype=""><br>//KrusKal算法<br>void Kruskal(MGraph&lt;VertexType, ArcType&gt; G) {<br>    EdgeType&lt; VertexType, ArcType&gt; <em>edge = new EdgeType&lt; VertexType, ArcType&gt;[G.arcNum</em>2];<br>    //初始化边集数组<br>    int k = 0;<br>    for (int i = 0; i &lt; G.vertexNum; i++) {<br>        for (int j = 0; j &lt; G.vertexNum; j++) {<br>            if (G.arc[i][j] != MaxInt) {<br>                edge[k].from = G.vertex[i];<br>                edge[k].to = G.vertex[j];<br>                edge[k].weight = G.arc[i][j];<br>                k++;<br>            }<br>        }<br>    }<br>    soft(edge, G.arcNum<em>2);<br>    int </em>parent = new int[G.vertexNum];<br>    for (int i = 0; i &lt; G.vertexNum; i++) parent[i] = -1;<br>    for (int num = 0, i = 0; i &lt; G.arcNum<em>2; i++) {<br>        int vex1 = FindRoot(parent, G.LocateVex(edge[i].from));<br>        int  vex2 = FindRoot(parent, G.LocateVex(edge[i].to));<br>        if (vex1 != vex2) {<br>            cout &lt;&lt; “(“ &lt;&lt; edge[i].from &lt;&lt; edge[i].to &lt;&lt; “)” &lt;&lt; edge[i].weight &lt;&lt; endl;<br>            parent[vex2] = vex1;<br>            num++;<br>            if (num == G.vertexNum - 1) return;<br>        }<br>    }<br>}<br>template<class vertextype,="" class="" arctype=""><br>//对边集进行排序的函数<br>void soft(EdgeType&lt; VertexType, ArcType&gt; </class></em>edge, int length) {<br>    for (int i = 0; i &lt; length - 1; i++) {<br>        for (int j = 0; j &lt; length - i - 1; j++) {<br>            if (edge[j].weight &gt; edge[j + 1].weight) {<br>                EdgeType&lt; VertexType, ArcType&gt; e;<br>                e = edge[j];<br>                edge[j] = edge[j + 1];<br>                edge[j + 1] = e;<br>            }<br>        }<br>    }<br>}<br>//寻找根节点<br>static int FindRoot(int parent[], int v) {<br>    int t = v;</class></class></p>
+<pre><code>while(parent[t] &gt; -1) t = parent[t];
+return t;
+</code></pre><p>}</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-在hexo上写博客的模板" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/30/在hexo上写博客的模板/" class="article-date">
+      <time datetime="2018-11-30T07:03:28.000Z" itemprop="datePublished">2018-11-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
         
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/在hexo上写博客的模板/">在hexo上写博客的模板</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>title: 最小生成树之prim算法<br>date: 2018-11-30 14:18:09<br>comments: true<br>toc: true #是否显示文章目录<br>categories: “c++/算法” #分类<br>tags:   #标签</p>
+<pre><code>- 模板
+</code></pre>
       
     </div>
     
@@ -336,11 +408,11 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-如何用github-hexo搭建个人博客" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/11/30/hello-world/" class="article-date">
-      <time datetime="2018-11-30T04:54:12.122Z" itemprop="datePublished">2018-11-30</time>
+      <a href="/2018/11/30/如何用github-hexo搭建个人博客/" class="article-date">
+      <time datetime="2018-11-30T06:59:31.000Z" itemprop="datePublished">2018-11-30</time>
 </a>
 
     </div>
@@ -354,7 +426,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/30/hello-world/">Hello World</a>
+      <a class="article-title" href="/2018/11/30/如何用github-hexo搭建个人博客/">如何用github+hexo搭建个人博客</a>
     </h1>
   
 
@@ -365,15 +437,55 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>找了很多教程，发现都不太全，所以写个最新版本的Github+hexo搭建属于自己的博客，第一次写，勿喷！！！</p>
+<p>搭建环境准备：</p>
+<p>1.下载Node.js安装文件（现在电脑基本都是64位的，我就放64位的下载地址）：<a href="https://nodejs.org/dist/v8.9.4/node-v8.9.4-x64.msi" target="_blank" rel="noopener">https://nodejs.org/dist/v8.9.4/node-v8.9.4-x64.msi</a></p>
+<p>或者自行到官网下载最新版本： <a href="https://nodejs.org" target="_blank" rel="noopener">https://nodejs.org</a></p>
+<p>2.安装Git： Git下载包（64位）   Git下载包（32位） </p>
+<p>教程</p>
+<p>下载完成后（全部按NEXT就好），按下WIN+R，调出运行窗口，打cmd，会出现如下图：</p>
+<p>检查node是否安装正确，输入下面两条指令</p>
+<p>node -v<br>npm -v<br>出现如下图就代表安装成功：</p>
+<p>检查Git是否安装正确，输入</p>
+<p>git –version<br>出现如下图就代表安装成功：</p>
+<p>安装成功后，先在Github注册一个账号:<a href="https://github.com/，点右上角的Sign" target="_blank" rel="noopener">https://github.com/，点右上角的Sign</a> up</p>
+<p>输入信息，确认无误后按create：</p>
+<p>第二步直接按继续，然后按右上角的</p>
+<p>如图：</p>
+<p>然后去邮箱那里验证：</p>
+<p>验证完之后就再按一次，会出现这个界面：</p>
+<p>创建成功会出现下图：</p>
+<p>先在某一个盘上创建一个文件夹，例如在E盘建立一个blog文件夹：       </p>
+<p>文件夹右键，点Git Bash ,进入这个界面：</p>
+<p>全局配置设置到淘宝源：</p>
+<p>npm config set registry <a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a></p>
+<p>设置全局配置user.name 和user.email</p>
+<p>git config –-global user.name “55kaikainiubi”  //(“”的账号是刚才Github里面自己注册的账号)<br>git config –-global user.email “<a href="mailto:836508484@qq.com" target="_blank" rel="noopener">836508484@qq.com</a>” //(“”的邮箱是你自己注册的邮箱)<br>成功配置：</p>
+<p>生成SSH密钥设置到Github(需先设置user.name和user.email)</p>
+<p>cd ~/.ssh<br>ssh-keygen -t rsa -C “<a href="mailto:836508484@qq.com" target="_blank" rel="noopener">836508484@qq.com</a>” //打自己的邮箱<br>出现下图：</p>
+<p>设置ssh key到GitHub<br>默认生成ssh key在C:\Users\username.ssh文件夹中，复制 id_rsa.pub文件到 github-&gt;settings-&gt;SSH and GPG key-&gt;new ssh key 如图 </p>
+<p>把里面的代码，复制到刚才网站注册的地方：</p>
+<p>ssh设置是否成功测试</p>
+<p>ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
+<p>安装hexo插件</p>
+<p>输入以下代码：</p>
+<p>  cd / #进入根目录，实际上是git安装的根目录<br>  pwd /<br>npm install hexo-cli -g #安装hexo，阿里云源 大概10s安装</p>
+<p>安装之后，输入以下代码：</p>
+<p>cd /<br>hexo init Hexo<br>cd /Hexo<br>npm instal<br>hexo generate（可简写为hexo g）<br>hexo sever（可简写为hexo s）</p>
+<p>发现到最后已经有网址，复制+粘贴到浏览器访问</p>
+<p>假如4000打不开，换一个端口，输入以下代码：</p>
+<p>hexo s -p 5000<br>本地搭建hexo博客插件完成。</p>
+<p>上传hexo博客的静态文档到GitHub</p>
+<p>查看hexo插件的版本</p>
+<p>hexo -V</p>
+<p>大于hexo 3.0的上传到github的方法： </p>
+<p>安装部署到github插件依赖</p>
+<p>npm install –save hexo-deployer-git</p>
+<p>然后打开我的电脑搜索Hexo文件夹</p>
+<p>deploy:<br>type: git<br>repo: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:55kaikainiubi/55kaikainiubi.github.io.git  //（改成自己的用户名和用户名加域名）<br>branch: master</p>
+<p>再将gitbash部署hexo到github</p>
+<p>hexo deploy<br>看到这样的进程，代表成功部署hexo到github</p>
+<p>等待10分钟左右，打开用户名.github.io,会出现如下界面（代表成功搭建博客）：</p>
 
       
     </div>
@@ -383,6 +495,473 @@
       
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分享/">分享</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-java常用类库" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/30/java常用类库/" class="article-date">
+      <time datetime="2018-11-30T06:56:06.000Z" itemprop="datePublished">2018-11-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/java常用类库/">java常用类库</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Java 类库概念： Java 的应用程序接口 (API) 以包的形式来组织，每个包提供了大量的相关类、接口和异常处理类，这些包的集合就是 Java 的类库</p>
+<p>包名以 Java 开始的包是 Java 核心包 (JavaCore Package) ；</p>
+<p>包名以 Javax 开始的包是 Java 扩展包 (javaExtension Package) ，例如 javax.swing 包；</p>
+<p>Java 类库概念： Java 的应用程序接口 (API) 以包的形式来组织，每个包提供了大量的相关类、接口和异常处理类，这些包的集合就是 Java 的类库</p>
+<p>包名以 Java 开始的包是 Java 核心包 (Java Core Package) ；</p>
+<p>包名以 Javax 开始的包是 Java 扩展包 (Java Extension Package) ，例如 javax.swing 包；</p>
+<p>常用的 Java 核心包 (Java Core Package)</p>
+<ol>
+<li><p>java.lang      Java 编程语言的基本类库</p>
+</li>
+<li><p>java.applet     创建 applet 需要的所有类</p>
+</li>
+<li><p>java.awt       创建用户界面以及绘制和管理图形、图像的类</p>
+</li>
+<li><p>java.io        通过数据流、对象序列以及文件系统实现的系统输入、输出</p>
+</li>
+<li><p>java.NET       用于实现网络通讯应用的所有类</p>
+</li>
+<li><p>java.util       集合类、时间处理模式、日期时间工具等各类常用工具包</p>
+</li>
+</ol>
+<p>其它还有</p>
+<ol start="7">
+<li><p>java.sql        访问和处理来自于 Java 标准数据源数据的类</p>
+</li>
+<li><p>java.test       以一种独立于自然语言的方式处理文本、日期、数字和消息的类和接口</p>
+</li>
+<li><p>java.security    设计网络安全方案需要的一些类</p>
+</li>
+<li><p>java.beans     开发 Java Beans 需要的所有类</p>
+</li>
+<li><p>java.math      简明的整数算术以及十进制算术的基本函数</p>
+</li>
+<li><p>java.rmi       与远程方法调用相关的所有类</p>
+</li>
+</ol>
+<p>常用的 Java 扩展包 (Java Extension Package)</p>
+<ol>
+<li><p>javax.accessibility  定义了用户界面组件之间相互访问的一种机制</p>
+</li>
+<li><p>javax.naming.*     为命名服务提供了一系列类和接口</p>
+</li>
+<li><p>javax.swing.*       提供了一系列轻量级的用户界面组件，是目前 Java 用户界面常用的包</p>
+</li>
+</ol>
+<p>注 1 ：最重要且常用的是 1 和 6 ，已用黑体标出的为，需重点掌握</p>
+<p>注 2 ：在使用 Java 时，除了 java.lang 外，其他的包都需要 import 语句引入之后才能使用。</p>
+<p>重点讲解内容：java.lang和java.util。</p>
+<p>java.lang 包</p>
+<p>这个包称为 java 语言包，是由编译器自动引入的。程序中不必用 import 语句就可以使用。它所包含的类和接口对所有实际的 Java 程序都是必要的。</p>
+<ol>
+<li><p>object 类</p>
+</li>
+<li><p>数学类 (Math)</p>
+</li>
+<li><p>数据类型类</p>
+</li>
+<li><p>线程类</p>
+</li>
+<li><p>字符串类 (String 类和 StringBuffer 类 )</p>
+</li>
+<li><p>系统及运行类 (System 类和 Runtime 类 )</p>
+</li>
+<li><p>错误和异常处理类 (Throwable 、 Exception 、 Error)</p>
+</li>
+<li><p>过程类 (process)</p>
+</li>
+</ol>
+<p>java.util 包</p>
+<ol>
+<li><p>日期类、日历类（ Data 、 Calendar 、 GregorianCalendar ）</p>
+</li>
+<li><p>随机数类（ Random ）</p>
+</li>
+<li><p>位运算类（ BitSet ）</p>
+</li>
+<li><p>矢量类（ Vector ）</p>
+</li>
+<li><p>数据结构类（ Stack ）</p>
+</li>
+<li><p>散列表类（ Hashtable ）</p>
+</li>
+<li><p>StringTokenizer类</p>
+</li>
+</ol>
+<p>包名<br>主要功能<br>java.applet<br>提供了创建applet需要的所有类<br>java.awt.<em><br>提供了创建用户界面以及绘制和管理图形、图像的类<br>java.beans.</em><br>提供了开发Java Beans需要的所有类<br>java.io<br>提供了通过数据流、对象序列以及文件系统实现的系统输入、输出<br>java.lang.<em><br>Java编程语言的基本类库<br>java.math.</em><br>提供了简明的整数算术以及十进制算术的基本函数<br>java.rmi<br>提供了与远程方法调用相关的所有类<br>java.net<br>提供了用于实现网络通讯应用的所有类<br>java.security.<em><br>提供了设计网络安全方案需要的一些类<br>java.sql<br>提供了访问和处理来自于Java标准数据源数据的类<br>java.test<br>包括以一种独立于自然语言的方式处理文本、日期、数字和消息的类和接口<br>java.util.</em><br>包括集合类、时间处理模式、日期时间工具等各类常用工具包<br>javax.accessibility<br>定义了用户界面组件之间相互访问的一种机制<br>javax.naming.<em><br>为命名服务提供了一系列类和接口<br>javax.swing.</em><br>提供了一系列轻量级的用户界面组件，是目前Java用户界面常用的包</p>
+<p>常用的 Java 核心包 (Java Core Package)</p>
+<ol>
+<li><p>java.lang      Java 编程语言的基本类库</p>
+</li>
+<li><p>java.applet     创建 applet 需要的所有类</p>
+</li>
+<li><p>java.awt       创建用户界面以及绘制和管理图形、图像的类</p>
+</li>
+<li><p>java.io        通过数据流、对象序列以及文件系统实现的系统输入、输出</p>
+</li>
+<li><p>java.Net       用于实现网络通讯应用的所有类</p>
+</li>
+<li><p>java.util       集合类、时间处理模式、日期时间工具等各类常用工具包</p>
+</li>
+</ol>
+<ol start="7">
+<li><p>java.sql        访问和处理来自于 Java 标准数据源数据的类</p>
+</li>
+<li><p>java.test       以一种独立于自然语言的方式处理文本、日期、数字和消息的类和接口</p>
+</li>
+<li><p>java.security    设计网络安全方案需要的一些类</p>
+</li>
+<li><p>java.beans     开发 Java Beans 需要的所有类</p>
+</li>
+<li><p>java.math      简明的整数算术以及十进制算术的基本函数</p>
+</li>
+<li><p>java.rmi       与远程方法调用相关的所有类</p>
+</li>
+</ol>
+<p>常用的 Java 扩展包 (Java Extension Package)</p>
+<ol>
+<li><p>javax.accessibility  定义了用户界面组件之间相互访问的一种机制</p>
+</li>
+<li><p>javax.naming.*     为命名服务提供了一系列类和接口</p>
+</li>
+<li><p>javax.swing.*       提供了一系列轻量级的用户界面组件，是目前 Java 用户界面常用的包</p>
+</li>
+</ol>
+<p>注 1 ：最重要且常用的是 1 和 6 ，已用黑体标出的为，需重点掌握</p>
+<p>注 2 ：在使用 Java 时，除了 java.lang 外，其他的包都需要 import 语句引入之后才能使用。</p>
+<p>重点讲解内容：java.lang和java.util。</p>
+<p>java.lang 包</p>
+<p>这个包称为 java 语言包，是由编译器自动引入的。程序中不必用 import 语句就可以使用。它所包含的类和接口对所有实际的 Java 程序都是必要的。</p>
+<ol>
+<li><p>object 类</p>
+</li>
+<li><p>数学类 (Math)</p>
+</li>
+<li><p>数据类型类</p>
+</li>
+<li><p>线程类</p>
+</li>
+<li><p>字符串类 (String 类和 StringBuffer 类 )</p>
+</li>
+<li><p>系统及运行类 (System 类和 Runtime 类 )</p>
+</li>
+<li><p>错误和异常处理类 (Throwable 、 Exception 、 Error)</p>
+</li>
+<li><p>过程类 (process)</p>
+</li>
+</ol>
+<p>java.util 包</p>
+<ol>
+<li><p>日期类、日历类（ Data 、 Calendar 、 GregorianCalendar ）</p>
+</li>
+<li><p>随机数类（ Random ）</p>
+</li>
+<li><p>位运算类（ BitSet ）</p>
+</li>
+<li><p>矢量类（ Vector ）</p>
+</li>
+<li><p>数据结构类（ Stack ）</p>
+</li>
+<li><p>散列表类（ Hashtable ）</p>
+</li>
+<li><p>StringTokenizer类</p>
+</li>
+</ol>
+<p>Java 类库概念： Java 的应用程序接口 (API) 以包的形式来组织，每个包提供了大量的相关类、接口和异常处理类，这些包的集合就是 Java 的类库</p>
+<p>包名以 Java 开始的包是 Java 核心包 (Java Core Package) ；</p>
+<p>包名以 Javax 开始的包是 Java 扩展包 (Java Extension Package) ，例如 javax.swing 包；</p>
+<p>Java 类库概念： Java 的应用程序接口 (API) 以包的形式来组织，每个包提供了大量的相关类、接口和异常处理类，这些包的集合就是 Java 的类库</p>
+<p>包名以 Java 开始的包是 Java 核心包 (Java Core Package) ；</p>
+<p>包名以 Javax 开始的包是 Java 扩展包 (Java Extension Package) ，例如 javax.swing 包；</p>
+<p>常用的 Java 核心包 (Java Core Package)</p>
+<ol>
+<li><p>java.lang      Java 编程语言的基本类库</p>
+</li>
+<li><p>java.applet     创建 applet 需要的所有类</p>
+</li>
+<li><p>java.awt       创建用户界面以及绘制和管理图形、图像的类</p>
+</li>
+<li><p>java.io        通过数据流、对象序列以及文件系统实现的系统输入、输出</p>
+</li>
+<li><p>java.net       用于实现网络通讯应用的所有类</p>
+</li>
+<li><p>java.util       集合类、时间处理模式、日期时间工具等各类常用工具包</p>
+</li>
+</ol>
+<p>其它还有</p>
+<ol start="7">
+<li><p>java.sql        访问和处理来自于 Java 标准数据源数据的类</p>
+</li>
+<li><p>java.test       以一种独立于自然语言的方式处理文本、日期、数字和消息的类和接口</p>
+</li>
+<li><p>java.security    设计网络安全方案需要的一些类</p>
+</li>
+<li><p>java.beans     开发 Java Beans 需要的所有类</p>
+</li>
+<li><p>java.math      简明的整数算术以及十进制算术的基本函数</p>
+</li>
+<li><p>java.rmi       与远程方法调用相关的所有类</p>
+</li>
+</ol>
+<p>常用的 Java 扩展包 (Java Extension Package)</p>
+<ol>
+<li><p>javax.accessibility  定义了用户界面组件之间相互访问的一种机制</p>
+</li>
+<li><p>javax.naming.*     为命名服务提供了一系列类和接口</p>
+</li>
+<li><p>javax.swing.*       提供了一系列轻量级的用户界面组件，是目前 Java 用户界面常用的包</p>
+</li>
+</ol>
+<p>注 1 ：最重要且常用的是 1 和 6 ，已用黑体标出的为，需重点掌握</p>
+<p>注 2 ：在使用 Java 时，除了 java.lang 外，其他的包都需要 import 语句引入之后才能使用。</p>
+<p>重点讲解内容：java.lang和java.util。</p>
+<p>java.lang 包</p>
+<p>这个包称为 java 语言包，是由编译器自动引入的。程序中不必用 import 语句就可以使用。它所包含的类和接口对所有实际的 Java 程序都是必要的。</p>
+<ol>
+<li><p>object 类</p>
+</li>
+<li><p>数学类 (Math)</p>
+</li>
+<li><p>数据类型类</p>
+</li>
+<li><p>线程类</p>
+</li>
+<li><p>字符串类 (String 类和 StringBuffer 类 )</p>
+</li>
+<li><p>系统及运行类 (System 类和 Runtime 类 )</p>
+</li>
+<li><p>错误和异常处理类 (Throwable 、 Exception 、 Error)</p>
+</li>
+<li><p>过程类 (process)</p>
+</li>
+</ol>
+<p>java.util 包</p>
+<ol>
+<li><p>日期类、日历类（ Data 、 Calendar 、 GregorianCalendar ）</p>
+</li>
+<li><p>随机数类（ Random ）</p>
+</li>
+<li><p>位运算类（ BitSet ）</p>
+</li>
+<li><p>矢量类（ Vector ）</p>
+</li>
+<li><p>数据结构类（ Stack ）</p>
+</li>
+<li><p>散列表类（ Hashtable ）</p>
+</li>
+<li><p>StringTokenizer类</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-prim算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/30/prim算法/" class="article-date">
+      <time datetime="2018-11-30T06:18:09.000Z" itemprop="datePublished">2018-11-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/prim算法/">最小生成树之prim算法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>如果一个算法文字描述不清楚，就说明思路不清楚，也不可能写好。</p>
+<p>prim算法是实现图的最小生成树。既然是图，就假设包含n个顶点，m条边。prim算法是从顶点出发的，其算法时间复杂度与顶点数目有关系。</p>
+<p>（注意：prim算法适合稠密图，其时间复杂度为O(n^2)，其时间复杂度与边得数目无关，而kruskal算法的时间复杂度为O(eloge)跟边的数目有关，适合稀疏图。）</p>
+<p>算法思路：从某个顶点开始，假设v0，此时v0属于最小生成树结点中的一个元素，该集合假设u，剩下的V-v0为待判定的点，此时选取u中的顶点到V-v0中顶点的一个路径最小的边，并且将其中非u中的顶点加入到u中，循环直到u中的顶点包含图所有的顶点为止。<br>算法在选取最小路径的时候需要优化，具体思路：w[]数组保存各个顶点的最短路径，b[]数组保存到i顶点最短路径的顶点，比如，到0号顶点最短的路径是&lt;v0,v3&gt;，那么w[0]=&lt;v0,v3&gt;，b[0]=3；这样每次找最小路径就不是o(n*n)的代价。代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">//prim算法</span><br><span class="line">template&lt;class VertexType, class ArcType&gt;</span><br><span class="line">void prim(MGraph&lt;VertexType,ArcType&gt; G) &#123;</span><br><span class="line">	shortEdge&lt;VertexType, ArcType&gt; *shortedge=new shortEdge&lt;VertexType, ArcType&gt;[G.vertexNum];</span><br><span class="line">	for (int i = 0; i &lt; G.vertexNum; i++) &#123;</span><br><span class="line">		shortedge[i].lowcost = G.arc[0][i];</span><br><span class="line">		shortedge[i].adjvex = G.vertex[0];</span><br><span class="line">	&#125;</span><br><span class="line">	shortedge[0].lowcost = 0;</span><br><span class="line">	for (int i = 1; i &lt; G.vertexNum; i++) &#123;</span><br><span class="line">		int k = MinEnge(shortedge, G.vertexNum);</span><br><span class="line">		cout &lt;&lt; &quot;(&quot; &lt;&lt; shortedge[k].adjvex &lt;&lt; G.vertex[k] &lt;&lt; &quot;)&quot; &lt;&lt; shortedge[k].lowcost &lt;&lt; endl;</span><br><span class="line">		shortedge[k].lowcost = 0;</span><br><span class="line">		for (int j = 1; j &lt; G.vertexNum; j++) &#123;</span><br><span class="line">			if (G.arc[k][j] &lt; shortedge[j].lowcost) &#123;</span><br><span class="line">				shortedge[j].lowcost = G.arc[k][j];</span><br><span class="line">				shortedge[j].adjvex = G.vertex[k];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">template&lt;class VertexType, class ArcType&gt; </span><br><span class="line">//查找集合中最短边</span><br><span class="line">int  MinEnge(shortEdge&lt;VertexType, ArcType&gt; shortenge[],int vertexNum) &#123;</span><br><span class="line">	int k;</span><br><span class="line">	for (int i = 0; i &lt; vertexNum; i++) &#123;</span><br><span class="line">		if (shortenge[i].lowcost != 0) &#123;</span><br><span class="line">			k = i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	for (int i = 0; i &lt; vertexNum; i++) &#123;</span><br><span class="line">		if (shortenge[i].lowcost != 0 &amp;&amp; shortenge[i].lowcost &lt; shortenge[k].lowcost)</span><br><span class="line">			k = i;</span><br><span class="line">	&#125;</span><br><span class="line">	return k;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>`</code></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/c-算法/">c++/算法</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-最小生成树之ksuak算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/30/最小生成树之ksuak算法/" class="article-date">
+      <time datetime="2018-11-30T06:18:09.000Z" itemprop="datePublished">2018-11-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/最小生成树之ksuak算法/">最小生成树之ksuak算法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>学习最小生成树算法之前我们先来了解下 下面这些概念：</p>
+<p>树（Tree）：如果一个无向连通图中不存在回路，则这种图称为树。</p>
+<p>生成树 （Spanning Tree）：无向连通图G的一个子图如果是一颗包含G的所有顶点的树，则该子图称为G的生成树。</p>
+<p>生成树是连通图的极小连通子图。这里所谓极小是指：若在树中任意增加一条边，则将出现一条回路；若去掉一条边，将会使之变成非连通图。</p>
+<p>最小生成树（Minimum Spanning Tree，MST）：或者称为最小代价树Minimum-cost Spanning Tree:对无向连通图的生成树，各边的权值总和称为生成树的权，权最小的生成树称为最小生成树。</p>
+<p>构成生成树的准则有三条：</p>
+<p><1> 必须只使用该网络中的边来构造最小生成树。</1></p>
+<p><2> 必须使用且仅使用n-1条边来连接网络中的n个顶点</2></p>
+<p><3> 不能使用产生回路的边。</3></p>
+<p>构造最小生成树的算法主要有：克鲁斯卡尔（Kruskal）算法和普利姆（Prim）算法他们都遵循以上准则。</p>
+<p>接下分别讨论一下这两种算法以及判定最小生成树是否唯一的方法。</p>
+<p>克鲁斯卡尔算法</p>
+<p>克鲁斯卡尔算法的基本思想是以边为主导地位，始终选择当前可用（所选的边不能构成回路）的最小权植边。所以Kruskal算法的第一步是给所有的边按照从小到大的顺序排序。这一步可以直接使用库函数qsort或者sort。接下来从小到大依次考察每一条边（u，v）。</p>
+<p>具体实现过程如下：</p>
+<p><1>　设一个有n个顶点的连通网络为G（V,E），最初先构造一个只有n个顶点，没有边的非连通图T={V,空}，图中每个顶点自成一格连通分量。</1></p>
+<p><2>　在Ｅ中选择一条具有最小权植的边时，若该边的两个顶点落在不同的连通分量上，则将此边加入到Ｔ中；否则，即这条边的两个顶点落到同一连通分量      上，则将此边舍去（此后永不选用这条边），重新选择一条权植最小的边。</2></p>
+<p><3>　如此重复下去，直到所有顶点在同一连通分量上为止。</3></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">void Kruskal(MGraph&lt;VertexType, ArcType&gt; G) &#123;</span><br><span class="line">	EdgeType&lt; VertexType, ArcType&gt; *edge = new EdgeType&lt; VertexType, ArcType&gt;[G.arcNum*2];</span><br><span class="line">	//初始化边集数组</span><br><span class="line">	int k = 0;</span><br><span class="line">	for (int i = 0; i &lt; G.vertexNum; i++) &#123;</span><br><span class="line">		for (int j = 0; j &lt; G.vertexNum; j++) &#123;</span><br><span class="line">			if (G.arc[i][j] != MaxInt) &#123;</span><br><span class="line">				edge[k].from = G.vertex[i];</span><br><span class="line">				edge[k].to = G.vertex[j];</span><br><span class="line">				edge[k].weight = G.arc[i][j];</span><br><span class="line">				k++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	soft(edge, G.arcNum*2);</span><br><span class="line">	int *parent = new int[G.vertexNum];</span><br><span class="line">	for (int i = 0; i &lt; G.vertexNum; i++) parent[i] = -1;</span><br><span class="line">	for (int num = 0, i = 0; i &lt; G.arcNum*2; i++) &#123;</span><br><span class="line">		int vex1 = FindRoot(parent, G.LocateVex(edge[i].from));</span><br><span class="line">		int  vex2 = FindRoot(parent, G.LocateVex(edge[i].to));</span><br><span class="line">		if (vex1 != vex2) &#123;</span><br><span class="line">			cout &lt;&lt; &quot;(&quot; &lt;&lt; edge[i].from &lt;&lt; edge[i].to &lt;&lt; &quot;)&quot; &lt;&lt; edge[i].weight &lt;&lt; endl;</span><br><span class="line">			parent[vex2] = vex1;</span><br><span class="line">			num++;</span><br><span class="line">			if (num == G.vertexNum - 1) return;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">template&lt;class VertexType, class ArcType&gt;</span><br><span class="line">//对边集进行排序的函数</span><br><span class="line">void soft(EdgeType&lt; VertexType, ArcType&gt; *edge, int length) &#123;</span><br><span class="line">	for (int i = 0; i &lt; length - 1; i++) &#123;</span><br><span class="line">		for (int j = 0; j &lt; length - i - 1; j++) &#123;</span><br><span class="line">			if (edge[j].weight &gt; edge[j + 1].weight) &#123;</span><br><span class="line">				EdgeType&lt; VertexType, ArcType&gt; e;</span><br><span class="line">				e = edge[j];</span><br><span class="line">				edge[j] = edge[j + 1];</span><br><span class="line">				edge[j + 1] = e;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//寻找根节点</span><br><span class="line">static int FindRoot(int parent[], int v) &#123;</span><br><span class="line">	int t = v;</span><br><span class="line"></span><br><span class="line">	while(parent[t] &gt; -1) t = parent[t];</span><br><span class="line">	return t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/c-算法/">c++/算法</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+
       
       <div class="clearfix"></div>
     </div>
