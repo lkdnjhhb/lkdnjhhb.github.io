@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl">
+  
+  
+  
+  
+  <title>图的完整操作 | LDY博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#include”MGraph.h”//———-构造图的邻接矩阵——————-templateMGraph&amp;lt;VertexType, ArcType&amp;gt;::MGraph(int n, int e) {    vertexNum = n;    arcNum = e;    //开辟顶点集合边集    vertex = new VertexType[vertexNum];    arc =">
+<meta name="keywords" content="c++,数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图的完整操作">
+<meta property="og:url" content="https://lkdnjhhb.github.io/2018/11/30/图的完整操作/index.html">
+<meta property="og:site_name" content="LDY博客">
+<meta property="og:description" content="#include”MGraph.h”//———-构造图的邻接矩阵——————-templateMGraph&amp;lt;VertexType, ArcType&amp;gt;::MGraph(int n, int e) {    vertexNum = n;    arcNum = e;    //开辟顶点集合边集    vertex = new VertexType[vertexNum];    arc =">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-30T07:07:23.492Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图的完整操作">
+<meta name="twitter:description" content="#include”MGraph.h”//———-构造图的邻接矩阵——————-templateMGraph&amp;lt;VertexType, ArcType&amp;gt;::MGraph(int n, int e) {    vertexNum = n;    arcNum = e;    //开辟顶点集合边集    vertex = new VertexType[vertexNum];    arc =">
+  
+  
+    <link rel="icon" href="/img/图标.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/头像.jpeg" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">林德雨</a></h1>
+        </hgroup>
+        
+        <p class="header-subtitle">一切尽在不言中</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/categories">数据结构学习</a></li>
+                        
+                            <li><a href="/digital">Java学习</a></li>
+                        
+                            <li><a href="/algorithm">算法学习</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                            <li><a href="/tags">静心阅读</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/lkdnjhhb/lkdnjhhb.github.io" title="github">github</a>
+                            
+                                <a class="fl weibo" target="_blank" href="https://weibo.com/" title="weibo">weibo</a>
+                            
+                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/c/" style="font-size: 13.33px;">c++</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.baidu.com/">baidu</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://segmentfault.com/">segmentfault</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.jianshu.com/">简书</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱动漫,爱游戏,爱编程,爱运动,爱的太多了!</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">林德雨</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/头像.jpeg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">林德雨</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">一切尽在不言中</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories">数据结构学习</a></li>
+                
+                    <li><a href="/digital">Java学习</a></li>
+                
+                    <li><a href="/algorithm">算法学习</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                    <li><a href="/tags">静心阅读</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/lkdnjhhb/lkdnjhhb.github.io" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-图的完整操作" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/30/图的完整操作/" class="article-date">
+      <time datetime="2018-11-30T07:05:36.000Z" itemprop="datePublished">2018-11-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      图的完整操作
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>#include”MGraph.h”<br>//———-构造图的邻接矩阵——————-<br>template<class vertextype,="" class="" arctype=""><br>MGraph&lt;VertexType, ArcType&gt;::MGraph(int n, int e) {<br>    vertexNum = n;<br>    arcNum = e;<br>    //开辟顶点集合边集<br>    vertex = new VertexType[vertexNum];<br>    arc = new ArcType*[vertexNum];<br>    visit = new int[vertexNum];<br>    for (int i = 0; i &lt; vertexNum; i++)<br>        arc[i] = new ArcType[vertexNum];<br>    for (int i = 0; i &lt; vertexNum; i++)<br>        for (int j = 0; j &lt; vertexNum; j++)<br>            arc[i][j] = MaxInt;<br>    //顶点、边集、标记数值赋值<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        VertexType elem;<br>        cin &gt;&gt; elem;<br>        vertex[i] = elem;<br>    }<br>    for (int k = 0; k &lt; arcNum; k++) {<br>        VertexType v1, v2;<br>        ArcType weight;<br>        cin &gt;&gt; v1 &gt;&gt; v2 &gt;&gt; weight;<br>        int i = LocateVex(v1);<br>        int j = LocateVex(v2);<br>        arc[i][j] = weight;<br>        arc[j][i] = weight;<br>    }<br>    for (int i = 0; i &lt; vertexNum; i++) visit[i] = 0;<br>}<br>//———-析构——————-<br>template<class vertextype,="" class="" arctype=""><br>MGraph&lt;VertexType, ArcType&gt;::~MGraph() {<br>    vertex = NULL;<br>    delete vertex;<br>    arc = NULL;<br>    delete[]arc;<br>}<br>//———-查找某顶点对应的存储序号——————-<br>template<class vertextype,="" class="" arctype=""><br>int MGraph&lt;VertexType, ArcType&gt;::LocateVex(VertexType elem) {<br>    for (int i = 0; i &lt; vertexNum; i++)<br>        if (vertex[i] == elem) return i;<br>    return -1;<br>}</class></class></class></p>
+<p>//———-若存储有向图，输出出度为零的顶底个数——————-<br>template<class vertextype,="" class="" arctype=""><br>int MGraph&lt;VertexType, ArcType&gt;::CountOD() {<br>    int count = 0;<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        for (int j = 0; j &lt; vertexNum; j++) {<br>            if (arc[i][j] != MaxInt) {<br>                count = count + 1;<br>                break;<br>            }<br>        }<br>    }</class></p>
+<pre><code>count = vertexNum - count;
+return count;
+</code></pre><p>}<br>//打印图<br>template<class vertextype,="" class="" arctype=""><br>void MGraph&lt;VertexType, ArcType&gt;::DisplayGraph() {<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        for (int j = 0; j &lt; vertexNum; j++) {<br>            if (arc[i][j] != MaxInt)<br>                cout &lt;&lt; arc[i][j] &lt;&lt; “ “;<br>            else<br>                cout &lt;&lt; “∞” &lt;&lt; “ “;<br>        }<br>        cout &lt;&lt; endl;<br>    }<br>}<br>template<class vertextype,="" class="" arctype=""><br>//深度优先遍历<br>void MGraph&lt;VertexType, ArcType&gt;::DFS(VertexType elem) {<br>    cout &lt;&lt; elem;<br>    visit[LocateVex(elem)] = 1;<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        if (arc[LocateVex(elem)][i] != MaxInt&amp;&amp;visit[i] != 1)<br>            DFS(vertex[i]);<br>    }<br>}<br>template<class vertextype,="" class="" arctype=""><br>//广度优先遍历<br>void MGraph&lt;VertexType, ArcType&gt;::BFS(VertexType elem) {<br>    queue<int> que;<br>    cout &lt;&lt; vertex[LocateVex(elem)];<br>    visit[LocateVex(elem)] = 1;<br>    que.push(LocateVex(elem));<br>    while (que.empty()==false) {<br>        int i = que.front();<br>        que.pop();<br>        for (int j = 0; j &lt; vertexNum; j++) {<br>            if (arc[i][j] != MaxInt&amp;&amp;visit[j] != 1) {<br>                cout &lt;&lt; vertex[j];<br>                visit[j] = 1;<br>                que.push(j);<br>            }<br>        }<br>    }<br>}<br>//prim算法<br>template<class vertextype,="" class="" arctype=""><br>void prim(MGraph&lt;VertexType,ArcType&gt; G) {<br>    shortEdge&lt;VertexType, ArcType&gt; *shortedge=new shortEdge&lt;VertexType, ArcType&gt;[G.vertexNum];<br>    for (int i = 0; i &lt; G.vertexNum; i++) {<br>        shortedge[i].lowcost = G.arc[0][i];<br>        shortedge[i].adjvex = G.vertex[0];<br>    }<br>    shortedge[0].lowcost = 0;<br>    for (int i = 1; i &lt; G.vertexNum; i++) {<br>        int k = MinEnge(shortedge, G.vertexNum);<br>        cout &lt;&lt; “(“ &lt;&lt; shortedge[k].adjvex &lt;&lt; G.vertex[k] &lt;&lt; “)” &lt;&lt; shortedge[k].lowcost &lt;&lt; endl;<br>        shortedge[k].lowcost = 0;<br>        for (int j = 1; j &lt; G.vertexNum; j++) {<br>            if (G.arc[k][j] &lt; shortedge[j].lowcost) {<br>                shortedge[j].lowcost = G.arc[k][j];<br>                shortedge[j].adjvex = G.vertex[k];<br>            }<br>        }<br>    }</class></int></class></class></class></p>
+<p>}<br>template<class vertextype,="" class="" arctype=""><br>//查找集合中最短边<br>int  MinEnge(shortEdge&lt;VertexType, ArcType&gt; shortenge[],int vertexNum) {<br>    int k;<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        if (shortenge[i].lowcost != 0) {<br>            k = i;<br>        }<br>    }<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        if (shortenge[i].lowcost != 0 &amp;&amp; shortenge[i].lowcost &lt; shortenge[k].lowcost)<br>            k = i;<br>    }<br>    return k;<br>};<br>template<class vertextype,="" class="" arctype=""><br>//KrusKal算法<br>void Kruskal(MGraph&lt;VertexType, ArcType&gt; G) {<br>    EdgeType&lt; VertexType, ArcType&gt; <em>edge = new EdgeType&lt; VertexType, ArcType&gt;[G.arcNum</em>2];<br>    //初始化边集数组<br>    int k = 0;<br>    for (int i = 0; i &lt; G.vertexNum; i++) {<br>        for (int j = 0; j &lt; G.vertexNum; j++) {<br>            if (G.arc[i][j] != MaxInt) {<br>                edge[k].from = G.vertex[i];<br>                edge[k].to = G.vertex[j];<br>                edge[k].weight = G.arc[i][j];<br>                k++;<br>            }<br>        }<br>    }<br>    soft(edge, G.arcNum<em>2);<br>    int </em>parent = new int[G.vertexNum];<br>    for (int i = 0; i &lt; G.vertexNum; i++) parent[i] = -1;<br>    for (int num = 0, i = 0; i &lt; G.arcNum<em>2; i++) {<br>        int vex1 = FindRoot(parent, G.LocateVex(edge[i].from));<br>        int  vex2 = FindRoot(parent, G.LocateVex(edge[i].to));<br>        if (vex1 != vex2) {<br>            cout &lt;&lt; “(“ &lt;&lt; edge[i].from &lt;&lt; edge[i].to &lt;&lt; “)” &lt;&lt; edge[i].weight &lt;&lt; endl;<br>            parent[vex2] = vex1;<br>            num++;<br>            if (num == G.vertexNum - 1) return;<br>        }<br>    }<br>}<br>template<class vertextype,="" class="" arctype=""><br>//对边集进行排序的函数<br>void soft(EdgeType&lt; VertexType, ArcType&gt; </class></em>edge, int length) {<br>    for (int i = 0; i &lt; length - 1; i++) {<br>        for (int j = 0; j &lt; length - i - 1; j++) {<br>            if (edge[j].weight &gt; edge[j + 1].weight) {<br>                EdgeType&lt; VertexType, ArcType&gt; e;<br>                e = edge[j];<br>                edge[j] = edge[j + 1];<br>                edge[j + 1] = e;<br>            }<br>        }<br>    }<br>}<br>//寻找根节点<br>static int FindRoot(int parent[], int v) {<br>    int t = v;</class></class></p>
+<pre><code>while(parent[t] &gt; -1) t = parent[t];
+return t;
+</code></pre><p>}</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/11/30/图的完整操作/">图的完整操作</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 林德雨 的个人博客">林德雨</a></p>
+        <p><span>发布时间:</span>2018年11月30日 - 15时05分</p>
+        <p><span>最后更新:</span>2018年11月30日 - 15时07分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/11/30/图的完整操作/" title="图的完整操作">https://lkdnjhhb.github.io/2018/11/30/图的完整操作/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://lkdnjhhb.github.io/2018/11/30/图的完整操作/　　作者: 林德雨" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2018/12/01/二分算法实例1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          二分算法实例
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/11/30/在hexo上写博客的模板/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">在hexo上写博客的模板</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+<div class="share">
+    <div class="bdsharebuttonbox">
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+    <a href="#" class="bds_copy" data-cmd="copy" title="复制网址"></a>
+    <a href="#" class="bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+    </div>
+    <script>
+        window._bd_share_config={
+            "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+</div>
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+    <link rel="stylesheet" type="text/css" href="/css/showshare.css">
+    <div id="share" class="bdsharebuttonbox">
+        <button class="share-toggle-button"><i class="share-icon fa fa-share-alt"></i>
+        </button>
+        <ul class="share-items">
+            <li class="share-item"><a href="#" class="share-button fa fa-weibo" data-cmd="tsina" title="分享到新浪微博"></a></li>
+            <li class="share-item"><a href="#" class="share-button fa fa-weixin" data-cmd="weixin" title="分享到微信"></a></li>
+            <li class="share-item"><a href="#" class="share-button fa fa-qq" data-cmd="sqq" title="分享到QQ好友"></a></li>
+            <li class="share-item"><a href="#" class="share-button fa fa-facebook" data-cmd="fbook" title="分享到Facebook"></a></li>
+            <li class="share-item"><a href="#" class="share-button fa fa-twitter" data-cmd="twi" title="分享到Twitter"></a></li>
+            <li class="share-item"><a href="#" class="share-button fa fa-linkedin" data-cmd="linkedin" title="分享到linkedin"></a></li>
+        </ul>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="800">
+        <defs>
+            <filter id="goo">
+                <fegaussianblur in="SourceGraphic" stddeviation="12" result="blur"/>
+                <fecolormatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 35 -15" result="goo"/>
+                <fecomposite in="SourceGraphic" in2="goo" operator="atop"/>
+            </filter>
+        </defs>
+    </svg>
+    <!-- 推荐开源CDN来选取需引用的外部JS //-->
+    <script type="text/javascript" src="http://cdn.gbtags.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/js/TweenMax.min.js"></script>
+    <script src="/js/TweenMax.js"></script>
+<script>
+    window._bd_share_config = {
+    common : {
+                    bdText : '',
+                    //文本内容
+                    bdDesc : 'Luuman，90后，水瓶座普通男青年！爱折腾，爱运动，更爱游离于错综复杂的编码与逻辑中，无法自拔。相信编程是一门艺术，自诩为游弋在代码里的人生。',
+                    // 描述
+                    bdUrl : 'http://luuman.github.io/',
+                    // URL地址
+                    bdPic : 'https://hexo.io/build/screenshots/spfk-2b30506937.png'
+                    // 图片信息
+                },
+        share: [{
+            "bdSize": 24
+        }]
+    }
+    with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~ (-new Date() / 36e5)];
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-33765729-1']);
+    _gaq.push(['_setDomainName', 'chuanke.com']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/12/01/二分算法实例1/" title="上一篇: 二分算法实例">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2018/11/30/在hexo上写博客的模板/" title="下一篇: 在hexo上写博客的模板">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/01/图像识别/">图像识别+指纹识别</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/01/二分算法实例2/">二分算法实例2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/01/二分算法/">二分算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/01/二分算法实例1/">二分算法实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/图的完整操作/">图的完整操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/在hexo上写博客的模板/">在hexo上写博客的模板</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/如何用github-hexo搭建个人博客/">如何用github+hexo搭建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/java常用类库/">java常用类库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/prim算法/">最小生成树之prim算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/最小生成树之ksuak算法/">最小生成树之ksuak算法</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 林德雨
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit">极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

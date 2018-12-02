@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl">
+  
+  
+  
+  
+  <title>LDY博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="LDY博客">
+<meta property="og:url" content="https://lkdnjhhb.github.io/index.html">
+<meta property="og:site_name" content="LDY博客">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LDY博客">
+  
+  
+    <link rel="icon" href="/img/图标.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+    
+    
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: true,
+          isPost: false,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/头像.jpeg" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">林德雨</a></h1>
+        </hgroup>
+        
+        <p class="header-subtitle">一切尽在不言中</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/categories">数据结构学习</a></li>
+                        
+                            <li><a href="/digital">Java学习</a></li>
+                        
+                            <li><a href="/algorithm">算法学习</a></li>
+                        
+                            <li><a href="/about">关于我</a></li>
+                        
+                            <li><a href="/tags">静心阅读</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/lkdnjhhb/lkdnjhhb.github.io" title="github">github</a>
+                            
+                                <a class="fl weibo" target="_blank" href="https://weibo.com/" title="weibo">weibo</a>
+                            
+                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/c/" style="font-size: 13.33px;">c++</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.baidu.com/">baidu</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://segmentfault.com/">segmentfault</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.jianshu.com/">简书</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱动漫,爱游戏,爱编程,爱运动,爱的太多了!</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">林德雨</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/头像.jpeg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">林德雨</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">一切尽在不言中</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories">数据结构学习</a></li>
+                
+                    <li><a href="/digital">Java学习</a></li>
+                
+                    <li><a href="/algorithm">算法学习</a></li>
+                
+                    <li><a href="/about">关于我</a></li>
+                
+                    <li><a href="/tags">静心阅读</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/lkdnjhhb/lkdnjhhb.github.io" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-图像识别" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/01/图像识别/" class="article-date">
+      <time datetime="2018-12-01T15:08:35.000Z" itemprop="datePublished">2018-12-01</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/图像识别/">图像识别+指纹识别</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>今天在阮一峰的博客上看到了这篇《相似图片搜索原理》博客，于是就有了研究一下指纹识别和图像识别的想法。本篇博客大部分内容引用了它博客的内容。<br>根据Neal Krawetz博士的解释，实现相似图片搜素的关键技术叫做”感知哈希算法”（Perceptualhash algorithm），它的作用是对每张图片生成一个”指纹”（fingerprint）字符串，然后比较不同图片的指纹。结果越接近，就说明图片越相似。</p>
+<p>以下是一个最简单的Java实现：</p>
+<p>预处理：读取图片</p>
+<p>第一步，缩小尺寸。</p>
+<p>将图片缩小到8x8的尺寸，总共64个像素。这一步的作用是去除图片的细节，只保留结构、明暗等基本信息，摒弃不同尺寸、比例带来的图片差异。</p>
+<p>第二步，简化色彩。</p>
+<p>将缩小后的图片，转为64级灰度。也就是说，所有像素点总共只有64种颜色。</p>
+<p>第三步，计算平均值。</p>
+<p>计算所有64个像素的灰度平均值。</p>
+<p>第四步，比较像素的灰度。</p>
+<p>将每个像素的灰度，与平均值进行比较。大于或等于平均值，记为1；小于平均值，记为0。</p>
+<p>第五步，计算哈希值。</p>
+<p>将上一步的比较结果，组合在一起，就构成了一个64位的整数，这就是这张图片的指纹。组合的次序并不重要，只要保证所有图片都采用同样次序就行了。</p>
+<p>得到指纹以后，就可以对比不同的图片，看看64位中有多少位是不一样的。在理论上，这等同于计算”汉明距离”（Hammingdistance）。如果不相同的数据位不超过5，就说明两张图片很相似；如果大于10，就说明这是两张不同的图片。</p>
+<p>你可以将几张图片放在一起，也计算出他们的汉明距离对比，就可以看看两张图片是否相似。</p>
+<p>这种算法的优点是简单快速，不受图片大小缩放的影响，缺点是图片的内容不能变更。如果在图片上加几个文字，它就认不出来了。所以，它的最佳用途是根据缩略图，找出原图。</p>
+<p>实际应用中，往往采用更强大的pHash算法和SIFT算法，它们能够识别图片的变形。只要变形程度不超过25%，它们就能匹配原图。这些算法虽然更复杂，但是原理与上面的简便算法是一样的，就是先将图片转化成Hash字符串，然后再进行比较。</p>
+<p>以上内容大部分直接从阮一峰的网站上复制过来，想看原著的童鞋可以去在最上面的链接点击进去看。<br>以下为阿里的开源实现，在实验此代码的情况下，大家要先先在工程中导下jdk 中的rt.jar 包,此外也有专门的jar包来实现图片预处理，有兴趣的可自行去百度，小编今天也是初次研究，其中也有很多不懂，希望大家共同学习。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br></pre></td><td class="code"><pre><span class="line">package com.ldy.ly002;</span><br><span class="line"></span><br><span class="line">import java.awt.AlphaComposite;</span><br><span class="line">import java.awt.Color;</span><br><span class="line">import java.awt.Font;</span><br><span class="line">import java.awt.Graphics2D;</span><br><span class="line">import java.awt.Image;</span><br><span class="line">import java.awt.RenderingHints;</span><br><span class="line">import java.awt.geom.AffineTransform;</span><br><span class="line">import java.awt.image.BufferedImage;</span><br><span class="line">import java.awt.image.ColorModel;</span><br><span class="line">import java.awt.image.WritableRaster;</span><br><span class="line">import java.io.File;</span><br><span class="line">import java.io.FileInputStream;</span><br><span class="line">import java.io.FileNotFoundException;</span><br><span class="line">import java.io.FileOutputStream;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStream;</span><br><span class="line"></span><br><span class="line">import javax.imageio.ImageIO;</span><br><span class="line"></span><br><span class="line">import com.sun.image.codec.jpeg.ImageFormatException;</span><br><span class="line">import com.sun.image.codec.jpeg.JPEGCodec;</span><br><span class="line">import com.sun.image.codec.jpeg.JPEGImageDecoder;</span><br><span class="line">import com.sun.image.codec.jpeg.JPEGImageEncoder;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 图片工具类，主要针对图片水印处理</span><br><span class="line"> * </span><br><span class="line"> * @author 025079</span><br><span class="line"> * @version [版本号, 2011-11-28]</span><br><span class="line"> * @see [相关类/方法]</span><br><span class="line"> * @since [产品/模块版本]</span><br><span class="line"> */</span><br><span class="line">public class ImageHelper &#123;</span><br><span class="line"></span><br><span class="line"> // 项目根目录路径</span><br><span class="line"> public static final String path = System.getProperty(&quot;user.dir&quot;);</span><br><span class="line"> </span><br><span class="line"> /**</span><br><span class="line"> * 生成缩略图 &lt;br/&gt;</span><br><span class="line"> * 保存:ImageIO.write(BufferedImage, imgType[jpg/png/...], File);</span><br><span class="line"> * </span><br><span class="line"> * @param source</span><br><span class="line"> *      原图片</span><br><span class="line"> * @param width</span><br><span class="line"> *      缩略图宽</span><br><span class="line"> * @param height</span><br><span class="line"> *      缩略图高</span><br><span class="line"> * @param b</span><br><span class="line"> *      是否等比缩放</span><br><span class="line"> * */</span><br><span class="line"> public static BufferedImage thumb(BufferedImage source, int width,</span><br><span class="line">  int height, boolean b) &#123;</span><br><span class="line"> // targetW，targetH分别表示目标长和宽</span><br><span class="line"> int type = source.getType();</span><br><span class="line"> BufferedImage target = null;</span><br><span class="line"> double sx = (double) width / source.getWidth();</span><br><span class="line"> double sy = (double) height / source.getHeight();</span><br><span class="line"></span><br><span class="line"> if (b) &#123;</span><br><span class="line">  if (sx &gt; sy) &#123;</span><br><span class="line">  sx = sy;</span><br><span class="line">  width = (int) (sx * source.getWidth());</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">  sy = sx;</span><br><span class="line">  height = (int) (sy * source.getHeight());</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> if (type == BufferedImage.TYPE_CUSTOM) &#123; // handmade</span><br><span class="line">  ColorModel cm = source.getColorModel();</span><br><span class="line">  WritableRaster raster = cm.createCompatibleWritableRaster(width,</span><br><span class="line">   height);</span><br><span class="line">  boolean alphaPremultiplied = cm.isAlphaPremultiplied();</span><br><span class="line">  target = new BufferedImage(cm, raster, alphaPremultiplied, null);</span><br><span class="line"> &#125; else</span><br><span class="line">  target = new BufferedImage(width, height, type);</span><br><span class="line"> Graphics2D g = target.createGraphics();</span><br><span class="line"> // smoother than exlax:</span><br><span class="line"> g.setRenderingHint(RenderingHints.KEY_RENDERING,</span><br><span class="line">  RenderingHints.VALUE_RENDER_QUALITY);</span><br><span class="line"> g.drawRenderedImage(source, AffineTransform.getScaleInstance(sx, sy));</span><br><span class="line"> g.dispose();</span><br><span class="line"> return target;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> /**</span><br><span class="line"> * 图片水印</span><br><span class="line"> * </span><br><span class="line"> * @param imgPath</span><br><span class="line"> *      待处理图片</span><br><span class="line"> * @param markPath</span><br><span class="line"> *      水印图片</span><br><span class="line"> * @param x</span><br><span class="line"> *      水印位于图片左上角的 x 坐标值</span><br><span class="line"> * @param y</span><br><span class="line"> *      水印位于图片左上角的 y 坐标值</span><br><span class="line"> * @param alpha</span><br><span class="line"> *      水印透明度 0.1f ~ 1.0f</span><br><span class="line"> * */</span><br><span class="line"> public static void waterMark(String imgPath, String markPath, int x, int y,</span><br><span class="line">  float alpha) &#123;</span><br><span class="line"> try &#123;</span><br><span class="line">  // 加载待处理图片文件</span><br><span class="line">  Image img = ImageIO.read(new File(imgPath));</span><br><span class="line"></span><br><span class="line">  BufferedImage image = new BufferedImage(img.getWidth(null),</span><br><span class="line">   img.getHeight(null), BufferedImage.TYPE_INT_RGB);</span><br><span class="line">  Graphics2D g = image.createGraphics();</span><br><span class="line">  g.drawImage(img, 0, 0, null);</span><br><span class="line"></span><br><span class="line">  // 加载水印图片文件</span><br><span class="line">  Image src_biao = ImageIO.read(new File(markPath));</span><br><span class="line">  g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_ATOP,</span><br><span class="line">   alpha));</span><br><span class="line">  g.drawImage(src_biao, x, y, null);</span><br><span class="line">  g.dispose();</span><br><span class="line"></span><br><span class="line">  // 保存处理后的文件</span><br><span class="line">  FileOutputStream out = new FileOutputStream(imgPath);</span><br><span class="line">  JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);</span><br><span class="line">  encoder.encode(image);</span><br><span class="line">  out.close();</span><br><span class="line"> &#125; catch (Exception e) &#123;</span><br><span class="line">  e.printStackTrace();</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> /**</span><br><span class="line"> * 文字水印</span><br><span class="line"> * </span><br><span class="line"> * @param imgPath</span><br><span class="line"> *      待处理图片</span><br><span class="line"> * @param text</span><br><span class="line"> *      水印文字</span><br><span class="line"> * @param font</span><br><span class="line"> *      水印字体信息</span><br><span class="line"> * @param color</span><br><span class="line"> *      水印字体颜色</span><br><span class="line"> * @param x</span><br><span class="line"> *      水印位于图片左上角的 x 坐标值</span><br><span class="line"> * @param y</span><br><span class="line"> *      水印位于图片左上角的 y 坐标值</span><br><span class="line"> * @param alpha</span><br><span class="line"> *      水印透明度 0.1f ~ 1.0f</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line"> public static void textMark(String imgPath, String text, Font font,</span><br><span class="line">  Color color, int x, int y, float alpha) &#123;</span><br><span class="line"> try &#123;</span><br><span class="line">  Font Dfont = (font == null) ? new Font(&quot;宋体&quot;, 20, 13) : font;</span><br><span class="line"></span><br><span class="line">  Image img = ImageIO.read(new File(imgPath));</span><br><span class="line"></span><br><span class="line">  BufferedImage image = new BufferedImage(img.getWidth(null),</span><br><span class="line">   img.getHeight(null), BufferedImage.TYPE_INT_RGB);</span><br><span class="line">  Graphics2D g = image.createGraphics();</span><br><span class="line"></span><br><span class="line">  g.drawImage(img, 0, 0, null);</span><br><span class="line">  g.setColor(color);</span><br><span class="line">  g.setFont(Dfont);</span><br><span class="line">  g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_ATOP,</span><br><span class="line">   alpha));</span><br><span class="line">  g.drawString(text, x, y);</span><br><span class="line">  g.dispose();</span><br><span class="line">  FileOutputStream out = new FileOutputStream(imgPath);</span><br><span class="line">  JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);</span><br><span class="line">  encoder.encode(image);</span><br><span class="line">  out.close();</span><br><span class="line"> &#125; catch (Exception e) &#123;</span><br><span class="line">  System.out.println(e);</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> /**</span><br><span class="line"> * 读取JPEG图片</span><br><span class="line"> * @param filename 文件名</span><br><span class="line"> * @return BufferedImage 图片对象</span><br><span class="line"> */</span><br><span class="line"> public static BufferedImage readJPEGImage(String filename)</span><br><span class="line"> &#123;</span><br><span class="line"> try &#123;</span><br><span class="line">  InputStream imageIn = new FileInputStream(new File(filename));</span><br><span class="line">  // 得到输入的编码器，将文件流进行jpg格式编码</span><br><span class="line">  JPEGImageDecoder decoder = JPEGCodec.createJPEGDecoder(imageIn);</span><br><span class="line">  // 得到编码后的图片对象</span><br><span class="line">  BufferedImage sourceImage = decoder.decodeAsBufferedImage();</span><br><span class="line">  </span><br><span class="line">  return sourceImage;</span><br><span class="line"> &#125; catch (FileNotFoundException e) &#123;</span><br><span class="line">  e.printStackTrace();</span><br><span class="line"> &#125; catch (ImageFormatException e) &#123;</span><br><span class="line">  e.printStackTrace();</span><br><span class="line"> &#125; catch (IOException e) &#123;</span><br><span class="line">  e.printStackTrace();</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> return null;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> /**</span><br><span class="line"> * 读取JPEG图片</span><br><span class="line"> * @param filename 文件名</span><br><span class="line"> * @return BufferedImage 图片对象</span><br><span class="line"> */</span><br><span class="line"> public static BufferedImage readPNGImage(String filename)</span><br><span class="line"> &#123;</span><br><span class="line"> try &#123;</span><br><span class="line">  File inputFile = new File(filename); </span><br><span class="line">     BufferedImage sourceImage = ImageIO.read(inputFile);</span><br><span class="line">  return sourceImage;</span><br><span class="line"> &#125; catch (FileNotFoundException e) &#123;</span><br><span class="line">  e.printStackTrace();</span><br><span class="line"> &#125; catch (ImageFormatException e) &#123;</span><br><span class="line">  e.printStackTrace();</span><br><span class="line"> &#125; catch (IOException e) &#123;</span><br><span class="line">  e.printStackTrace();</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> return null;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> /**</span><br><span class="line"> * 灰度值计算</span><br><span class="line"> * @param pixels 像素</span><br><span class="line"> * @return int 灰度值</span><br><span class="line"> */</span><br><span class="line"> public static int rgbToGray(int pixels) &#123;</span><br><span class="line"> // int _alpha = (pixels &gt;&gt; 24) &amp; 0xFF;</span><br><span class="line"> int _red = (pixels &gt;&gt; 16) &amp; 0xFF;</span><br><span class="line"> int _green = (pixels &gt;&gt; 8) &amp; 0xFF;</span><br><span class="line"> int _blue = (pixels) &amp; 0xFF;</span><br><span class="line"> return (int) (0.3 * _red + 0.59 * _green + 0.11 * _blue);</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> /**</span><br><span class="line"> * 计算数组的平均值</span><br><span class="line"> * @param pixels 数组</span><br><span class="line"> * @return int 平均值</span><br><span class="line"> */</span><br><span class="line"> public static int average(int[] pixels) &#123;</span><br><span class="line"> float m = 0;</span><br><span class="line"> for (int i = 0; i &lt; pixels.length; ++i) &#123;</span><br><span class="line">  m += pixels[i];</span><br><span class="line"> &#125;</span><br><span class="line"> m = m / pixels.length;</span><br><span class="line"> return (int) m;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br></pre></td><td class="code"><pre><span class="line">package com.ldy.ly002;</span><br><span class="line"></span><br><span class="line">import java.awt.image.BufferedImage;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class SimilarImageSearch &#123;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * @param args</span><br><span class="line">   */</span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    List&lt;String&gt; hashCodes = new ArrayList&lt;String&gt;();</span><br><span class="line">    </span><br><span class="line">    String filename = ImageHelper.path + &quot;\\images\\&quot;;</span><br><span class="line">    String hashCode = null;</span><br><span class="line">    </span><br><span class="line">    for (int i = 0; i &lt; 1; i++)</span><br><span class="line">    &#123;</span><br><span class="line">      </span><br><span class="line">      hashCode = produceFingerPrint(filename + &quot;example&quot; + (i + 1) + &quot;.jpg&quot;);</span><br><span class="line">      hashCodes.add(hashCode);</span><br><span class="line">    &#125;    </span><br><span class="line">    System.out.println(&quot;Resources: &quot;);</span><br><span class="line">    System.out.println(hashCodes);</span><br><span class="line">    System.out.println();</span><br><span class="line">    </span><br><span class="line">    String sourceHashCode = produceFingerPrint(filename + &quot;source1.jpg&quot;);</span><br><span class="line">    System.out.println(&quot;Source: &quot;);</span><br><span class="line">    System.out.println(sourceHashCode);</span><br><span class="line">    System.out.println();</span><br><span class="line">    </span><br><span class="line">    for (int i = 0; i &lt; hashCodes.size(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">      int difference = hammingDistance(sourceHashCode, hashCodes.get(i));</span><br><span class="line">      System.out.print(&quot;汉明距离:&quot;+difference+&quot;   &quot;);</span><br><span class="line">      if(difference==0)&#123;</span><br><span class="line">        System.out.println(&quot;source.jpg图片跟example&quot;+(i+1)+&quot;.jpg一样&quot;);</span><br><span class="line">      &#125;else if(difference&lt;=5)&#123;</span><br><span class="line">        System.out.println(&quot;source.jpg图片跟example&quot;+(i+1)+&quot;.jpg非常相似&quot;);</span><br><span class="line">      &#125;else if(difference&lt;=10)&#123;</span><br><span class="line">        System.out.println(&quot;source.jpg图片跟example&quot;+(i+1)+&quot;.jpg有点相似&quot;);</span><br><span class="line">      &#125;else if(difference&gt;10)&#123;</span><br><span class="line">        System.out.println(&quot;source.jpg图片跟example&quot;+(i+1)+&quot;.jpg完全不一样&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * 计算&quot;汉明距离&quot;（Hamming distance）。</span><br><span class="line">   * 如果不相同的数据位不超过5，就说明两张图片很相似；如果大于10，就说明这是两张不同的图片。</span><br><span class="line">   * @param sourceHashCode 源hashCode</span><br><span class="line">   * @param hashCode 与之比较的hashCode</span><br><span class="line">   */</span><br><span class="line">  public static int hammingDistance(String sourceHashCode, String hashCode) &#123;</span><br><span class="line">    int difference = 0;</span><br><span class="line">    int len = sourceHashCode.length();</span><br><span class="line">    </span><br><span class="line">    for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">      if (sourceHashCode.charAt(i) != hashCode.charAt(i)) &#123;</span><br><span class="line">        difference ++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return difference;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * 生成图片指纹</span><br><span class="line">   * @param filename 文件名</span><br><span class="line">   * @return 图片指纹</span><br><span class="line">   */</span><br><span class="line">  public static String produceFingerPrint(String filename) &#123;</span><br><span class="line">    BufferedImage source = ImageHelper.readPNGImage(filename);// 读取文件</span><br><span class="line"></span><br><span class="line">    int width = 8;</span><br><span class="line">    int height = 8;</span><br><span class="line">    </span><br><span class="line">    // 第一步，缩小尺寸。</span><br><span class="line">    // 将图片缩小到8x8的尺寸，总共64个像素。这一步的作用是去除图片的细节，只保留结构、明暗等基本信息，摒弃不同尺寸、比例带来的图片差异。</span><br><span class="line">    BufferedImage thumb = ImageHelper.thumb(source, width, height, false);</span><br><span class="line">    </span><br><span class="line">    // 第二步，简化色彩。</span><br><span class="line">    // 将缩小后的图片，转为64级灰度。也就是说，所有像素点总共只有64种颜色。</span><br><span class="line">    int[] pixels = new int[width * height];</span><br><span class="line">    for (int i = 0; i &lt; width; i++) &#123;</span><br><span class="line">      for (int j = 0; j &lt; height; j++) &#123;</span><br><span class="line">        pixels[i * height + j] = ImageHelper.rgbToGray(thumb.getRGB(i, j));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 第三步，计算平均值。</span><br><span class="line">    // 计算所有64个像素的灰度平均值。</span><br><span class="line">    int avgPixel = ImageHelper.average(pixels);</span><br><span class="line">    </span><br><span class="line">    // 第四步，比较像素的灰度。</span><br><span class="line">    // 将每个像素的灰度，与平均值进行比较。大于或等于平均值，记为1；小于平均值，记为0。</span><br><span class="line">    int[] comps = new int[width * height];</span><br><span class="line">    for (int i = 0; i &lt; comps.length; i++) &#123;</span><br><span class="line">      if (pixels[i] &gt;= avgPixel) &#123;</span><br><span class="line">        comps[i] = 1;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        comps[i] = 0;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 第五步，计算哈希值。</span><br><span class="line">    // 将上一步的比较结果，组合在一起，就构成了一个64位的整数，这就是这张图片的指纹。组合的次序并不重要，只要保证所有图片都采用同样次序就行了。</span><br><span class="line">    StringBuffer hashCode = new StringBuffer();</span><br><span class="line">    for (int i = 0; i &lt; comps.length; i+= 4) &#123;</span><br><span class="line">      int result = comps[i] * (int) Math.pow(2, 3) + comps[i + 1] * (int) Math.pow(2, 2) + comps[i + 2] * (int) Math.pow(2, 1) + comps[i + 2];</span><br><span class="line">      hashCode.append(binaryToHex(result));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 得到指纹以后，就可以对比不同的图片，看看64位中有多少位是不一样的。</span><br><span class="line">    return hashCode.toString();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * 二进制转为十六进制</span><br><span class="line">   * @param int binary</span><br><span class="line">   * @return char hex</span><br><span class="line">   */</span><br><span class="line">  private static char binaryToHex(int binary) &#123;</span><br><span class="line">    char ch = &apos; &apos;;</span><br><span class="line">    switch (binary)</span><br><span class="line">    &#123;</span><br><span class="line">    case 0:</span><br><span class="line">      ch = &apos;0&apos;;</span><br><span class="line">      break;</span><br><span class="line">    case 1:</span><br><span class="line">      ch = &apos;1&apos;;</span><br><span class="line">      break;</span><br><span class="line">    case 2:</span><br><span class="line">      ch = &apos;2&apos;;</span><br><span class="line">      break;</span><br><span class="line">    case 3:</span><br><span class="line">      ch = &apos;3&apos;;</span><br><span class="line">      break;</span><br><span class="line">    case 4:</span><br><span class="line">      ch = &apos;4&apos;;</span><br><span class="line">      break;</span><br><span class="line">    case 5:</span><br><span class="line">      ch = &apos;5&apos;;</span><br><span class="line">      break;</span><br><span class="line">    case 6:</span><br><span class="line">      ch = &apos;6&apos;;</span><br><span class="line">      break;</span><br><span class="line">    case 7:</span><br><span class="line">      ch = &apos;7&apos;;</span><br><span class="line">      break;</span><br><span class="line">    case 8:</span><br><span class="line">      ch = &apos;8&apos;;</span><br><span class="line">      break;</span><br><span class="line">    case 9:</span><br><span class="line">      ch = &apos;9&apos;;</span><br><span class="line">      break;</span><br><span class="line">    case 10:</span><br><span class="line">      ch = &apos;a&apos;;</span><br><span class="line">      break;</span><br><span class="line">    case 11:</span><br><span class="line">      ch = &apos;b&apos;;</span><br><span class="line">      break;</span><br><span class="line">    case 12:</span><br><span class="line">      ch = &apos;c&apos;;</span><br><span class="line">      break;</span><br><span class="line">    case 13:</span><br><span class="line">      ch = &apos;d&apos;;</span><br><span class="line">      break;</span><br><span class="line">    case 14:</span><br><span class="line">      ch = &apos;e&apos;;</span><br><span class="line">      break;</span><br><span class="line">    case 15:</span><br><span class="line">      ch = &apos;f&apos;;</span><br><span class="line">      break;</span><br><span class="line">    default:</span><br><span class="line">      ch = &apos; &apos;;</span><br><span class="line">    &#125;</span><br><span class="line">    return ch;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="[原著博客地址](http://download.csdn.net/detail/yjflinchong/4239243)">
+</code></pre>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-二分算法实例2" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/01/二分算法实例2/" class="article-date">
+      <time datetime="2018-12-01T15:01:35.000Z" itemprop="datePublished">2018-12-01</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/二分算法实例2/">二分算法实例2</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>FindNumber<br>描述</p>
+<p>现在，给定等式8x ^ 4 + 7x ^ 3 + 2x ^ 2 + 3x + 6 == Y，你能找到0到100之间的解; 现在请试试你的幸运儿。</p>
+<p>输入</p>
+<p>输入输入的第一行包含整数T（1 &lt;= T &lt;= 100），表示测试用例的数量。然后是T行，每行有一个实数Y（fabs（Y）&lt;= 1e10）;</p>
+<p>输出</p>
+<p>输出对于每个测试用例，如果没有0到100之间的等式解，那么你应该只输出一个实数（精确到4位小数），这是方程的解，或“无解！”。</p>
+<p>输入样例 1 </p>
+<p>2<br>100<br>-4<br>输出样例 1</p>
+<p>1.<br>没解决方案！</p>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">    static double check(double x) &#123;</span><br><span class="line">    return	(8*x*x*x+7*x*x*x+2*x*x+3*x+6);</span><br><span class="line">    &#125;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">        Scanner scanner=new Scanner(System.in);</span><br><span class="line">		int n;</span><br><span class="line">		n=scanner.nextInt();</span><br><span class="line">		double[] a=new double[n];</span><br><span class="line">		for(int i=0;i&lt;n;i++) &#123;</span><br><span class="line">			a[i]=scanner.nextDouble();</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i=0;i&lt;a.length;i++) &#123;</span><br><span class="line">			double h=100.0;double low=0.0; double mid=0;</span><br><span class="line">			while((low-h)&lt;(1.0e-6)) &#123;</span><br><span class="line">			mid=(h+low)/2;</span><br><span class="line">		    double x=check(mid);</span><br><span class="line">			if(x==a[i]) &#123;</span><br><span class="line">				System.out.printf(&quot;%.4f&quot;, mid);</span><br><span class="line">			    System.out.println();</span><br><span class="line">			    break;</span><br><span class="line">			&#125;else if(x&gt;a[i]) h=mid;</span><br><span class="line">			 else if(x&lt;a[i]) low=mid;</span><br><span class="line">		&#125;</span><br><span class="line">			System.out.println(&quot;No solution!&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-二分算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/01/二分算法/" class="article-date">
+      <time datetime="2018-12-01T14:08:35.000Z" itemprop="datePublished">2018-12-01</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/二分算法/">二分算法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>1、定义<br>    二分查找又称折半查找，它是一种效率较高的查找方法。</p>
+<pre><code>二分查找要求：线性表是有序表，即表中结点按关键字有序，并且要用向量作为表的存储结构。不妨设有序表是递增有序的。
+</code></pre><p>2、基本思想<br>    二分查找的基本思想是：</p>
+<pre><code>设R[low..high]是当前的查找区间
+</code></pre><p> （1）首先确定该区间的中点位置：</p>
+<p> （2）然后将待查的K值与R[mid].key比较：若相等，则查找成功并返回此位置，否则须确定新的查找区间，继续二分查找，具体方法如下：</p>
+<pre><code>①  若R[mid].key&gt;K，则由表的有序性可知R[mid..n].keys均大于K，因此若表中存在关键字等于K的结点，则该结点必定是在位置mid左边的子表R[1..mid-1]中，故新的查找区间是左子表R[1..mid-1]。
+
+②  若R[mid].key&lt;K，则要查找的K必在mid的右子表R[mid+1..n]中，即新的查找区间是右子表R[mid+1..n]。下一次查找是针对新的查找区间进行的。
+
+因此，从初始的查找区间R[1..n]开始，每经过一次与当前查找区间的中点位置上的结点关键字的比较，就可确定查找是否成功，不成功则当前的查找区间就缩小一半。这一过程重复直至找到关键字为K的结点，或者直至当前的查找区间为空(即查找失败)时为止。
+</code></pre><p>3、存储结构<br>    二分查找只适用顺序存储结构。`<br>4.伪代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 二分查找，找到该值在数组中的下标，否则为-1</span><br><span class="line"> */</span><br><span class="line">static int binarySerach(int[] array, int key) &#123;</span><br><span class="line">    int low = 0;</span><br><span class="line">    int high = array.length - 1;</span><br><span class="line"></span><br><span class="line">    // 这里必须是 &lt;=</span><br><span class="line">    while (low &lt;= high) &#123;</span><br><span class="line">        int mid = (low + high) / 2;</span><br><span class="line">        if (array[mid] == key) &#123;</span><br><span class="line">            return mid;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (array[mid] &lt; key) &#123;</span><br><span class="line">            low = mid + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            height = mid - 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>递归实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">int binarySerach(int[] arr, int key,int low,int high) &#123;</span><br><span class="line">		//求中间元素的下标</span><br><span class="line">		int mid = (low + high) / 2;</span><br><span class="line">		//数组内不含有指定元素，依据下标的规则，退出</span><br><span class="line">		if (low &gt; high)</span><br><span class="line">			return -1;</span><br><span class="line">		//查找到指定元素</span><br><span class="line">		if (key == arr[mid]) &#123;</span><br><span class="line">			return mid;</span><br><span class="line">			//当查找的元素大于中间下标的元素，则改变开始下标的位置</span><br><span class="line">		&#125; else if (key &gt; arr[mid]) &#123;</span><br><span class="line">			return getKey(arr, key, mid + 1, high);</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			//当查找的元素小于中间下标的元素，则改变结束下标的位置</span><br><span class="line">			return getKey(arr, key, low, mid - 1);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><code>`</code></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-二分算法实例1" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/01/二分算法实例1/" class="article-date">
+      <time datetime="2018-12-01T14:08:35.000Z" itemprop="datePublished">2018-12-01</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/二分算法实例1/">二分算法实例</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>分巧克力<br>描述</p>
+<p>儿童节那天有K位小朋友到小明家做客。小明拿出了珍藏的巧克力招待小朋友们。 小明一共有N块巧克力，其中第i块是Hi x Wi的方格组成的长方形。</p>
+<p>为了公平起见，小明需要从这 N 块巧克力中切出K块巧克力分给小朋友们。切出的巧克力需要满足：</p>
+<ol>
+<li>形状是正方形，边长是整数  </li>
+<li>大小相同<br>例如一块6x5的巧克力可以切出6块2x2的巧克力或者2块3x3的巧克力。</li>
+</ol>
+<p>当然小朋友们都希望得到的巧克力尽可能大，你能帮小Hi计算出最大的边长是多少么？</p>
+<p>输入</p>
+<p>输入第一行包含两个整数N和K。(1 &lt;= N, K &lt;= 100000)<br>以下N行每行包含两个整数Hi和Wi。(1 &lt;= Hi, Wi &lt;= 100000) 输入保证每位小朋友至少能获得一块1x1的巧克力。</p>
+<p>输出</p>
+<p>输出输出切出的正方形巧克力最大可能的边长。</p>
+<p>输入样例 1 </p>
+<p>2 10<br>6 5<br>5 6<br>输出样例 1</p>
+<p>2</p>
+<p>实现代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">    static boolean check(int mid,Qkl[] qkl,int m) &#123;</span><br><span class="line">    	//求分出的块的数量</span><br><span class="line">    	int sum = 0;</span><br><span class="line">    	for(int i = 0; i &lt;qkl.length ; i++)&#123;</span><br><span class="line">    		sum += (qkl[i].hi / mid ) * (qkl[i].wi / mid);</span><br><span class="line">    	&#125;</span><br><span class="line">    	return sum &gt;= m;</span><br><span class="line">    	</span><br><span class="line">    &#125;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">	    Scanner scanner=new Scanner(System.in);</span><br><span class="line">		int n;//n块巧克里</span><br><span class="line">		int m;//m块</span><br><span class="line">		n=scanner.nextInt();</span><br><span class="line">		m=scanner.nextInt();</span><br><span class="line">		Qkl[] qkl=new Qkl[n];</span><br><span class="line">        for(int i=0;i&lt;qkl.length;i++) &#123;</span><br><span class="line">        	Qkl q=new Qkl();</span><br><span class="line">        	q.hi=scanner.nextInt();</span><br><span class="line">        	q.wi=scanner.nextInt();</span><br><span class="line">        	qkl[i]=q;</span><br><span class="line">        &#125;</span><br><span class="line">        //要求是求最大边长,最通用的就是一个一个枚举求出最大边长因速度慢所以采用二分举例求最大边长</span><br><span class="line">        int l=1;</span><br><span class="line">        int r=10000;</span><br><span class="line">        int mid;</span><br><span class="line">         //二分寻找边长要求边长最大所以循环全部进行</span><br><span class="line">        while(l &lt; r)&#123;</span><br><span class="line">    		mid = (l+r+1)/2;</span><br><span class="line">    		if(check(mid,qkl,m))</span><br><span class="line">    			l = mid;</span><br><span class="line">    		else</span><br><span class="line">    			r = mid - 1;</span><br><span class="line">    	&#125; </span><br><span class="line"></span><br><span class="line">        System.out.println(l);</span><br><span class="line">        </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class Qkl&#123;</span><br><span class="line">	int hi;</span><br><span class="line">	int wi;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-图的完整操作" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/30/图的完整操作/" class="article-date">
+      <time datetime="2018-11-30T07:05:36.000Z" itemprop="datePublished">2018-11-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/图的完整操作/">图的完整操作</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>#include”MGraph.h”<br>//———-构造图的邻接矩阵——————-<br>template<class vertextype,="" class="" arctype=""><br>MGraph&lt;VertexType, ArcType&gt;::MGraph(int n, int e) {<br>    vertexNum = n;<br>    arcNum = e;<br>    //开辟顶点集合边集<br>    vertex = new VertexType[vertexNum];<br>    arc = new ArcType*[vertexNum];<br>    visit = new int[vertexNum];<br>    for (int i = 0; i &lt; vertexNum; i++)<br>        arc[i] = new ArcType[vertexNum];<br>    for (int i = 0; i &lt; vertexNum; i++)<br>        for (int j = 0; j &lt; vertexNum; j++)<br>            arc[i][j] = MaxInt;<br>    //顶点、边集、标记数值赋值<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        VertexType elem;<br>        cin &gt;&gt; elem;<br>        vertex[i] = elem;<br>    }<br>    for (int k = 0; k &lt; arcNum; k++) {<br>        VertexType v1, v2;<br>        ArcType weight;<br>        cin &gt;&gt; v1 &gt;&gt; v2 &gt;&gt; weight;<br>        int i = LocateVex(v1);<br>        int j = LocateVex(v2);<br>        arc[i][j] = weight;<br>        arc[j][i] = weight;<br>    }<br>    for (int i = 0; i &lt; vertexNum; i++) visit[i] = 0;<br>}<br>//———-析构——————-<br>template<class vertextype,="" class="" arctype=""><br>MGraph&lt;VertexType, ArcType&gt;::~MGraph() {<br>    vertex = NULL;<br>    delete vertex;<br>    arc = NULL;<br>    delete[]arc;<br>}<br>//———-查找某顶点对应的存储序号——————-<br>template<class vertextype,="" class="" arctype=""><br>int MGraph&lt;VertexType, ArcType&gt;::LocateVex(VertexType elem) {<br>    for (int i = 0; i &lt; vertexNum; i++)<br>        if (vertex[i] == elem) return i;<br>    return -1;<br>}</class></class></class></p>
+<p>//———-若存储有向图，输出出度为零的顶底个数——————-<br>template<class vertextype,="" class="" arctype=""><br>int MGraph&lt;VertexType, ArcType&gt;::CountOD() {<br>    int count = 0;<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        for (int j = 0; j &lt; vertexNum; j++) {<br>            if (arc[i][j] != MaxInt) {<br>                count = count + 1;<br>                break;<br>            }<br>        }<br>    }</class></p>
+<pre><code>count = vertexNum - count;
+return count;
+</code></pre><p>}<br>//打印图<br>template<class vertextype,="" class="" arctype=""><br>void MGraph&lt;VertexType, ArcType&gt;::DisplayGraph() {<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        for (int j = 0; j &lt; vertexNum; j++) {<br>            if (arc[i][j] != MaxInt)<br>                cout &lt;&lt; arc[i][j] &lt;&lt; “ “;<br>            else<br>                cout &lt;&lt; “∞” &lt;&lt; “ “;<br>        }<br>        cout &lt;&lt; endl;<br>    }<br>}<br>template<class vertextype,="" class="" arctype=""><br>//深度优先遍历<br>void MGraph&lt;VertexType, ArcType&gt;::DFS(VertexType elem) {<br>    cout &lt;&lt; elem;<br>    visit[LocateVex(elem)] = 1;<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        if (arc[LocateVex(elem)][i] != MaxInt&amp;&amp;visit[i] != 1)<br>            DFS(vertex[i]);<br>    }<br>}<br>template<class vertextype,="" class="" arctype=""><br>//广度优先遍历<br>void MGraph&lt;VertexType, ArcType&gt;::BFS(VertexType elem) {<br>    queue<int> que;<br>    cout &lt;&lt; vertex[LocateVex(elem)];<br>    visit[LocateVex(elem)] = 1;<br>    que.push(LocateVex(elem));<br>    while (que.empty()==false) {<br>        int i = que.front();<br>        que.pop();<br>        for (int j = 0; j &lt; vertexNum; j++) {<br>            if (arc[i][j] != MaxInt&amp;&amp;visit[j] != 1) {<br>                cout &lt;&lt; vertex[j];<br>                visit[j] = 1;<br>                que.push(j);<br>            }<br>        }<br>    }<br>}<br>//prim算法<br>template<class vertextype,="" class="" arctype=""><br>void prim(MGraph&lt;VertexType,ArcType&gt; G) {<br>    shortEdge&lt;VertexType, ArcType&gt; *shortedge=new shortEdge&lt;VertexType, ArcType&gt;[G.vertexNum];<br>    for (int i = 0; i &lt; G.vertexNum; i++) {<br>        shortedge[i].lowcost = G.arc[0][i];<br>        shortedge[i].adjvex = G.vertex[0];<br>    }<br>    shortedge[0].lowcost = 0;<br>    for (int i = 1; i &lt; G.vertexNum; i++) {<br>        int k = MinEnge(shortedge, G.vertexNum);<br>        cout &lt;&lt; “(“ &lt;&lt; shortedge[k].adjvex &lt;&lt; G.vertex[k] &lt;&lt; “)” &lt;&lt; shortedge[k].lowcost &lt;&lt; endl;<br>        shortedge[k].lowcost = 0;<br>        for (int j = 1; j &lt; G.vertexNum; j++) {<br>            if (G.arc[k][j] &lt; shortedge[j].lowcost) {<br>                shortedge[j].lowcost = G.arc[k][j];<br>                shortedge[j].adjvex = G.vertex[k];<br>            }<br>        }<br>    }</class></int></class></class></class></p>
+<p>}<br>template<class vertextype,="" class="" arctype=""><br>//查找集合中最短边<br>int  MinEnge(shortEdge&lt;VertexType, ArcType&gt; shortenge[],int vertexNum) {<br>    int k;<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        if (shortenge[i].lowcost != 0) {<br>            k = i;<br>        }<br>    }<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        if (shortenge[i].lowcost != 0 &amp;&amp; shortenge[i].lowcost &lt; shortenge[k].lowcost)<br>            k = i;<br>    }<br>    return k;<br>};<br>template<class vertextype,="" class="" arctype=""><br>//KrusKal算法<br>void Kruskal(MGraph&lt;VertexType, ArcType&gt; G) {<br>    EdgeType&lt; VertexType, ArcType&gt; <em>edge = new EdgeType&lt; VertexType, ArcType&gt;[G.arcNum</em>2];<br>    //初始化边集数组<br>    int k = 0;<br>    for (int i = 0; i &lt; G.vertexNum; i++) {<br>        for (int j = 0; j &lt; G.vertexNum; j++) {<br>            if (G.arc[i][j] != MaxInt) {<br>                edge[k].from = G.vertex[i];<br>                edge[k].to = G.vertex[j];<br>                edge[k].weight = G.arc[i][j];<br>                k++;<br>            }<br>        }<br>    }<br>    soft(edge, G.arcNum<em>2);<br>    int </em>parent = new int[G.vertexNum];<br>    for (int i = 0; i &lt; G.vertexNum; i++) parent[i] = -1;<br>    for (int num = 0, i = 0; i &lt; G.arcNum<em>2; i++) {<br>        int vex1 = FindRoot(parent, G.LocateVex(edge[i].from));<br>        int  vex2 = FindRoot(parent, G.LocateVex(edge[i].to));<br>        if (vex1 != vex2) {<br>            cout &lt;&lt; “(“ &lt;&lt; edge[i].from &lt;&lt; edge[i].to &lt;&lt; “)” &lt;&lt; edge[i].weight &lt;&lt; endl;<br>            parent[vex2] = vex1;<br>            num++;<br>            if (num == G.vertexNum - 1) return;<br>        }<br>    }<br>}<br>template<class vertextype,="" class="" arctype=""><br>//对边集进行排序的函数<br>void soft(EdgeType&lt; VertexType, ArcType&gt; </class></em>edge, int length) {<br>    for (int i = 0; i &lt; length - 1; i++) {<br>        for (int j = 0; j &lt; length - i - 1; j++) {<br>            if (edge[j].weight &gt; edge[j + 1].weight) {<br>                EdgeType&lt; VertexType, ArcType&gt; e;<br>                e = edge[j];<br>                edge[j] = edge[j + 1];<br>                edge[j + 1] = e;<br>            }<br>        }<br>    }<br>}<br>//寻找根节点<br>static int FindRoot(int parent[], int v) {<br>    int t = v;</class></class></p>
+<pre><code>while(parent[t] &gt; -1) t = parent[t];
+return t;
+</code></pre><p>}</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-在hexo上写博客的模板" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/30/在hexo上写博客的模板/" class="article-date">
+      <time datetime="2018-11-30T07:03:28.000Z" itemprop="datePublished">2018-11-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/在hexo上写博客的模板/">在hexo上写博客的模板</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>title: 最小生成树之prim算法<br>date: 2018-11-30 14:18:09<br>comments: true<br>toc: true #是否显示文章目录<br>categories: “c++/算法” #分类<br>tags:   #标签</p>
+<pre><code>- 模板
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-如何用github-hexo搭建个人博客" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/30/如何用github-hexo搭建个人博客/" class="article-date">
+      <time datetime="2018-11-30T06:59:31.000Z" itemprop="datePublished">2018-11-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/如何用github-hexo搭建个人博客/">如何用github+hexo搭建个人博客</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>找了很多教程，发现都不太全，所以写个最新版本的Github+hexo搭建属于自己的博客，第一次写，勿喷！！！</p>
+<p>搭建环境准备：</p>
+<p>1.下载Node.js安装文件（现在电脑基本都是64位的，我就放64位的下载地址）：<a href="https://nodejs.org/dist/v8.9.4/node-v8.9.4-x64.msi" target="_blank" rel="noopener">https://nodejs.org/dist/v8.9.4/node-v8.9.4-x64.msi</a></p>
+<p>或者自行到官网下载最新版本： <a href="https://nodejs.org" target="_blank" rel="noopener">https://nodejs.org</a></p>
+<p>2.安装Git： Git下载包（64位）   Git下载包（32位） </p>
+<p>教程</p>
+<p>下载完成后（全部按NEXT就好），按下WIN+R，调出运行窗口，打cmd，会出现如下图：</p>
+<p>检查node是否安装正确，输入下面两条指令</p>
+<p>node -v<br>npm -v<br>出现如下图就代表安装成功：</p>
+<p>检查Git是否安装正确，输入</p>
+<p>git –version<br>出现如下图就代表安装成功：</p>
+<p>安装成功后，先在Github注册一个账号:<a href="https://github.com/，点右上角的Sign" target="_blank" rel="noopener">https://github.com/，点右上角的Sign</a> up</p>
+<p>输入信息，确认无误后按create：</p>
+<p>第二步直接按继续，然后按右上角的</p>
+<p>如图：</p>
+<p>然后去邮箱那里验证：</p>
+<p>验证完之后就再按一次，会出现这个界面：</p>
+<p>创建成功会出现下图：</p>
+<p>先在某一个盘上创建一个文件夹，例如在E盘建立一个blog文件夹：       </p>
+<p>文件夹右键，点Git Bash ,进入这个界面：</p>
+<p>全局配置设置到淘宝源：</p>
+<p>npm config set registry <a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a></p>
+<p>设置全局配置user.name 和user.email</p>
+<p>git config –-global user.name “55kaikainiubi”  //(“”的账号是刚才Github里面自己注册的账号)<br>git config –-global user.email “<a href="mailto:836508484@qq.com" target="_blank" rel="noopener">836508484@qq.com</a>” //(“”的邮箱是你自己注册的邮箱)<br>成功配置：</p>
+<p>生成SSH密钥设置到Github(需先设置user.name和user.email)</p>
+<p>cd ~/.ssh<br>ssh-keygen -t rsa -C “<a href="mailto:836508484@qq.com" target="_blank" rel="noopener">836508484@qq.com</a>” //打自己的邮箱<br>出现下图：</p>
+<p>设置ssh key到GitHub<br>默认生成ssh key在C:\Users\username.ssh文件夹中，复制 id_rsa.pub文件到 github-&gt;settings-&gt;SSH and GPG key-&gt;new ssh key 如图 </p>
+<p>把里面的代码，复制到刚才网站注册的地方：</p>
+<p>ssh设置是否成功测试</p>
+<p>ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
+<p>安装hexo插件</p>
+<p>输入以下代码：</p>
+<p>  cd / #进入根目录，实际上是git安装的根目录<br>  pwd /<br>npm install hexo-cli -g #安装hexo，阿里云源 大概10s安装</p>
+<p>安装之后，输入以下代码：</p>
+<p>cd /<br>hexo init Hexo<br>cd /Hexo<br>npm instal<br>hexo generate（可简写为hexo g）<br>hexo sever（可简写为hexo s）</p>
+<p>发现到最后已经有网址，复制+粘贴到浏览器访问</p>
+<p>假如4000打不开，换一个端口，输入以下代码：</p>
+<p>hexo s -p 5000<br>本地搭建hexo博客插件完成。</p>
+<p>上传hexo博客的静态文档到GitHub</p>
+<p>查看hexo插件的版本</p>
+<p>hexo -V</p>
+<p>大于hexo 3.0的上传到github的方法： </p>
+<p>安装部署到github插件依赖</p>
+<p>npm install –save hexo-deployer-git</p>
+<p>然后打开我的电脑搜索Hexo文件夹</p>
+<p>deploy:<br>type: git<br>repo: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:55kaikainiubi/55kaikainiubi.github.io.git  //（改成自己的用户名和用户名加域名）<br>branch: master</p>
+<p>再将gitbash部署hexo到github</p>
+<p>hexo deploy<br>看到这样的进程，代表成功部署hexo到github</p>
+<p>等待10分钟左右，打开用户名.github.io,会出现如下界面（代表成功搭建博客）：</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分享/">分享</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-java常用类库" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/30/java常用类库/" class="article-date">
+      <time datetime="2018-11-30T06:56:06.000Z" itemprop="datePublished">2018-11-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/java常用类库/">java常用类库</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Java 类库概念： Java 的应用程序接口 (API) 以包的形式来组织，每个包提供了大量的相关类、接口和异常处理类，这些包的集合就是 Java 的类库</p>
+<p>包名以 Java 开始的包是 Java 核心包 (JavaCore Package) ；</p>
+<p>包名以 Javax 开始的包是 Java 扩展包 (javaExtension Package) ，例如 javax.swing 包；</p>
+<p>Java 类库概念： Java 的应用程序接口 (API) 以包的形式来组织，每个包提供了大量的相关类、接口和异常处理类，这些包的集合就是 Java 的类库</p>
+<p>包名以 Java 开始的包是 Java 核心包 (Java Core Package) ；</p>
+<p>包名以 Javax 开始的包是 Java 扩展包 (Java Extension Package) ，例如 javax.swing 包；</p>
+<p>常用的 Java 核心包 (Java Core Package)</p>
+<ol>
+<li><p>java.lang      Java 编程语言的基本类库</p>
+</li>
+<li><p>java.applet     创建 applet 需要的所有类</p>
+</li>
+<li><p>java.awt       创建用户界面以及绘制和管理图形、图像的类</p>
+</li>
+<li><p>java.io        通过数据流、对象序列以及文件系统实现的系统输入、输出</p>
+</li>
+<li><p>java.NET       用于实现网络通讯应用的所有类</p>
+</li>
+<li><p>java.util       集合类、时间处理模式、日期时间工具等各类常用工具包</p>
+</li>
+</ol>
+<p>其它还有</p>
+<ol start="7">
+<li><p>java.sql        访问和处理来自于 Java 标准数据源数据的类</p>
+</li>
+<li><p>java.test       以一种独立于自然语言的方式处理文本、日期、数字和消息的类和接口</p>
+</li>
+<li><p>java.security    设计网络安全方案需要的一些类</p>
+</li>
+<li><p>java.beans     开发 Java Beans 需要的所有类</p>
+</li>
+<li><p>java.math      简明的整数算术以及十进制算术的基本函数</p>
+</li>
+<li><p>java.rmi       与远程方法调用相关的所有类</p>
+</li>
+</ol>
+<p>常用的 Java 扩展包 (Java Extension Package)</p>
+<ol>
+<li><p>javax.accessibility  定义了用户界面组件之间相互访问的一种机制</p>
+</li>
+<li><p>javax.naming.*     为命名服务提供了一系列类和接口</p>
+</li>
+<li><p>javax.swing.*       提供了一系列轻量级的用户界面组件，是目前 Java 用户界面常用的包</p>
+</li>
+</ol>
+<p>注 1 ：最重要且常用的是 1 和 6 ，已用黑体标出的为，需重点掌握</p>
+<p>注 2 ：在使用 Java 时，除了 java.lang 外，其他的包都需要 import 语句引入之后才能使用。</p>
+<p>重点讲解内容：java.lang和java.util。</p>
+<p>java.lang 包</p>
+<p>这个包称为 java 语言包，是由编译器自动引入的。程序中不必用 import 语句就可以使用。它所包含的类和接口对所有实际的 Java 程序都是必要的。</p>
+<ol>
+<li><p>object 类</p>
+</li>
+<li><p>数学类 (Math)</p>
+</li>
+<li><p>数据类型类</p>
+</li>
+<li><p>线程类</p>
+</li>
+<li><p>字符串类 (String 类和 StringBuffer 类 )</p>
+</li>
+<li><p>系统及运行类 (System 类和 Runtime 类 )</p>
+</li>
+<li><p>错误和异常处理类 (Throwable 、 Exception 、 Error)</p>
+</li>
+<li><p>过程类 (process)</p>
+</li>
+</ol>
+<p>java.util 包</p>
+<ol>
+<li><p>日期类、日历类（ Data 、 Calendar 、 GregorianCalendar ）</p>
+</li>
+<li><p>随机数类（ Random ）</p>
+</li>
+<li><p>位运算类（ BitSet ）</p>
+</li>
+<li><p>矢量类（ Vector ）</p>
+</li>
+<li><p>数据结构类（ Stack ）</p>
+</li>
+<li><p>散列表类（ Hashtable ）</p>
+</li>
+<li><p>StringTokenizer类</p>
+</li>
+</ol>
+<p>包名<br>主要功能<br>java.applet<br>提供了创建applet需要的所有类<br>java.awt.<em><br>提供了创建用户界面以及绘制和管理图形、图像的类<br>java.beans.</em><br>提供了开发Java Beans需要的所有类<br>java.io<br>提供了通过数据流、对象序列以及文件系统实现的系统输入、输出<br>java.lang.<em><br>Java编程语言的基本类库<br>java.math.</em><br>提供了简明的整数算术以及十进制算术的基本函数<br>java.rmi<br>提供了与远程方法调用相关的所有类<br>java.net<br>提供了用于实现网络通讯应用的所有类<br>java.security.<em><br>提供了设计网络安全方案需要的一些类<br>java.sql<br>提供了访问和处理来自于Java标准数据源数据的类<br>java.test<br>包括以一种独立于自然语言的方式处理文本、日期、数字和消息的类和接口<br>java.util.</em><br>包括集合类、时间处理模式、日期时间工具等各类常用工具包<br>javax.accessibility<br>定义了用户界面组件之间相互访问的一种机制<br>javax.naming.<em><br>为命名服务提供了一系列类和接口<br>javax.swing.</em><br>提供了一系列轻量级的用户界面组件，是目前Java用户界面常用的包</p>
+<p>常用的 Java 核心包 (Java Core Package)</p>
+<ol>
+<li><p>java.lang      Java 编程语言的基本类库</p>
+</li>
+<li><p>java.applet     创建 applet 需要的所有类</p>
+</li>
+<li><p>java.awt       创建用户界面以及绘制和管理图形、图像的类</p>
+</li>
+<li><p>java.io        通过数据流、对象序列以及文件系统实现的系统输入、输出</p>
+</li>
+<li><p>java.Net       用于实现网络通讯应用的所有类</p>
+</li>
+<li><p>java.util       集合类、时间处理模式、日期时间工具等各类常用工具包</p>
+</li>
+</ol>
+<ol start="7">
+<li><p>java.sql        访问和处理来自于 Java 标准数据源数据的类</p>
+</li>
+<li><p>java.test       以一种独立于自然语言的方式处理文本、日期、数字和消息的类和接口</p>
+</li>
+<li><p>java.security    设计网络安全方案需要的一些类</p>
+</li>
+<li><p>java.beans     开发 Java Beans 需要的所有类</p>
+</li>
+<li><p>java.math      简明的整数算术以及十进制算术的基本函数</p>
+</li>
+<li><p>java.rmi       与远程方法调用相关的所有类</p>
+</li>
+</ol>
+<p>常用的 Java 扩展包 (Java Extension Package)</p>
+<ol>
+<li><p>javax.accessibility  定义了用户界面组件之间相互访问的一种机制</p>
+</li>
+<li><p>javax.naming.*     为命名服务提供了一系列类和接口</p>
+</li>
+<li><p>javax.swing.*       提供了一系列轻量级的用户界面组件，是目前 Java 用户界面常用的包</p>
+</li>
+</ol>
+<p>注 1 ：最重要且常用的是 1 和 6 ，已用黑体标出的为，需重点掌握</p>
+<p>注 2 ：在使用 Java 时，除了 java.lang 外，其他的包都需要 import 语句引入之后才能使用。</p>
+<p>重点讲解内容：java.lang和java.util。</p>
+<p>java.lang 包</p>
+<p>这个包称为 java 语言包，是由编译器自动引入的。程序中不必用 import 语句就可以使用。它所包含的类和接口对所有实际的 Java 程序都是必要的。</p>
+<ol>
+<li><p>object 类</p>
+</li>
+<li><p>数学类 (Math)</p>
+</li>
+<li><p>数据类型类</p>
+</li>
+<li><p>线程类</p>
+</li>
+<li><p>字符串类 (String 类和 StringBuffer 类 )</p>
+</li>
+<li><p>系统及运行类 (System 类和 Runtime 类 )</p>
+</li>
+<li><p>错误和异常处理类 (Throwable 、 Exception 、 Error)</p>
+</li>
+<li><p>过程类 (process)</p>
+</li>
+</ol>
+<p>java.util 包</p>
+<ol>
+<li><p>日期类、日历类（ Data 、 Calendar 、 GregorianCalendar ）</p>
+</li>
+<li><p>随机数类（ Random ）</p>
+</li>
+<li><p>位运算类（ BitSet ）</p>
+</li>
+<li><p>矢量类（ Vector ）</p>
+</li>
+<li><p>数据结构类（ Stack ）</p>
+</li>
+<li><p>散列表类（ Hashtable ）</p>
+</li>
+<li><p>StringTokenizer类</p>
+</li>
+</ol>
+<p>Java 类库概念： Java 的应用程序接口 (API) 以包的形式来组织，每个包提供了大量的相关类、接口和异常处理类，这些包的集合就是 Java 的类库</p>
+<p>包名以 Java 开始的包是 Java 核心包 (Java Core Package) ；</p>
+<p>包名以 Javax 开始的包是 Java 扩展包 (Java Extension Package) ，例如 javax.swing 包；</p>
+<p>Java 类库概念： Java 的应用程序接口 (API) 以包的形式来组织，每个包提供了大量的相关类、接口和异常处理类，这些包的集合就是 Java 的类库</p>
+<p>包名以 Java 开始的包是 Java 核心包 (Java Core Package) ；</p>
+<p>包名以 Javax 开始的包是 Java 扩展包 (Java Extension Package) ，例如 javax.swing 包；</p>
+<p>常用的 Java 核心包 (Java Core Package)</p>
+<ol>
+<li><p>java.lang      Java 编程语言的基本类库</p>
+</li>
+<li><p>java.applet     创建 applet 需要的所有类</p>
+</li>
+<li><p>java.awt       创建用户界面以及绘制和管理图形、图像的类</p>
+</li>
+<li><p>java.io        通过数据流、对象序列以及文件系统实现的系统输入、输出</p>
+</li>
+<li><p>java.net       用于实现网络通讯应用的所有类</p>
+</li>
+<li><p>java.util       集合类、时间处理模式、日期时间工具等各类常用工具包</p>
+</li>
+</ol>
+<p>其它还有</p>
+<ol start="7">
+<li><p>java.sql        访问和处理来自于 Java 标准数据源数据的类</p>
+</li>
+<li><p>java.test       以一种独立于自然语言的方式处理文本、日期、数字和消息的类和接口</p>
+</li>
+<li><p>java.security    设计网络安全方案需要的一些类</p>
+</li>
+<li><p>java.beans     开发 Java Beans 需要的所有类</p>
+</li>
+<li><p>java.math      简明的整数算术以及十进制算术的基本函数</p>
+</li>
+<li><p>java.rmi       与远程方法调用相关的所有类</p>
+</li>
+</ol>
+<p>常用的 Java 扩展包 (Java Extension Package)</p>
+<ol>
+<li><p>javax.accessibility  定义了用户界面组件之间相互访问的一种机制</p>
+</li>
+<li><p>javax.naming.*     为命名服务提供了一系列类和接口</p>
+</li>
+<li><p>javax.swing.*       提供了一系列轻量级的用户界面组件，是目前 Java 用户界面常用的包</p>
+</li>
+</ol>
+<p>注 1 ：最重要且常用的是 1 和 6 ，已用黑体标出的为，需重点掌握</p>
+<p>注 2 ：在使用 Java 时，除了 java.lang 外，其他的包都需要 import 语句引入之后才能使用。</p>
+<p>重点讲解内容：java.lang和java.util。</p>
+<p>java.lang 包</p>
+<p>这个包称为 java 语言包，是由编译器自动引入的。程序中不必用 import 语句就可以使用。它所包含的类和接口对所有实际的 Java 程序都是必要的。</p>
+<ol>
+<li><p>object 类</p>
+</li>
+<li><p>数学类 (Math)</p>
+</li>
+<li><p>数据类型类</p>
+</li>
+<li><p>线程类</p>
+</li>
+<li><p>字符串类 (String 类和 StringBuffer 类 )</p>
+</li>
+<li><p>系统及运行类 (System 类和 Runtime 类 )</p>
+</li>
+<li><p>错误和异常处理类 (Throwable 、 Exception 、 Error)</p>
+</li>
+<li><p>过程类 (process)</p>
+</li>
+</ol>
+<p>java.util 包</p>
+<ol>
+<li><p>日期类、日历类（ Data 、 Calendar 、 GregorianCalendar ）</p>
+</li>
+<li><p>随机数类（ Random ）</p>
+</li>
+<li><p>位运算类（ BitSet ）</p>
+</li>
+<li><p>矢量类（ Vector ）</p>
+</li>
+<li><p>数据结构类（ Stack ）</p>
+</li>
+<li><p>散列表类（ Hashtable ）</p>
+</li>
+<li><p>StringTokenizer类</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-prim算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/30/prim算法/" class="article-date">
+      <time datetime="2018-11-30T06:18:09.000Z" itemprop="datePublished">2018-11-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/prim算法/">最小生成树之prim算法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>如果一个算法文字描述不清楚，就说明思路不清楚，也不可能写好。</p>
+<p>prim算法是实现图的最小生成树。既然是图，就假设包含n个顶点，m条边。prim算法是从顶点出发的，其算法时间复杂度与顶点数目有关系。</p>
+<p>（注意：prim算法适合稠密图，其时间复杂度为O(n^2)，其时间复杂度与边得数目无关，而kruskal算法的时间复杂度为O(eloge)跟边的数目有关，适合稀疏图。）</p>
+<p>算法思路：从某个顶点开始，假设v0，此时v0属于最小生成树结点中的一个元素，该集合假设u，剩下的V-v0为待判定的点，此时选取u中的顶点到V-v0中顶点的一个路径最小的边，并且将其中非u中的顶点加入到u中，循环直到u中的顶点包含图所有的顶点为止。<br>算法在选取最小路径的时候需要优化，具体思路：w[]数组保存各个顶点的最短路径，b[]数组保存到i顶点最短路径的顶点，比如，到0号顶点最短的路径是&lt;v0,v3&gt;，那么w[0]=&lt;v0,v3&gt;，b[0]=3；这样每次找最小路径就不是o(n*n)的代价。代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">//prim算法</span><br><span class="line">template&lt;class VertexType, class ArcType&gt;</span><br><span class="line">void prim(MGraph&lt;VertexType,ArcType&gt; G) &#123;</span><br><span class="line">	shortEdge&lt;VertexType, ArcType&gt; *shortedge=new shortEdge&lt;VertexType, ArcType&gt;[G.vertexNum];</span><br><span class="line">	for (int i = 0; i &lt; G.vertexNum; i++) &#123;</span><br><span class="line">		shortedge[i].lowcost = G.arc[0][i];</span><br><span class="line">		shortedge[i].adjvex = G.vertex[0];</span><br><span class="line">	&#125;</span><br><span class="line">	shortedge[0].lowcost = 0;</span><br><span class="line">	for (int i = 1; i &lt; G.vertexNum; i++) &#123;</span><br><span class="line">		int k = MinEnge(shortedge, G.vertexNum);</span><br><span class="line">		cout &lt;&lt; &quot;(&quot; &lt;&lt; shortedge[k].adjvex &lt;&lt; G.vertex[k] &lt;&lt; &quot;)&quot; &lt;&lt; shortedge[k].lowcost &lt;&lt; endl;</span><br><span class="line">		shortedge[k].lowcost = 0;</span><br><span class="line">		for (int j = 1; j &lt; G.vertexNum; j++) &#123;</span><br><span class="line">			if (G.arc[k][j] &lt; shortedge[j].lowcost) &#123;</span><br><span class="line">				shortedge[j].lowcost = G.arc[k][j];</span><br><span class="line">				shortedge[j].adjvex = G.vertex[k];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">template&lt;class VertexType, class ArcType&gt; </span><br><span class="line">//查找集合中最短边</span><br><span class="line">int  MinEnge(shortEdge&lt;VertexType, ArcType&gt; shortenge[],int vertexNum) &#123;</span><br><span class="line">	int k;</span><br><span class="line">	for (int i = 0; i &lt; vertexNum; i++) &#123;</span><br><span class="line">		if (shortenge[i].lowcost != 0) &#123;</span><br><span class="line">			k = i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	for (int i = 0; i &lt; vertexNum; i++) &#123;</span><br><span class="line">		if (shortenge[i].lowcost != 0 &amp;&amp; shortenge[i].lowcost &lt; shortenge[k].lowcost)</span><br><span class="line">			k = i;</span><br><span class="line">	&#125;</span><br><span class="line">	return k;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>`</code></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/c-算法/">c++/算法</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-最小生成树之ksuak算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/30/最小生成树之ksuak算法/" class="article-date">
+      <time datetime="2018-11-30T06:18:09.000Z" itemprop="datePublished">2018-11-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/最小生成树之ksuak算法/">最小生成树之ksuak算法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>学习最小生成树算法之前我们先来了解下 下面这些概念：</p>
+<p>树（Tree）：如果一个无向连通图中不存在回路，则这种图称为树。</p>
+<p>生成树 （Spanning Tree）：无向连通图G的一个子图如果是一颗包含G的所有顶点的树，则该子图称为G的生成树。</p>
+<p>生成树是连通图的极小连通子图。这里所谓极小是指：若在树中任意增加一条边，则将出现一条回路；若去掉一条边，将会使之变成非连通图。</p>
+<p>最小生成树（Minimum Spanning Tree，MST）：或者称为最小代价树Minimum-cost Spanning Tree:对无向连通图的生成树，各边的权值总和称为生成树的权，权最小的生成树称为最小生成树。</p>
+<p>构成生成树的准则有三条：</p>
+<p><1> 必须只使用该网络中的边来构造最小生成树。</1></p>
+<p><2> 必须使用且仅使用n-1条边来连接网络中的n个顶点</2></p>
+<p><3> 不能使用产生回路的边。</3></p>
+<p>构造最小生成树的算法主要有：克鲁斯卡尔（Kruskal）算法和普利姆（Prim）算法他们都遵循以上准则。</p>
+<p>接下分别讨论一下这两种算法以及判定最小生成树是否唯一的方法。</p>
+<p>克鲁斯卡尔算法</p>
+<p>克鲁斯卡尔算法的基本思想是以边为主导地位，始终选择当前可用（所选的边不能构成回路）的最小权植边。所以Kruskal算法的第一步是给所有的边按照从小到大的顺序排序。这一步可以直接使用库函数qsort或者sort。接下来从小到大依次考察每一条边（u，v）。</p>
+<p>具体实现过程如下：</p>
+<p><1>　设一个有n个顶点的连通网络为G（V,E），最初先构造一个只有n个顶点，没有边的非连通图T={V,空}，图中每个顶点自成一格连通分量。</1></p>
+<p><2>　在Ｅ中选择一条具有最小权植的边时，若该边的两个顶点落在不同的连通分量上，则将此边加入到Ｔ中；否则，即这条边的两个顶点落到同一连通分量      上，则将此边舍去（此后永不选用这条边），重新选择一条权植最小的边。</2></p>
+<p><3>　如此重复下去，直到所有顶点在同一连通分量上为止。</3></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">void Kruskal(MGraph&lt;VertexType, ArcType&gt; G) &#123;</span><br><span class="line">	EdgeType&lt; VertexType, ArcType&gt; *edge = new EdgeType&lt; VertexType, ArcType&gt;[G.arcNum*2];</span><br><span class="line">	//初始化边集数组</span><br><span class="line">	int k = 0;</span><br><span class="line">	for (int i = 0; i &lt; G.vertexNum; i++) &#123;</span><br><span class="line">		for (int j = 0; j &lt; G.vertexNum; j++) &#123;</span><br><span class="line">			if (G.arc[i][j] != MaxInt) &#123;</span><br><span class="line">				edge[k].from = G.vertex[i];</span><br><span class="line">				edge[k].to = G.vertex[j];</span><br><span class="line">				edge[k].weight = G.arc[i][j];</span><br><span class="line">				k++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	soft(edge, G.arcNum*2);</span><br><span class="line">	int *parent = new int[G.vertexNum];</span><br><span class="line">	for (int i = 0; i &lt; G.vertexNum; i++) parent[i] = -1;</span><br><span class="line">	for (int num = 0, i = 0; i &lt; G.arcNum*2; i++) &#123;</span><br><span class="line">		int vex1 = FindRoot(parent, G.LocateVex(edge[i].from));</span><br><span class="line">		int  vex2 = FindRoot(parent, G.LocateVex(edge[i].to));</span><br><span class="line">		if (vex1 != vex2) &#123;</span><br><span class="line">			cout &lt;&lt; &quot;(&quot; &lt;&lt; edge[i].from &lt;&lt; edge[i].to &lt;&lt; &quot;)&quot; &lt;&lt; edge[i].weight &lt;&lt; endl;</span><br><span class="line">			parent[vex2] = vex1;</span><br><span class="line">			num++;</span><br><span class="line">			if (num == G.vertexNum - 1) return;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">template&lt;class VertexType, class ArcType&gt;</span><br><span class="line">//对边集进行排序的函数</span><br><span class="line">void soft(EdgeType&lt; VertexType, ArcType&gt; *edge, int length) &#123;</span><br><span class="line">	for (int i = 0; i &lt; length - 1; i++) &#123;</span><br><span class="line">		for (int j = 0; j &lt; length - i - 1; j++) &#123;</span><br><span class="line">			if (edge[j].weight &gt; edge[j + 1].weight) &#123;</span><br><span class="line">				EdgeType&lt; VertexType, ArcType&gt; e;</span><br><span class="line">				e = edge[j];</span><br><span class="line">				edge[j] = edge[j + 1];</span><br><span class="line">				edge[j + 1] = e;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//寻找根节点</span><br><span class="line">static int FindRoot(int parent[], int v) &#123;</span><br><span class="line">	int t = v;</span><br><span class="line"></span><br><span class="line">	while(parent[t] &gt; -1) t = parent[t];</span><br><span class="line">	return t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/c-算法/">c++/算法</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 林德雨
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit">极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
