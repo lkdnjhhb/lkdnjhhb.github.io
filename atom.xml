@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lkdnjhhb.github.io/"/>
-  <updated>2018-12-02T12:42:30.032Z</updated>
+  <updated>2018-12-04T05:18:05.994Z</updated>
   <id>https://lkdnjhhb.github.io/</id>
   
   <author>
@@ -15,6 +15,75 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>求差集</title>
+    <link href="https://lkdnjhhb.github.io/2018/12/04/%E6%B1%82%E5%B7%AE%E9%9B%86/"/>
+    <id>https://lkdnjhhb.github.io/2018/12/04/求差集/</id>
+    <published>2018-12-04T05:11:03.000Z</published>
+    <updated>2018-12-04T05:18:05.994Z</updated>
+    
+    <content type="html"><![CDATA[<p>【问题描述】两个集合的差集定义如下：<br>集合A、B的差集，由所有属于A但不属于B的元素构成。<br>输入两个集合A、B，每个集合中元素都是自然数。求集合A、B的差集。<br>【输入形式】<br>从标准输入接收集合中的自然数元素，以空格分隔。-1表示输入结束。<br>其中，每个集合都不输入重复的元素。<br>【输出形式】<br>输出差运算后集合中的元素，以空格分隔。输出元素的顺序与原有集合A输入的顺序一致。<br>如果A、B的差集为空集，则不输出任何数值。<br>【样例输入】<br>2 8 3 4 -1<br>6 1 4 9 -1<br>【样例输出】<br>2 8 3<br>本题在存储时采用了集合ArrayList,因为事先不知道元素个数。因为此题在求解时要频繁访问比较，所以使用ArrayList有利于提高访问速度。本题求差集时要进行元素对比，具体实现在DifferenceSet方法中<br>代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Test3 &#123;</span><br><span class="line">static void print(List&lt;Integer&gt; list) &#123;</span><br><span class="line">for(Integer i:list) &#123;</span><br><span class="line">        System.out.print(i+&quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">static void DifferenceSet(List&lt;Integer&gt; list1,List&lt;Integer&gt; list2,List&lt;Integer&gt; list3) &#123;</span><br><span class="line"> boolean flag=true;</span><br><span class="line">        int  n=0;</span><br><span class="line">        while(n&lt;list1.size()) &#123;</span><br><span class="line">        flag=true;</span><br><span class="line">        Integer j=list1.get(n);</span><br><span class="line">        int m=0;</span><br><span class="line">        Integer k;</span><br><span class="line">        while (m&lt;list2.size()) &#123;</span><br><span class="line">                k=list2.get(m);</span><br><span class="line">        if(j==k) &#123;</span><br><span class="line">           flag=false;</span><br><span class="line">           break;</span><br><span class="line">        &#125;</span><br><span class="line">        m=m+1;</span><br><span class="line">        &#125;</span><br><span class="line">        if(flag==true) &#123;</span><br><span class="line">        list3.add(list1.get(n));</span><br><span class="line">        &#125;</span><br><span class="line">        n++;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">// TODO Auto-generated method stub</span><br><span class="line">List&lt;Integer&gt; list1=new ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; list2=new ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; list3=new ArrayList&lt;&gt;();</span><br><span class="line">        Scanner scanner1 = new Scanner(System.in);</span><br><span class="line">Integer i;</span><br><span class="line">        do &#123;</span><br><span class="line">        i=scanner1.nextInt();</span><br><span class="line">        if(i!=-1) list1.add(i);</span><br><span class="line">        &#125;while(i!=-1);</span><br><span class="line">        do &#123;</span><br><span class="line">        i=scanner1.nextInt();</span><br><span class="line">        if(i!=-1) list2.add(i);</span><br><span class="line">        &#125;while(i!=-1);</span><br><span class="line">        DifferenceSet(list1, list2, list3);</span><br><span class="line">        if(list3.isEmpty()==false) &#123;</span><br><span class="line">          print(list3);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;【问题描述】两个集合的差集定义如下：&lt;br&gt;集合A、B的差集，由所有属于A但不属于B的元素构成。&lt;br&gt;输入两个集合A、B，每个集合中元素都是自然数。求集合A、B的差集。&lt;br&gt;【输入形式】&lt;br&gt;从标准输入接收集合中的自然数元素，以空格分隔。-1表示输入结束。&lt;br&gt;其中
+      
+    
+    </summary>
+    
+    
+      <category term="java" scheme="https://lkdnjhhb.github.io/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>字符串中字符排序</title>
+    <link href="https://lkdnjhhb.github.io/2018/12/04/%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E5%AD%97%E7%AC%A6%E6%8E%92%E5%BA%8F/"/>
+    <id>https://lkdnjhhb.github.io/2018/12/04/字符串中字符排序/</id>
+    <published>2018-12-04T05:02:31.000Z</published>
+    <updated>2018-12-04T05:10:02.597Z</updated>
+    
+    <content type="html"><![CDATA[<p>【问题描述】编写一个程序，从键盘接收一个字符串，然后按照字符顺序从小到大进行排序，并删除重复的字符。<br>【输入形式】用户在第一行输入一个字符串。<br>【输出形式】程序按照字符(ASCII)顺序从小到大排序字符串，并删除重复的字符进行输出。<br>【样例输入】badacgegfacb<br>【样例输出】abcdefg<br>【样例说明】用户输入字符串badacgegfacb，程序对其进行按从小到大(ASCII)顺序排序，并删除重复的字符，最后输出为abcdefg<br>题目描述清晰，本题解题时应先将字符串转变成字符数组，然后在对字符数组进行排序去重，具体分为了2个小函数。<br>代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Test2 &#123;</span><br><span class="line">    static void  soft(char []ch) &#123;</span><br><span class="line">    for(int i=0;i&lt;ch.length-1;i++) &#123;</span><br><span class="line">    for(int j=0;j&lt;ch.length-i-1;j++) &#123;</span><br><span class="line">    if(ch[j]&gt;ch[j+1]) &#123;</span><br><span class="line">    char c=ch[j];</span><br><span class="line">    ch[j]=ch[j+1];</span><br><span class="line">    ch[j+1]=c;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    static void overwrite(char[]ch) &#123;</span><br><span class="line">        char []ch2=new char[ch.length];</span><br><span class="line">        ch2[0]=ch[0];</span><br><span class="line">        int length=1;</span><br><span class="line">        for(int i=1;i&lt;ch.length;i++) &#123;</span><br><span class="line">        if(ch[i]!=ch[i-1]) ch2[length++]=ch[i];</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=0;i&lt;length;i++)</span><br><span class="line">        System.out.print(ch2[i]);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">// TODO Auto-generated method stub</span><br><span class="line">Scanner scanner=new Scanner(System.in);</span><br><span class="line">String string;</span><br><span class="line">string=scanner.nextLine();</span><br><span class="line">char []ch=string.toCharArray();</span><br><span class="line">        soft(ch);</span><br><span class="line">        overwrite(ch);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;【问题描述】编写一个程序，从键盘接收一个字符串，然后按照字符顺序从小到大进行排序，并删除重复的字符。&lt;br&gt;【输入形式】用户在第一行输入一个字符串。&lt;br&gt;【输出形式】程序按照字符(ASCII)顺序从小到大排序字符串，并删除重复的字符进行输出。&lt;br&gt;【样例输入】badac
+      
+    
+    </summary>
+    
+    
+      <category term="java" scheme="https://lkdnjhhb.github.io/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>集合 Arrlist</title>
+    <link href="https://lkdnjhhb.github.io/2018/12/04/%E9%9B%86%E5%90%88-Arrlist/"/>
+    <id>https://lkdnjhhb.github.io/2018/12/04/集合-Arrlist/</id>
+    <published>2018-12-04T05:00:50.000Z</published>
+    <updated>2018-12-04T05:01:47.055Z</updated>
+    
+    <content type="html"><![CDATA[<p>问题描述】对分行输入的若干字符串按字典序（由小到大）进行排序并输出。<br>【输入形式】控制台输入多行字符串，各个字符串可能含有空格，以#结束<br>【输出形式】输出按字典序（由小到大）进行排序后的字符串。<br>【样例输入】<br>zwtr<br>fhoenf<br>hefe<br>afe geg<br>#</p><p>【样例输出】<br>afe geg<br>fhoenf<br>hefe<br>zwtr<br>【样例说明】输入多行字符串：<br>zwtr<br>fhoenf<br>hefe<br>afe geg<br>#</p><p>输出字典序的字符串为：<br>afe geg<br>fhoenf<br>hefe<br>zwtr</p><p>题目描述很清晰，就是对一组字符串进行字典排序，然后进行格式输出。因为不知道一开始不知道有多少字符串进行输入排序，所以本题采用了用集合容器来进行字符串的存储，<br>因为string类型继承实现了compare方法，所以此题直接采用了调取集合排序方法（collection.soft(list)）。<br>代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Collections;</span><br><span class="line">import java.util.LinkedList;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Test1 &#123;</span><br><span class="line"></span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">// TODO Auto-generated method stub</span><br><span class="line">Scanner scanner=new Scanner(System.in);</span><br><span class="line">        List&lt;String&gt; linklist=new LinkedList&lt;&gt;();</span><br><span class="line">        String string;</span><br><span class="line">        do &#123;</span><br><span class="line">            string=scanner.nextLine();</span><br><span class="line">        if(string.equals(&quot;#&quot;)==false)</span><br><span class="line">        linklist.add(string);</span><br><span class="line">        &#125;while(string.equals(&quot;#&quot;)==false);</span><br><span class="line">        Collections.sort(linklist);</span><br><span class="line">    for(String s:linklist) &#123;</span><br><span class="line">    System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;问题描述】对分行输入的若干字符串按字典序（由小到大）进行排序并输出。&lt;br&gt;【输入形式】控制台输入多行字符串，各个字符串可能含有空格，以#结束&lt;br&gt;【输出形式】输出按字典序（由小到大）进行排序后的字符串。&lt;br&gt;【样例输入】&lt;br&gt;zwtr&lt;br&gt;fhoenf&lt;br&gt;he
+      
+    
+    </summary>
+    
+    
+      <category term="java" scheme="https://lkdnjhhb.github.io/tags/java/"/>
+    
+  </entry>
   
   <entry>
     <title>图片检索</title>
@@ -243,9 +312,9 @@
       <category term="c++/算法" scheme="https://lkdnjhhb.github.io/categories/c-%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="c++" scheme="https://lkdnjhhb.github.io/tags/c/"/>
-    
       <category term="算法" scheme="https://lkdnjhhb.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="c++" scheme="https://lkdnjhhb.github.io/tags/c/"/>
     
   </entry>
   
@@ -272,9 +341,9 @@
       <category term="c++/算法" scheme="https://lkdnjhhb.github.io/categories/c-%E7%AE%97%E6%B3%95/"/>
     
     
-      <category term="c++" scheme="https://lkdnjhhb.github.io/tags/c/"/>
-    
       <category term="算法" scheme="https://lkdnjhhb.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="c++" scheme="https://lkdnjhhb.github.io/tags/c/"/>
     
   </entry>
   
