@@ -198,7 +198,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/c/" style="font-size: 12.5px;">c++</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
+                        <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/c/" style="font-size: 13.33px;">c++</a> <a href="/tags/java/" style="font-size: 16.67px;">java</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
                     </div>
                 </section>
                 
@@ -323,6 +323,68 @@
 <p>上例运行结果：出现了多人卖同一张票的情况，相同的票数数据没有实现共享，有人说了你这四个各不相干的线程当然会出现这种问题，但是我们最初的设计是票数数据是公共的，写死的，这时候用Runnable就能较好解决这个问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class MyThread2 implements Runnable &#123;</span><br><span class="line">    protected   int tickets=50;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		MyThread2 mt=new MyThread2();</span><br><span class="line">		new Thread(mt, &quot;售票员1&quot;).start();</span><br><span class="line">		new Thread(mt, &quot;售票员2&quot;).start();</span><br><span class="line">		new Thread(mt, &quot;售票员3&quot;).start();</span><br><span class="line">		new Thread(mt, &quot;售票员4&quot;).start();</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		while(this.tickets&gt;0) &#123;</span><br><span class="line">			   System.out.println(Thread.currentThread().getName()+&quot;正在卖票&quot;+tickets--);</span><br><span class="line">		   &#125;</span><br><span class="line">		   if(this.tickets==0)</span><br><span class="line">			System.out.println(&quot;票卖完了&quot;);   </span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>由上述代码成功解决票数数据共享的问题。<br>  (3)下面为大家解释一下线程同步的问题，先举个例子来说明一下线程同步在一些方面的重要作用，比如去银行取钱，存钱，这就要去同一时间只有一个人能操作这一张银行卡，否则很容易造成资金的问题，那么解决这个问题就用到了线程同步概念，所谓线程同步就是某一时刻只能有一个线程来操作共享的数据资源。实现方式有两种，同步代码块，同步方法。实现同步方法非常简单，它自需要在你同步的方法前插入 synchronized 关键字 如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public synchronized 返回类型 方法名(参数)</span><br></pre></td></tr></table></figure></p>
 <p>同步代码块只要在你所同步的代码使用如下形式<br>`synchronized{代码块}<br>大部分情况下还是使用异步线程(网站访问)<br>  (4)最后给大家简要介绍一下死锁的问题，死锁的形成多是由程序逻辑错误造成的线程访问僵持问题，两个线程互相挟制卡死，程序开发中应避免出现死锁。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-java 多线程经典模型--生产者与消费者模型" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/06/java 多线程经典模型--生产者与消费者模型/" class="article-date">
+      <time datetime="2018-12-06T12:53:34.000Z" itemprop="datePublished">2018-12-06</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/06/java 多线程经典模型--生产者与消费者模型/">java多线程-生产者与消费者模型</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>﻿生产者与消费者模型是Java多线程经典模型，它的主要意思是有一个公共的商品区，生产者项商品区生产商品，消费者从中取走商品，最理想的状态就是生产者生产一个商品消费者就从商品中取走一个商品，二者同时执行，所以采用多线程机制，随着多线程的使用就容易产生商品取出错误，商品生产重复问题，能有效解决此问题的方式就是线程的等待与唤醒加静态代码块。有必要说明一下线程的等待和唤醒都是Object类的方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">class InFo&#123;</span><br><span class="line">	//商品</span><br><span class="line">	private String name;</span><br><span class="line">	private String money;</span><br><span class="line">	private boolean flag=true;//布尔标记控制线程的等待与唤醒</span><br><span class="line">	//静态方法保证操作同一不会出现输出和赋值不同意匹配的问题</span><br><span class="line">	public synchronized void set(String name,String money) &#123;</span><br><span class="line">		if(flag==false) &#123;//说明不能生产</span><br><span class="line">			try &#123;</span><br><span class="line">				super.wait();//object类中的方法让此线程进入等待状态</span><br><span class="line">			&#125; catch (InterruptedException e) &#123;</span><br><span class="line">				// TODO Auto-generated catch block</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;&#125;</span><br><span class="line">		//没有等待或者等待状态结束执行赋值</span><br><span class="line">		this.name=name;</span><br><span class="line">		this.money=money;</span><br><span class="line">		//修改标记等待取走商品</span><br><span class="line">		this.flag=false;</span><br><span class="line">		//唤醒其他等待线程</span><br><span class="line">		super.notify();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	public synchronized void get() &#123;</span><br><span class="line">	   if(flag==true) &#123;//表明此刻正在生产不能取出商品</span><br><span class="line">		try &#123;</span><br><span class="line">			//现场进入等待状态</span><br><span class="line">			super.wait();</span><br><span class="line">		&#125; catch (InterruptedException e) &#123;</span><br><span class="line">			// TODO Auto-generated catch block</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;&#125;</span><br><span class="line">		System.out.println(this.name+&quot;--&quot;+this.money);</span><br><span class="line">		//标记修改等待生产商品</span><br><span class="line">		flag=true;</span><br><span class="line">		//唤醒其他等待线程也是来自object类的方法</span><br><span class="line">		super.notify();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">class Produce implements Runnable&#123;</span><br><span class="line">	protected InFo inFo;</span><br><span class="line">     public Produce(InFo inFo) &#123;</span><br><span class="line">		// TODO Auto-generated constructor stub</span><br><span class="line">	    this.inFo=inFo;</span><br><span class="line">     &#125;</span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		for(int i=0;i&lt;100;i++) &#123;</span><br><span class="line">		if(i%2==0) &#123;</span><br><span class="line">		inFo.set(&quot;apple&quot;, &quot;15&quot;);&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			inFo.set(&quot;banana&quot;, &quot;25&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class Custom implements Runnable&#123;</span><br><span class="line">	private InFo info;</span><br><span class="line">	public Custom(InFo inFo) &#123;</span><br><span class="line">		this.info=inFo;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		for(int i=0;i&lt;100;i++) &#123;</span><br><span class="line">		info.get();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">        InFo inFo=new InFo();</span><br><span class="line">        new Thread(new Produce(inFo)).start();;</span><br><span class="line">		new Thread(new Custom(inFo)).start();;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -702,83 +764,6 @@
 
 
   
-    <article id="post-二分算法" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/12/01/二分算法/" class="article-date">
-      <time datetime="2018-12-01T14:08:35.000Z" itemprop="datePublished">2018-12-01</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/01/二分算法/">二分算法</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>1、定义<br>    二分查找又称折半查找，它是一种效率较高的查找方法。</p>
-<pre><code>二分查找要求：线性表是有序表，即表中结点按关键字有序，并且要用向量作为表的存储结构。不妨设有序表是递增有序的。
-</code></pre><p>2、基本思想<br>    二分查找的基本思想是：</p>
-<pre><code>设R[low..high]是当前的查找区间
-</code></pre><p> （1）首先确定该区间的中点位置：</p>
-<p> （2）然后将待查的K值与R[mid].key比较：若相等，则查找成功并返回此位置，否则须确定新的查找区间，继续二分查找，具体方法如下：</p>
-<pre><code>①  若R[mid].key&gt;K，则由表的有序性可知R[mid..n].keys均大于K，因此若表中存在关键字等于K的结点，则该结点必定是在位置mid左边的子表R[1..mid-1]中，故新的查找区间是左子表R[1..mid-1]。
-
-②  若R[mid].key&lt;K，则要查找的K必在mid的右子表R[mid+1..n]中，即新的查找区间是右子表R[mid+1..n]。下一次查找是针对新的查找区间进行的。
-
-因此，从初始的查找区间R[1..n]开始，每经过一次与当前查找区间的中点位置上的结点关键字的比较，就可确定查找是否成功，不成功则当前的查找区间就缩小一半。这一过程重复直至找到关键字为K的结点，或者直至当前的查找区间为空(即查找失败)时为止。
-</code></pre><p>3、存储结构<br>    二分查找只适用顺序存储结构。`<br>4.伪代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 二分查找，找到该值在数组中的下标，否则为-1</span><br><span class="line"> */</span><br><span class="line">static int binarySerach(int[] array, int key) &#123;</span><br><span class="line">    int low = 0;</span><br><span class="line">    int high = array.length - 1;</span><br><span class="line"></span><br><span class="line">    // 这里必须是 &lt;=</span><br><span class="line">    while (low &lt;= high) &#123;</span><br><span class="line">        int mid = (low + high) / 2;</span><br><span class="line">        if (array[mid] == key) &#123;</span><br><span class="line">            return mid;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (array[mid] &lt; key) &#123;</span><br><span class="line">            low = mid + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            height = mid - 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>递归实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">int binarySerach(int[] arr, int key,int low,int high) &#123;</span><br><span class="line">		//求中间元素的下标</span><br><span class="line">		int mid = (low + high) / 2;</span><br><span class="line">		//数组内不含有指定元素，依据下标的规则，退出</span><br><span class="line">		if (low &gt; high)</span><br><span class="line">			return -1;</span><br><span class="line">		//查找到指定元素</span><br><span class="line">		if (key == arr[mid]) &#123;</span><br><span class="line">			return mid;</span><br><span class="line">			//当查找的元素大于中间下标的元素，则改变开始下标的位置</span><br><span class="line">		&#125; else if (key &gt; arr[mid]) &#123;</span><br><span class="line">			return getKey(arr, key, mid + 1, high);</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			//当查找的元素小于中间下标的元素，则改变结束下标的位置</span><br><span class="line">			return getKey(arr, key, low, mid - 1);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><code>`</code></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
     <article id="post-二分算法实例1" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -825,6 +810,83 @@
 <p>2</p>
 <p>实现代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">    static boolean check(int mid,Qkl[] qkl,int m) &#123;</span><br><span class="line">    	//求分出的块的数量</span><br><span class="line">    	int sum = 0;</span><br><span class="line">    	for(int i = 0; i &lt;qkl.length ; i++)&#123;</span><br><span class="line">    		sum += (qkl[i].hi / mid ) * (qkl[i].wi / mid);</span><br><span class="line">    	&#125;</span><br><span class="line">    	return sum &gt;= m;</span><br><span class="line">    	</span><br><span class="line">    &#125;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">	    Scanner scanner=new Scanner(System.in);</span><br><span class="line">		int n;//n块巧克里</span><br><span class="line">		int m;//m块</span><br><span class="line">		n=scanner.nextInt();</span><br><span class="line">		m=scanner.nextInt();</span><br><span class="line">		Qkl[] qkl=new Qkl[n];</span><br><span class="line">        for(int i=0;i&lt;qkl.length;i++) &#123;</span><br><span class="line">        	Qkl q=new Qkl();</span><br><span class="line">        	q.hi=scanner.nextInt();</span><br><span class="line">        	q.wi=scanner.nextInt();</span><br><span class="line">        	qkl[i]=q;</span><br><span class="line">        &#125;</span><br><span class="line">        //要求是求最大边长,最通用的就是一个一个枚举求出最大边长因速度慢所以采用二分举例求最大边长</span><br><span class="line">        int l=1;</span><br><span class="line">        int r=10000;</span><br><span class="line">        int mid;</span><br><span class="line">         //二分寻找边长要求边长最大所以循环全部进行</span><br><span class="line">        while(l &lt; r)&#123;</span><br><span class="line">    		mid = (l+r+1)/2;</span><br><span class="line">    		if(check(mid,qkl,m))</span><br><span class="line">    			l = mid;</span><br><span class="line">    		else</span><br><span class="line">    			r = mid - 1;</span><br><span class="line">    	&#125; </span><br><span class="line"></span><br><span class="line">        System.out.println(l);</span><br><span class="line">        </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class Qkl&#123;</span><br><span class="line">	int hi;</span><br><span class="line">	int wi;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-二分算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/01/二分算法/" class="article-date">
+      <time datetime="2018-12-01T14:08:35.000Z" itemprop="datePublished">2018-12-01</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/二分算法/">二分算法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>1、定义<br>    二分查找又称折半查找，它是一种效率较高的查找方法。</p>
+<pre><code>二分查找要求：线性表是有序表，即表中结点按关键字有序，并且要用向量作为表的存储结构。不妨设有序表是递增有序的。
+</code></pre><p>2、基本思想<br>    二分查找的基本思想是：</p>
+<pre><code>设R[low..high]是当前的查找区间
+</code></pre><p> （1）首先确定该区间的中点位置：</p>
+<p> （2）然后将待查的K值与R[mid].key比较：若相等，则查找成功并返回此位置，否则须确定新的查找区间，继续二分查找，具体方法如下：</p>
+<pre><code>①  若R[mid].key&gt;K，则由表的有序性可知R[mid..n].keys均大于K，因此若表中存在关键字等于K的结点，则该结点必定是在位置mid左边的子表R[1..mid-1]中，故新的查找区间是左子表R[1..mid-1]。
+
+②  若R[mid].key&lt;K，则要查找的K必在mid的右子表R[mid+1..n]中，即新的查找区间是右子表R[mid+1..n]。下一次查找是针对新的查找区间进行的。
+
+因此，从初始的查找区间R[1..n]开始，每经过一次与当前查找区间的中点位置上的结点关键字的比较，就可确定查找是否成功，不成功则当前的查找区间就缩小一半。这一过程重复直至找到关键字为K的结点，或者直至当前的查找区间为空(即查找失败)时为止。
+</code></pre><p>3、存储结构<br>    二分查找只适用顺序存储结构。`<br>4.伪代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 二分查找，找到该值在数组中的下标，否则为-1</span><br><span class="line"> */</span><br><span class="line">static int binarySerach(int[] array, int key) &#123;</span><br><span class="line">    int low = 0;</span><br><span class="line">    int high = array.length - 1;</span><br><span class="line"></span><br><span class="line">    // 这里必须是 &lt;=</span><br><span class="line">    while (low &lt;= high) &#123;</span><br><span class="line">        int mid = (low + high) / 2;</span><br><span class="line">        if (array[mid] == key) &#123;</span><br><span class="line">            return mid;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (array[mid] &lt; key) &#123;</span><br><span class="line">            low = mid + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            height = mid - 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>递归实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">int binarySerach(int[] arr, int key,int low,int high) &#123;</span><br><span class="line">		//求中间元素的下标</span><br><span class="line">		int mid = (low + high) / 2;</span><br><span class="line">		//数组内不含有指定元素，依据下标的规则，退出</span><br><span class="line">		if (low &gt; high)</span><br><span class="line">			return -1;</span><br><span class="line">		//查找到指定元素</span><br><span class="line">		if (key == arr[mid]) &#123;</span><br><span class="line">			return mid;</span><br><span class="line">			//当查找的元素大于中间下标的元素，则改变开始下标的位置</span><br><span class="line">		&#125; else if (key &gt; arr[mid]) &#123;</span><br><span class="line">			return getKey(arr, key, mid + 1, high);</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			//当查找的元素小于中间下标的元素，则改变结束下标的位置</span><br><span class="line">			return getKey(arr, key, low, mid - 1);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><code>`</code></p>
 
       
     </div>
@@ -908,65 +970,6 @@ return t;
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
     </div>
 
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-在hexo上写博客的模板" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/11/30/在hexo上写博客的模板/" class="article-date">
-      <time datetime="2018-11-30T07:03:28.000Z" itemprop="datePublished">2018-11-30</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/30/在hexo上写博客的模板/">在hexo上写博客的模板</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>title: 最小生成树之prim算法<br>date: 2018-11-30 14:18:09<br>comments: true<br>toc: true #是否显示文章目录<br>categories: “c++/算法” #分类<br>tags:   #标签</p>
-<pre><code>- 模板
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
       
       <div class="clearfix"></div>
     </div>

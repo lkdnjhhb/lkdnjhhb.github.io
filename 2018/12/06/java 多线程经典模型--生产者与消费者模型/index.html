@@ -7,19 +7,20 @@
   
   
   
-  <title>Java学习 | LDY博客</title>
+  <title>java多线程-生产者与消费者模型 | LDY博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="声明：本文只是我的个人经验之谈，或者连经验之谈都算不上，因为我觉得自己还是个新手，没有什么经验可谈，就算是我分享一下自己从开始学习Java到现在的一些心路历程吧，各位看官暂且看吧，欢迎交流。第一部分算是我与Java之间的故事，第二部分是我的个人学习经验和体会，不喜欢看故事的，直接看第二部分，谢谢！ 　　第一部分： 　　作为一个学习Java的非计算机专业的学生，我觉得学习Java是有难度的，这种难度">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Java学习">
-<meta property="og:url" content="https://lkdnjhhb.github.io/digital/index.html">
+  <meta name="description" content="生产者与消费者模型是Java多线程经典模型，它的主要意思是有一个公共的商品区，生产者项商品区生产商品，消费者从中取走商品，最理想的状态就是生产者生产一个商品消费者就从商品中取走一个商品，二者同时执行，所以采用多线程机制，随着多线程的使用就容易产生商品取出错误，商品生产重复问题，能有效解决此问题的方式就是线程的等待与唤醒加静态代码块。有必要说明一下线程的等待和唤醒都是Object类的方法。1234">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java多线程-生产者与消费者模型">
+<meta property="og:url" content="https://lkdnjhhb.github.io/2018/12/06/java 多线程经典模型--生产者与消费者模型/index.html">
 <meta property="og:site_name" content="LDY博客">
-<meta property="og:description" content="声明：本文只是我的个人经验之谈，或者连经验之谈都算不上，因为我觉得自己还是个新手，没有什么经验可谈，就算是我分享一下自己从开始学习Java到现在的一些心路历程吧，各位看官暂且看吧，欢迎交流。第一部分算是我与Java之间的故事，第二部分是我的个人学习经验和体会，不喜欢看故事的，直接看第二部分，谢谢！ 　　第一部分： 　　作为一个学习Java的非计算机专业的学生，我觉得学习Java是有难度的，这种难度">
+<meta property="og:description" content="生产者与消费者模型是Java多线程经典模型，它的主要意思是有一个公共的商品区，生产者项商品区生产商品，消费者从中取走商品，最理想的状态就是生产者生产一个商品消费者就从商品中取走一个商品，二者同时执行，所以采用多线程机制，随着多线程的使用就容易产生商品取出错误，商品生产重复问题，能有效解决此问题的方式就是线程的等待与唤醒加静态代码块。有必要说明一下线程的等待和唤醒都是Object类的方法。1234">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-30T06:48:09.111Z">
+<meta property="og:updated_time" content="2018-12-06T15:03:32.798Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java学习">
-<meta name="twitter:description" content="声明：本文只是我的个人经验之谈，或者连经验之谈都算不上，因为我觉得自己还是个新手，没有什么经验可谈，就算是我分享一下自己从开始学习Java到现在的一些心路历程吧，各位看官暂且看吧，欢迎交流。第一部分算是我与Java之间的故事，第二部分是我的个人学习经验和体会，不喜欢看故事的，直接看第二部分，谢谢！ 　　第一部分： 　　作为一个学习Java的非计算机专业的学生，我觉得学习Java是有难度的，这种难度">
+<meta name="twitter:title" content="java多线程-生产者与消费者模型">
+<meta name="twitter:description" content="生产者与消费者模型是Java多线程经典模型，它的主要意思是有一个公共的商品区，生产者项商品区生产商品，消费者从中取走商品，最理想的状态就是生产者生产一个商品消费者就从商品中取走一个商品，二者同时执行，所以采用多线程机制，随着多线程的使用就容易产生商品取出错误，商品生产重复问题，能有效解决此问题的方式就是线程的等待与唤醒加静态代码块。有必要说明一下线程的等待和唤醒都是Object类的方法。1234">
   
     <link rel="alternative" href="/atom.xml" title="LDY博客" type="application/atom+xml">
   
@@ -44,7 +45,7 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -280,11 +281,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-java 多线程经典模型--生产者与消费者模型" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/digital/index.html" class="article-date">
-      <time datetime="2018-11-30T05:14:34.000Z" itemprop="datePublished">2018-11-30</time>
+      <a href="/2018/12/06/java 多线程经典模型--生产者与消费者模型/" class="article-date">
+      <time datetime="2018-12-06T12:53:34.000Z" itemprop="datePublished">2018-12-06</time>
 </a>
 
     </div>
@@ -298,7 +299,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Java学习
+      java多线程-生产者与消费者模型
     </h1>
   
 
@@ -309,6 +310,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -316,57 +321,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta {
-        display: none;
-    }
-    #container .article .article-title {
-        padding-right: 0;
-    }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover {
-        border-left: none;
-    }
-    .article-title {
-        font-size: 1.6em
-    }
-    .article-meta {
-        display: none;
-    }
-    .article-entry hr {
-        margin: 0;
-    }
-    #container .article-info-post.article-info {
-      display: none;
-      }
-    #container .article .article-title {
-    padding: 0;
-    }
-</style>
-
-
-          
-        <p>声明：本文只是我的个人经验之谈，或者连经验之谈都算不上，因为我觉得自己还是个新手，没有什么经验可谈，就算是我分享一下自己从开始学习Java到现在的一些心路历程吧，各位看官暂且看吧，欢迎交流。第一部分算是我与Java之间的故事，第二部分是我的个人学习经验和体会，不喜欢看故事的，直接看第二部分，谢谢！</p>
-<p>　　第一部分：</p>
-<p>　　作为一个学习Java的非计算机专业的学生，我觉得学习Java是有难度的，这种难度是因为我们不了解或者没有相关的学习经验而导致的，当然，与兴趣爱好也有分不开的联系。我是一个IT爱好者，由于不是计算机相关专业的，所以大学期间计算机就成了我的益达爱好，大学四年我都是与计算机为友的，时至今日，我对计算机依然是如此的痴迷。虽然大学四年都在学习It，但在计算机的这条路上，我只是个无人指引It爱好者，我不知道该如何学习，也不知道该学什么，所以大学四年我都是在随着自己的爱好在学习，学过c语言、Python、易语言、bat脚本等，但是基本上都是学完数据基础部分就结束了，因为我不知道该如何进阶，其实我特别期待自己能熟练的掌握某一门计算机语言，但是很多事往往就是如此的事与愿违，大学毕业我也依旧没有很好的掌握一门编程语言。</p>
-<p>　　大学毕业以后，距离入职还有一段时间，我觉得没有什么事，我就翻开自己之前买的Java书籍，开始翻阅，然后照着书本上的代码开始一行一行的开始敲，但还是不理解，但依然就这样敲了一个多月。后来入职以后（因为没底子，所以没敢找计算机相关专业的工作，7月中旬入职），为期一个多月的培训，也没怎么看，这一两个月就这样荒废过去了，也正是这一两个月让我萌生了转行的打算，我觉得干自己不喜欢的工作真的太没劲了，然后又一次燃起斗志开始学习。</p>
-<p>　　大概从9月份开始，我开始一边看视频，一边看书，一边敲代码，然后一点一点的开始学习，其实这段时间我觉得自己进步不大，而且很多东西都不理解，但是依然不休不止的坚持着。一直到11月份，偶然的一次机会，加入了一个Java学习的QQ群，群里面一位网友分享了一个链接，说是腾讯的公开课，然后就去看了。感觉看了以后收获很大，让我开了眼界，也深入的了解了Java，了解了Java web ,然后一直看了差不多有一进一个月，听了公开课老师的建议，然后又开始去学前端，因为老师说学习Java从前端开始学习比较好入门。然后花了一个多月在学习前端，从html，到javascript、css，到JQuery，我觉得前端学到差不多了，可是这时候我迷茫了，我开始怀疑自己能不能找到工作，我觉得要学到东西好多呀，然后又一个多月就这样被我在迷茫中度过了。后来春节放假，回家和同学、朋友聚了几次，也聊了很多，经过我的深思熟虑，然后我依然决然的再次拿起Java，开始学习。春节以后，回到公司，也没有什么事，一天上班挺无聊的，然后我就开始看电子版的《Thinking in Java》，越看越觉得收获大，然后很多天都在看这本书，也帮我揭开了很多以前不理解不明白的知识点（强烈推荐那些入了门，或者学完基础的同学去看这本书，收获会很大的，这本书在Java界的名声挺大的），后来我都打算报班了，可是想着我都坚持了这么久了报班值得吗，不如自己制定一些计划，然后有计划的学习，所以我就开始了新的学习旅程，这一次也是我觉得自己最接近未来的一次努力，因为我能够深刻的体会到自己的进步和改变。</p>
-<p>　　因为之前把基础都学的差不多了，所以后面剩的基础知识不是很多，所以接下来的不到一个月的时间里，我觉得自己进步真的很大，也感觉每天都有新的收获很进步，我觉得我的很快就能实现自己的转行计划了。最后，盗用我们老总的话来结束我的故事，我觉在Java学习这条路上每个人都是一个圆，我们学到的或者掌握的知识是圆里面的，而我们没有掌握的知识则是圆外面的，随着我们知识的增长，我们会发现自己掌握的越来越多，但同时也会发现，我们不懂的也越来越多，知识是学不完的，重要的是保持一个学无止境的态度。</p>
-<p>　　第二部分：个人学习经验和体会　</p>
-<p>　　第一点，我觉得学习Java最重要的是坚持，要有坚定的目标。这一点有点老生常谈了，但是事实就是如此，你如果静不下心，如果耐不住寂寞，如果不能坚持，那么你永远都无法真正掌握一门技能。纵然你再有天赋，不坚持，永远到不了终点。我学习Java快一年了，这一年中，多次差点荒废掉，能够坚持到现在，很大程度上是因为我喜欢计算机，我打算转行到It，这一切自始至终都是我所想的，我觉得你只有想清楚了自己得而学习目的，你才能更好的坚持，也才能更好的继续学习。</p>
-<p>　　第二点，学习方法层面。　</p>
-<p>　　首先肯定要学基础的，而且要花很长的时间去学习，但是作为一门编程语言，不仅要学习看书，更重要的是要实践。多敲代码，多上机练习，这才是关键，如果你把书上的每一个例子都动手敲一遍，肯定比你看书要学到的更多，多敲几次，每一次都会有不一样的理解和收获，这也会是我的经验，我就是这么过来的，其实我很早就有看Java的书籍，但总是看不懂，理解不了，后来静下心来把书上的代码敲了几遍，感觉就慢慢入门了，也理解为什么要这么写……总之，学基础的第一要务是要实践。</p>
-<p>　　其次，多思考，这一点学什么都一样，不思考，不多问几个为什么，你永远都领悟不到更深层次的东西，同时，有问题尽可能的去查找，比如上网搜索或者查阅书籍资料，如果找不到再去请教身边的同事、盆友或者老师。这样做，一方面能够增强你查阅资料的能力，另外一方面能够让你养成独立思考问题的习惯，而这两者都是对你以后很有帮助的，特别是随着你的能力的增长，研究的领域慢慢深入，能帮到你的人会越来越少，这时候你只能靠自己。<br>　　然后，要善于总结和分析。就是在自己学完一个板块要自己总结一下，这样有助于你梳理知识点，同时也方便以后查阅和复习。<br>最后呢，就是要尽可能多的去做一些简单的小项目，这一点尽可能的贯穿于学习的整个过程，因为实例练习有助于加深你对知识的理解，同时也可以帮助你把多个知识点串联起来。在做小项目或者实例练习的时候，尽可能多思考，多琢磨，多测试，尽可能精简的代码数量，这样可以培养你的项目思维，对于你以后开发项目有很大的帮助。</p>
-<p>　　同时，很重要的一点是要坚持尽可能的徒手敲代码，不要借助任何的工具（不带自动补全），这应该是作为Java开学工程师最基本的素质，再说了你如果不徒手敲代码，笔试的时候你怎么能完整的写完一个程序。</p>
-<p>　　最后，多花时间去研究优秀的代码。就像写文章一样，我们要多读多看，汲取他人代码中的养分，将好的方法、代码应用到自己的程序中。</p>
-<p>　　还有一点，就是写代码的时候尽可能的规范，提升代码的可读性，同时也方便别人阅读你的代码，这一点在大公司尤为重要。</p>
-<p>　　以上言语如有不妥之处，欢迎您来指正。由于时间关系，很多内容还没有进一步的提炼和加工，后续会更新提炼，谢谢！</p>
-<p>当你的才华还撑不起你的野心的时候，你就应该静下心来学习；当你的能力还驾驭不了你的目标时，就应该沉下心来，历练；梦想，不是浮躁，而是沉淀和积累，只有拼出来的美丽，没有等出来的辉煌，机会永远是留给最渴望的那个人，学会与内心深处的你对话，问问自己，想要怎样的人生，静心学习，耐心沉淀，送给自己，共勉。</p>
+        <p>﻿生产者与消费者模型是Java多线程经典模型，它的主要意思是有一个公共的商品区，生产者项商品区生产商品，消费者从中取走商品，最理想的状态就是生产者生产一个商品消费者就从商品中取走一个商品，二者同时执行，所以采用多线程机制，随着多线程的使用就容易产生商品取出错误，商品生产重复问题，能有效解决此问题的方式就是线程的等待与唤醒加静态代码块。有必要说明一下线程的等待和唤醒都是Object类的方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">class InFo&#123;</span><br><span class="line">	//商品</span><br><span class="line">	private String name;</span><br><span class="line">	private String money;</span><br><span class="line">	private boolean flag=true;//布尔标记控制线程的等待与唤醒</span><br><span class="line">	//静态方法保证操作同一不会出现输出和赋值不同意匹配的问题</span><br><span class="line">	public synchronized void set(String name,String money) &#123;</span><br><span class="line">		if(flag==false) &#123;//说明不能生产</span><br><span class="line">			try &#123;</span><br><span class="line">				super.wait();//object类中的方法让此线程进入等待状态</span><br><span class="line">			&#125; catch (InterruptedException e) &#123;</span><br><span class="line">				// TODO Auto-generated catch block</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;&#125;</span><br><span class="line">		//没有等待或者等待状态结束执行赋值</span><br><span class="line">		this.name=name;</span><br><span class="line">		this.money=money;</span><br><span class="line">		//修改标记等待取走商品</span><br><span class="line">		this.flag=false;</span><br><span class="line">		//唤醒其他等待线程</span><br><span class="line">		super.notify();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	public synchronized void get() &#123;</span><br><span class="line">	   if(flag==true) &#123;//表明此刻正在生产不能取出商品</span><br><span class="line">		try &#123;</span><br><span class="line">			//现场进入等待状态</span><br><span class="line">			super.wait();</span><br><span class="line">		&#125; catch (InterruptedException e) &#123;</span><br><span class="line">			// TODO Auto-generated catch block</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;&#125;</span><br><span class="line">		System.out.println(this.name+&quot;--&quot;+this.money);</span><br><span class="line">		//标记修改等待生产商品</span><br><span class="line">		flag=true;</span><br><span class="line">		//唤醒其他等待线程也是来自object类的方法</span><br><span class="line">		super.notify();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">class Produce implements Runnable&#123;</span><br><span class="line">	protected InFo inFo;</span><br><span class="line">     public Produce(InFo inFo) &#123;</span><br><span class="line">		// TODO Auto-generated constructor stub</span><br><span class="line">	    this.inFo=inFo;</span><br><span class="line">     &#125;</span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		for(int i=0;i&lt;100;i++) &#123;</span><br><span class="line">		if(i%2==0) &#123;</span><br><span class="line">		inFo.set(&quot;apple&quot;, &quot;15&quot;);&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			inFo.set(&quot;banana&quot;, &quot;25&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class Custom implements Runnable&#123;</span><br><span class="line">	private InFo info;</span><br><span class="line">	public Custom(InFo inFo) &#123;</span><br><span class="line">		this.info=inFo;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		for(int i=0;i&lt;100;i++) &#123;</span><br><span class="line">		info.get();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">        InFo inFo=new InFo();</span><br><span class="line">        new Thread(new Produce(inFo)).start();;</span><br><span class="line">		new Thread(new Custom(inFo)).start();;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -374,11 +329,85 @@
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/12/06/java 多线程经典模型--生产者与消费者模型/">java多线程-生产者与消费者模型</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 林德雨 的个人博客">林德雨</a></p>
+        <p><span>发布时间:</span>2018年12月06日 - 20时53分</p>
+        <p><span>最后更新:</span>2018年12月06日 - 23时03分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/12/06/java 多线程经典模型--生产者与消费者模型/" title="java多线程-生产者与消费者模型">https://lkdnjhhb.github.io/2018/12/06/java 多线程经典模型--生产者与消费者模型/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://lkdnjhhb.github.io/2018/12/06/java 多线程经典模型--生产者与消费者模型/　　作者: 林德雨" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+<nav id="article-nav">
+  
+    <a href="/2018/12/06/java多线程-Thread/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          java多线程-Thread
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/12/04/求差集/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">求差集</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
 
 
 <div class="share">
@@ -483,6 +512,43 @@
     
 
 
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/12/06/java多线程-Thread/" title="上一篇: java多线程-Thread">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2018/12/04/求差集/" title="下一篇: 求差集">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/06/java多线程-Thread/">java多线程-Thread</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/06/java 多线程经典模型--生产者与消费者模型/">java多线程-生产者与消费者模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/04/求差集/">求差集</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/04/字符串中字符排序/">字符串中字符排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/04/集合-Arrlist/">集合 Arrlist</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/01/图像识别/">图片检索</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/01/二分算法实例2/">二分算法实例2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/01/二分算法实例1/">二分算法实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/01/二分算法/">二分算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/图的完整操作/">图的完整操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/在hexo上写博客的模板/">在hexo上写博客的模板</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/如何用github-hexo搭建个人博客/">如何用github+hexo搭建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/java常用类库/">java常用类库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/prim算法/">最小生成树之prim算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/最小生成树之ksuak算法/">最小生成树之ksuak算法</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
 
 
 
