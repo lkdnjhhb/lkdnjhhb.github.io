@@ -7,16 +7,20 @@
   
   
   
-  <title>分类 | LDY博客</title>
+  <title>java多线程-Thread | LDY博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="https://lkdnjhhb.github.io/tags/index.html">
+  <meta name="description" content="1.介绍线程时先解释一下什么是线程，进程，毕竟这两个概念十分相像，进程通俗来讲就是在计算机中执行的程序，一个程序就是一个进程，线程是进程的细分，进程可以包含多个线程，对于线程还有更细的划分，名字叫纤程，一个计算机可以同时执行多个进程任务，一个进程可以同时执行线程任务，但严格来说这样是不对的，它们都是去抢占计算机的资源（cpu ,IO,寄存器…）来去执行的，严格来说，一个计算机在某一时间只能执行一个">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java多线程-Thread">
+<meta property="og:url" content="https://lkdnjhhb.github.io/2018/12/06/java多线程-Thread/index.html">
 <meta property="og:site_name" content="LDY博客">
+<meta property="og:description" content="1.介绍线程时先解释一下什么是线程，进程，毕竟这两个概念十分相像，进程通俗来讲就是在计算机中执行的程序，一个程序就是一个进程，线程是进程的细分，进程可以包含多个线程，对于线程还有更细的划分，名字叫纤程，一个计算机可以同时执行多个进程任务，一个进程可以同时执行线程任务，但严格来说这样是不对的，它们都是去抢占计算机的资源（cpu ,IO,寄存器…）来去执行的，严格来说，一个计算机在某一时间只能执行一个">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-30T06:32:52.618Z">
+<meta property="og:updated_time" content="2018-12-06T12:55:05.233Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分类">
+<meta name="twitter:title" content="java多线程-Thread">
+<meta name="twitter:description" content="1.介绍线程时先解释一下什么是线程，进程，毕竟这两个概念十分相像，进程通俗来讲就是在计算机中执行的程序，一个程序就是一个进程，线程是进程的细分，进程可以包含多个线程，对于线程还有更细的划分，名字叫纤程，一个计算机可以同时执行多个进程任务，一个进程可以同时执行线程任务，但严格来说这样是不对的，它们都是去抢占计算机的资源（cpu ,IO,寄存器…）来去执行的，严格来说，一个计算机在某一时间只能执行一个">
   
     <link rel="alternative" href="/atom.xml" title="LDY博客" type="application/atom+xml">
   
@@ -41,7 +45,7 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -277,11 +281,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-java多线程-Thread" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/tags/index.html" class="article-date">
-      <time datetime="2018-11-30T05:15:21.000Z" itemprop="datePublished">2018-11-30</time>
+      <a href="/2018/12/06/java多线程-Thread/" class="article-date">
+      <time datetime="2018-12-06T12:53:34.000Z" itemprop="datePublished">2018-12-06</time>
 </a>
 
     </div>
@@ -295,7 +299,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      分类
+      java多线程-Thread
     </h1>
   
 
@@ -306,6 +310,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -313,123 +321,96 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta {
-        display: none;
-    }
-    #container .article .article-title {
-        padding-right: 0;
-    }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover {
-        border-left: none;
-    }
-    .article-title {
-        font-size: 1.6em
-    }
-    .article-meta {
-        display: none;
-    }
-    .article-entry hr {
-        margin: 0;
-    }
-    #container .article-info-post.article-info {
-      display: none;
-      }
-    #container .article .article-title {
-    padding: 0;
-    }
-</style>
+        <p>1.介绍线程时先解释一下什么是线程，进程，毕竟这两个概念十分相像，进程通俗来讲就是在计算机中执行的程序，一个程序就是一个进程，线程是进程的细分，进程可以包含多个线程，对于线程还有更细的划分，名字叫纤程，一个计算机可以同时执行多个进程任务，一个进程可以同时执行线程任务，但严格来说这样是不对的，它们都是去抢占计算机的资源（cpu ,IO,寄存器…）来去执行的，严格来说，一个计算机在某一时间只能执行一个进程，一个进程内只能执行一个线程，只是因为计算机的运算，和进程或进程的抢占时间的短，快，造成了同时执行的假象。新建状态（New）：当线程对象对创建后，即进入了新建状态，如：Thread t = new MyThread();</p>
+<p>就绪状态（Runnable）：当调用线程对象的start()方法（t.start();），线程即进入就绪状态。处于就绪状态的线程，只是说明此线程已经做好了准备，随时等待CPU调度执行，并不是说执行了t.start()此线程立即就会执行；</p>
+<p>运行状态（Running）：当CPU开始调度处于就绪状态的线程时，此时线程才得以真正执行，即进入到运行状态。注：就     绪状态是进入到运行状态的唯一入口，也就是说，线程要想进入运行状态执行，首先必须处于就绪状态中；</p>
+<p>阻塞状态（Blocked）：处于运行状态中的线程由于某种原因，暂时放弃对CPU的使用权，停止执行，此时进入阻塞状态，直到其进入到就绪状态，才 有机会再次被CPU调用以进入到运行状态。根据阻塞产生的原因不同，阻塞状态又可以分为三种：</p>
+<p>1.等待阻塞：运行状态中的线程执行wait()方法，使本线程进入到等待阻塞状态；</p>
+<p>2.同步阻塞 – 线程在获取synchronized同步锁失败(因为锁被其它线程所占用)，它会进入同步阻塞状态；</p>
+<p>3.其他阻塞 – 通过调用线程的sleep()或join()或发出了I/O请求时，线程会进入到阻塞状态。当sleep()状态超时、join()等待线程终止或者超时、或者I/O处理完毕时，线程重新转入就绪状态。</p>
+<p>死亡状态（Dead）：线程执行完了或者因异常退出了run()方法，该线程结束生命周期。<br>2.经过上面的简单介绍下相信大家也对进程和线程有了一些认识，下面给大家介绍一下java中的线程（Thread）java中的线程从Java1.0就出现，一直在被完善。下面给大家介绍一下线程的构造方法：<br>   (1) 继承Thread类来实现线程的构造<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Thread1 extends Thread&#123;</span><br><span class="line">	//用这种方法构造线程是要对run方法重写</span><br><span class="line">   public  void  run() &#123;</span><br><span class="line">	System.out.println(this.getName());</span><br><span class="line">&#125;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">        System.out.println(Thread.currentThread().getName());</span><br><span class="line">        Thread1 thread1=new Thread1();</span><br><span class="line">        Thread1 thread2=new Thread1();</span><br><span class="line">        thread1.start();//start方法用来开启线程来自父类</span><br><span class="line">        thread2.start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在用继承Thread类时实现线程时必须重写run方法，它是线程开始后执行的方法，调用start方法就是线程进入了就绪状态准备执行。<br>   (2)实现Runnable接口来实现线程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class MyRunnable implements Runnable &#123;</span><br><span class="line"></span><br><span class="line">	@SuppressWarnings(&quot;static-access&quot;)//压制警告</span><br><span class="line">	public static void main(String[] args) throws InterruptedException &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">        Thread thread=new Thread(new MyRunnable());</span><br><span class="line">		thread.start();</span><br><span class="line">		thread.sleep(1000);</span><br><span class="line">		System.out.println(thread.isAlive());</span><br><span class="line">		thread.join();</span><br><span class="line">		System.out.println(thread.isAlive());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		//输出当前执行线程的名字</span><br><span class="line">		System.out.println(Thread.currentThread().getName());</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>除此之外还有一种有返回值的方法就简单介绍一下使用Callable和Future接口创建线程。具体是创建Callable接口的实现类，并实现clall()方法。并使用FutureTask类来包装Callable实现类的对象，且以此FutureTask对象作为Thread对象的target来创建线程。<br>我先说一下Runnable是一个函数式编程接口(接口中方法都是公共的)，我先说一下一个有意思的地方Thread类在实现的时候也继承了Runnable接口。并且此接口有利于数据共享。下面为大家举个例子来说明这个问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class MyThread extends Thread&#123;</span><br><span class="line">   protected int tickets=50;</span><br><span class="line">   public void run() &#123;</span><br><span class="line">	   while(this.tickets&gt;0) &#123;</span><br><span class="line">		   System.out.println(this.getName()+&quot;正在卖票&quot;+tickets--);</span><br><span class="line">	   &#125;</span><br><span class="line">	   if(this.tickets==0)</span><br><span class="line">		System.out.println(&quot;票卖完了&quot;);   </span><br><span class="line">   &#125;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		MyThread myThread1=new MyThread();</span><br><span class="line">		myThread1.setName(&quot;售票员1&quot;);</span><br><span class="line">		MyThread myThread2=new MyThread();</span><br><span class="line">		myThread2.setName(&quot;售票员2&quot;);</span><br><span class="line">		MyThread myThread3=new MyThread();</span><br><span class="line">		myThread3.setName(&quot;售票员3&quot;);</span><br><span class="line">		MyThread myThread4=new MyThread();</span><br><span class="line">		myThread4.setName(&quot;售票员4&quot;);</span><br><span class="line">        myThread1.start();</span><br><span class="line">        myThread2.start();</span><br><span class="line">        myThread3.start();</span><br><span class="line">        myThread4.start();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上例运行结果：出现了多人卖同一张票的情况，相同的票数数据没有实现共享，有人说了你这四个各不相干的线程当然会出现这种问题，但是我们最初的设计是票数数据是公共的，写死的，这时候用Runnable就能较好解决这个问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class MyThread2 implements Runnable &#123;</span><br><span class="line">    protected   int tickets=50;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		MyThread2 mt=new MyThread2();</span><br><span class="line">		new Thread(mt, &quot;售票员1&quot;).start();</span><br><span class="line">		new Thread(mt, &quot;售票员2&quot;).start();</span><br><span class="line">		new Thread(mt, &quot;售票员3&quot;).start();</span><br><span class="line">		new Thread(mt, &quot;售票员4&quot;).start();</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		while(this.tickets&gt;0) &#123;</span><br><span class="line">			   System.out.println(Thread.currentThread().getName()+&quot;正在卖票&quot;+tickets--);</span><br><span class="line">		   &#125;</span><br><span class="line">		   if(this.tickets==0)</span><br><span class="line">			System.out.println(&quot;票卖完了&quot;);   </span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>由上述代码成功解决票数数据共享的问题。<br>  (3)下面为大家解释一下线程同步的问题，先举个例子来说明一下线程同步在一些方面的重要作用，比如去银行取钱，存钱，这就要去同一时间只有一个人能操作这一张银行卡，否则很容易造成资金的问题，那么解决这个问题就用到了线程同步概念，所谓线程同步就是某一时刻只能有一个线程来操作共享的数据资源。实现方式有两种，同步代码块，同步方法。实现同步方法非常简单，它自需要在你同步的方法前插入 synchronized 关键字 如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public synchronized 返回类型 方法名(参数)</span><br></pre></td></tr></table></figure></p>
+<p>同步代码块只要在你所同步的代码使用如下形式<br>`synchronized{代码块}<br>大部分情况下还是使用异步线程(网站访问)<br>  (4)最后给大家简要介绍一下死锁的问题，死锁的形成多是由程序逻辑错误造成的线程访问僵持问题，两个线程互相挟制卡死，程序开发中应避免出现死锁。</p>
 
-
-    <!-- Tag Cloud Page -->
-    <hr>
-    <br>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/c-算法/">c++/算法</a><span class="category-list-count">2</span></li></ul>
-
-    <p class="count"></p>
-    <div class="tags">
-        <a href="/tags/Java/" style="font-size: 30.25px; color: #dfdfdf">Java</a> <a href="/tags/c/" style="font-size: 20.75px; color: #a0a0a0">c++</a> <a href="/tags/java/" style="font-size: 25.5px; color: #c0c0c0">java</a> <a href="/tags/分享/" style="font-size: 16px; color: #808080">分享</a> <a href="/tags/数据结构/" style="font-size: 16px; color: #808080">数据结构</a> <a href="/tags/算法/" style="font-size: 35px; color: #fff">算法</a>
-    </div>
-    <style>
-        .category-list li{
-            display: inline-block;
-            margin: 0 1em .5em 0;
-            padding: 4px;
-            border: 1px solid lightgray;
-            font-size: 1.2em;
-        }
-        .category-list a {
-            color: gray;
-        }
-        .category-list-item:hover a {
-            color: gray;
-            text-decoration: none;
-        }
-        .category-list-count {
-            margin-left: 2px;
-            font-size: .9em;
-        }
-        .article-entry ul li:before{
-            display: none;
-        }
-        .article-inner  {
-            text-align: center;
-        }
-        .tags {
-            max-width: 40em;
-            margin: 2em auto;
-            margin-top: 0em;
-        }
-        .tags a {
-            margin-right: 1em;
-            line-height: 65px;
-            border-bottom: 1px solid gray;
-            white-space: nowrap;
-        }
-        .tags a:hover {
-            border-bottom: 2px solid black;
-            text-decoration: none;
-            font-style: italic;
-        }
-        #count > span {
-            margin: auto .2em;
-            font-weight: bold;
-        }
-    </style>
-
-    <!-- Count tags and categories -->
-
-    
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-    <p id="count">
-            已有<span><script>document.write($(".category-list-item").length)</script></span>个分类，
-            共计<span><script>document.write($(".tags > a").length)</script></span>个标签。
-    </p>
-    <script>
-        $('#count').appendTo('.count');
-    </script>
-
-
-          
-        
       
     </div>
     
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/12/06/java多线程-Thread/">java多线程-Thread</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 林德雨 的个人博客">林德雨</a></p>
+        <p><span>发布时间:</span>2018年12月06日 - 20时53分</p>
+        <p><span>最后更新:</span>2018年12月06日 - 20时55分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/12/06/java多线程-Thread/" title="java多线程-Thread">https://lkdnjhhb.github.io/2018/12/06/java多线程-Thread/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://lkdnjhhb.github.io/2018/12/06/java多线程-Thread/　　作者: 林德雨" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2018/12/04/求差集/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">求差集</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
 
 
 <div class="share">
@@ -534,6 +515,41 @@
     
 
 
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2018/12/04/求差集/" title="下一篇: 求差集">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/06/java多线程-Thread/">java多线程-Thread</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/04/求差集/">求差集</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/04/字符串中字符排序/">字符串中字符排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/04/集合-Arrlist/">集合 Arrlist</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/01/图像识别/">图片检索</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/01/二分算法实例2/">二分算法实例2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/01/二分算法/">二分算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/01/二分算法实例1/">二分算法实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/图的完整操作/">图的完整操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/在hexo上写博客的模板/">在hexo上写博客的模板</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/如何用github-hexo搭建个人博客/">如何用github+hexo搭建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/java常用类库/">java常用类库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/prim算法/">最小生成树之prim算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/最小生成树之ksuak算法/">最小生成树之ksuak算法</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
 
 
 

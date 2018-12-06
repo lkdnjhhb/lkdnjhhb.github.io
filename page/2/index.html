@@ -198,7 +198,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/c/" style="font-size: 13.33px;">c++</a> <a href="/tags/java/" style="font-size: 13.33px;">java</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
+                        <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/c/" style="font-size: 12.5px;">c++</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
                     </div>
                 </section>
                 
@@ -280,6 +280,116 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-如何用github-hexo搭建个人博客" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/30/如何用github-hexo搭建个人博客/" class="article-date">
+      <time datetime="2018-11-30T06:59:31.000Z" itemprop="datePublished">2018-11-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/如何用github-hexo搭建个人博客/">如何用github+hexo搭建个人博客</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>找了很多教程，发现都不太全，所以写个最新版本的Github+hexo搭建属于自己的博客，第一次写，勿喷！！！</p>
+<p>搭建环境准备：</p>
+<p>1.下载Node.js安装文件（现在电脑基本都是64位的，我就放64位的下载地址）：<a href="https://nodejs.org/dist/v8.9.4/node-v8.9.4-x64.msi" target="_blank" rel="noopener">https://nodejs.org/dist/v8.9.4/node-v8.9.4-x64.msi</a></p>
+<p>或者自行到官网下载最新版本： <a href="https://nodejs.org" target="_blank" rel="noopener">https://nodejs.org</a></p>
+<p>2.安装Git： Git下载包（64位）   Git下载包（32位） </p>
+<p>教程</p>
+<p>下载完成后（全部按NEXT就好），按下WIN+R，调出运行窗口，打cmd，会出现如下图：</p>
+<p>检查node是否安装正确，输入下面两条指令</p>
+<p>node -v<br>npm -v<br>出现如下图就代表安装成功：</p>
+<p>检查Git是否安装正确，输入</p>
+<p>git –version<br>出现如下图就代表安装成功：</p>
+<p>安装成功后，先在Github注册一个账号:<a href="https://github.com/，点右上角的Sign" target="_blank" rel="noopener">https://github.com/，点右上角的Sign</a> up</p>
+<p>输入信息，确认无误后按create：</p>
+<p>第二步直接按继续，然后按右上角的</p>
+<p>如图：</p>
+<p>然后去邮箱那里验证：</p>
+<p>验证完之后就再按一次，会出现这个界面：</p>
+<p>创建成功会出现下图：</p>
+<p>先在某一个盘上创建一个文件夹，例如在E盘建立一个blog文件夹：       </p>
+<p>文件夹右键，点Git Bash ,进入这个界面：</p>
+<p>全局配置设置到淘宝源：</p>
+<p>npm config set registry <a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a></p>
+<p>设置全局配置user.name 和user.email</p>
+<p>git config –-global user.name “55kaikainiubi”  //(“”的账号是刚才Github里面自己注册的账号)<br>git config –-global user.email “<a href="mailto:836508484@qq.com" target="_blank" rel="noopener">836508484@qq.com</a>” //(“”的邮箱是你自己注册的邮箱)<br>成功配置：</p>
+<p>生成SSH密钥设置到Github(需先设置user.name和user.email)</p>
+<p>cd ~/.ssh<br>ssh-keygen -t rsa -C “<a href="mailto:836508484@qq.com" target="_blank" rel="noopener">836508484@qq.com</a>” //打自己的邮箱<br>出现下图：</p>
+<p>设置ssh key到GitHub<br>默认生成ssh key在C:\Users\username.ssh文件夹中，复制 id_rsa.pub文件到 github-&gt;settings-&gt;SSH and GPG key-&gt;new ssh key 如图 </p>
+<p>把里面的代码，复制到刚才网站注册的地方：</p>
+<p>ssh设置是否成功测试</p>
+<p>ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
+<p>安装hexo插件</p>
+<p>输入以下代码：</p>
+<p>  cd / #进入根目录，实际上是git安装的根目录<br>  pwd /<br>npm install hexo-cli -g #安装hexo，阿里云源 大概10s安装</p>
+<p>安装之后，输入以下代码：</p>
+<p>cd /<br>hexo init Hexo<br>cd /Hexo<br>npm instal<br>hexo generate（可简写为hexo g）<br>hexo sever（可简写为hexo s）</p>
+<p>发现到最后已经有网址，复制+粘贴到浏览器访问</p>
+<p>假如4000打不开，换一个端口，输入以下代码：</p>
+<p>hexo s -p 5000<br>本地搭建hexo博客插件完成。</p>
+<p>上传hexo博客的静态文档到GitHub</p>
+<p>查看hexo插件的版本</p>
+<p>hexo -V</p>
+<p>大于hexo 3.0的上传到github的方法： </p>
+<p>安装部署到github插件依赖</p>
+<p>npm install –save hexo-deployer-git</p>
+<p>然后打开我的电脑搜索Hexo文件夹</p>
+<p>deploy:<br>type: git<br>repo: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:55kaikainiubi/55kaikainiubi.github.io.git  //（改成自己的用户名和用户名加域名）<br>branch: master</p>
+<p>再将gitbash部署hexo到github</p>
+<p>hexo deploy<br>看到这样的进程，代表成功部署hexo到github</p>
+<p>等待10分钟左右，打开用户名.github.io,会出现如下界面（代表成功搭建博客）：</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分享/">分享</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
   
     <article id="post-java常用类库" class="article article-type-post" itemscope="" itemprop="blogPost">
   

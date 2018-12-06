@@ -198,7 +198,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/c/" style="font-size: 13.33px;">c++</a> <a href="/tags/java/" style="font-size: 13.33px;">java</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
+                        <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/c/" style="font-size: 12.5px;">c++</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
                     </div>
                 </section>
                 
@@ -280,6 +280,80 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-java多线程-Thread" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/06/java多线程-Thread/" class="article-date">
+      <time datetime="2018-12-06T12:53:34.000Z" itemprop="datePublished">2018-12-06</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/06/java多线程-Thread/">java多线程-Thread</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>1.介绍线程时先解释一下什么是线程，进程，毕竟这两个概念十分相像，进程通俗来讲就是在计算机中执行的程序，一个程序就是一个进程，线程是进程的细分，进程可以包含多个线程，对于线程还有更细的划分，名字叫纤程，一个计算机可以同时执行多个进程任务，一个进程可以同时执行线程任务，但严格来说这样是不对的，它们都是去抢占计算机的资源（cpu ,IO,寄存器…）来去执行的，严格来说，一个计算机在某一时间只能执行一个进程，一个进程内只能执行一个线程，只是因为计算机的运算，和进程或进程的抢占时间的短，快，造成了同时执行的假象。新建状态（New）：当线程对象对创建后，即进入了新建状态，如：Thread t = new MyThread();</p>
+<p>就绪状态（Runnable）：当调用线程对象的start()方法（t.start();），线程即进入就绪状态。处于就绪状态的线程，只是说明此线程已经做好了准备，随时等待CPU调度执行，并不是说执行了t.start()此线程立即就会执行；</p>
+<p>运行状态（Running）：当CPU开始调度处于就绪状态的线程时，此时线程才得以真正执行，即进入到运行状态。注：就     绪状态是进入到运行状态的唯一入口，也就是说，线程要想进入运行状态执行，首先必须处于就绪状态中；</p>
+<p>阻塞状态（Blocked）：处于运行状态中的线程由于某种原因，暂时放弃对CPU的使用权，停止执行，此时进入阻塞状态，直到其进入到就绪状态，才 有机会再次被CPU调用以进入到运行状态。根据阻塞产生的原因不同，阻塞状态又可以分为三种：</p>
+<p>1.等待阻塞：运行状态中的线程执行wait()方法，使本线程进入到等待阻塞状态；</p>
+<p>2.同步阻塞 – 线程在获取synchronized同步锁失败(因为锁被其它线程所占用)，它会进入同步阻塞状态；</p>
+<p>3.其他阻塞 – 通过调用线程的sleep()或join()或发出了I/O请求时，线程会进入到阻塞状态。当sleep()状态超时、join()等待线程终止或者超时、或者I/O处理完毕时，线程重新转入就绪状态。</p>
+<p>死亡状态（Dead）：线程执行完了或者因异常退出了run()方法，该线程结束生命周期。<br>2.经过上面的简单介绍下相信大家也对进程和线程有了一些认识，下面给大家介绍一下java中的线程（Thread）java中的线程从Java1.0就出现，一直在被完善。下面给大家介绍一下线程的构造方法：<br>   (1) 继承Thread类来实现线程的构造<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Thread1 extends Thread&#123;</span><br><span class="line">	//用这种方法构造线程是要对run方法重写</span><br><span class="line">   public  void  run() &#123;</span><br><span class="line">	System.out.println(this.getName());</span><br><span class="line">&#125;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">        System.out.println(Thread.currentThread().getName());</span><br><span class="line">        Thread1 thread1=new Thread1();</span><br><span class="line">        Thread1 thread2=new Thread1();</span><br><span class="line">        thread1.start();//start方法用来开启线程来自父类</span><br><span class="line">        thread2.start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在用继承Thread类时实现线程时必须重写run方法，它是线程开始后执行的方法，调用start方法就是线程进入了就绪状态准备执行。<br>   (2)实现Runnable接口来实现线程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class MyRunnable implements Runnable &#123;</span><br><span class="line"></span><br><span class="line">	@SuppressWarnings(&quot;static-access&quot;)//压制警告</span><br><span class="line">	public static void main(String[] args) throws InterruptedException &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">        Thread thread=new Thread(new MyRunnable());</span><br><span class="line">		thread.start();</span><br><span class="line">		thread.sleep(1000);</span><br><span class="line">		System.out.println(thread.isAlive());</span><br><span class="line">		thread.join();</span><br><span class="line">		System.out.println(thread.isAlive());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		//输出当前执行线程的名字</span><br><span class="line">		System.out.println(Thread.currentThread().getName());</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>除此之外还有一种有返回值的方法就简单介绍一下使用Callable和Future接口创建线程。具体是创建Callable接口的实现类，并实现clall()方法。并使用FutureTask类来包装Callable实现类的对象，且以此FutureTask对象作为Thread对象的target来创建线程。<br>我先说一下Runnable是一个函数式编程接口(接口中方法都是公共的)，我先说一下一个有意思的地方Thread类在实现的时候也继承了Runnable接口。并且此接口有利于数据共享。下面为大家举个例子来说明这个问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class MyThread extends Thread&#123;</span><br><span class="line">   protected int tickets=50;</span><br><span class="line">   public void run() &#123;</span><br><span class="line">	   while(this.tickets&gt;0) &#123;</span><br><span class="line">		   System.out.println(this.getName()+&quot;正在卖票&quot;+tickets--);</span><br><span class="line">	   &#125;</span><br><span class="line">	   if(this.tickets==0)</span><br><span class="line">		System.out.println(&quot;票卖完了&quot;);   </span><br><span class="line">   &#125;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		MyThread myThread1=new MyThread();</span><br><span class="line">		myThread1.setName(&quot;售票员1&quot;);</span><br><span class="line">		MyThread myThread2=new MyThread();</span><br><span class="line">		myThread2.setName(&quot;售票员2&quot;);</span><br><span class="line">		MyThread myThread3=new MyThread();</span><br><span class="line">		myThread3.setName(&quot;售票员3&quot;);</span><br><span class="line">		MyThread myThread4=new MyThread();</span><br><span class="line">		myThread4.setName(&quot;售票员4&quot;);</span><br><span class="line">        myThread1.start();</span><br><span class="line">        myThread2.start();</span><br><span class="line">        myThread3.start();</span><br><span class="line">        myThread4.start();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上例运行结果：出现了多人卖同一张票的情况，相同的票数数据没有实现共享，有人说了你这四个各不相干的线程当然会出现这种问题，但是我们最初的设计是票数数据是公共的，写死的，这时候用Runnable就能较好解决这个问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class MyThread2 implements Runnable &#123;</span><br><span class="line">    protected   int tickets=50;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		MyThread2 mt=new MyThread2();</span><br><span class="line">		new Thread(mt, &quot;售票员1&quot;).start();</span><br><span class="line">		new Thread(mt, &quot;售票员2&quot;).start();</span><br><span class="line">		new Thread(mt, &quot;售票员3&quot;).start();</span><br><span class="line">		new Thread(mt, &quot;售票员4&quot;).start();</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public void run() &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		while(this.tickets&gt;0) &#123;</span><br><span class="line">			   System.out.println(Thread.currentThread().getName()+&quot;正在卖票&quot;+tickets--);</span><br><span class="line">		   &#125;</span><br><span class="line">		   if(this.tickets==0)</span><br><span class="line">			System.out.println(&quot;票卖完了&quot;);   </span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>由上述代码成功解决票数数据共享的问题。<br>  (3)下面为大家解释一下线程同步的问题，先举个例子来说明一下线程同步在一些方面的重要作用，比如去银行取钱，存钱，这就要去同一时间只有一个人能操作这一张银行卡，否则很容易造成资金的问题，那么解决这个问题就用到了线程同步概念，所谓线程同步就是某一时刻只能有一个线程来操作共享的数据资源。实现方式有两种，同步代码块，同步方法。实现同步方法非常简单，它自需要在你同步的方法前插入 synchronized 关键字 如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public synchronized 返回类型 方法名(参数)</span><br></pre></td></tr></table></figure></p>
+<p>同步代码块只要在你所同步的代码使用如下形式<br>`synchronized{代码块}<br>大部分情况下还是使用异步线程(网站访问)<br>  (4)最后给大家简要介绍一下死锁的问题，死锁的形成多是由程序逻辑错误造成的线程访问僵持问题，两个线程互相挟制卡死，程序开发中应避免出现死锁。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
   
     <article id="post-求差集" class="article article-type-post" itemscope="" itemprop="blogPost">
   
@@ -628,6 +702,83 @@
 
 
   
+    <article id="post-二分算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/01/二分算法/" class="article-date">
+      <time datetime="2018-12-01T14:08:35.000Z" itemprop="datePublished">2018-12-01</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/二分算法/">二分算法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>1、定义<br>    二分查找又称折半查找，它是一种效率较高的查找方法。</p>
+<pre><code>二分查找要求：线性表是有序表，即表中结点按关键字有序，并且要用向量作为表的存储结构。不妨设有序表是递增有序的。
+</code></pre><p>2、基本思想<br>    二分查找的基本思想是：</p>
+<pre><code>设R[low..high]是当前的查找区间
+</code></pre><p> （1）首先确定该区间的中点位置：</p>
+<p> （2）然后将待查的K值与R[mid].key比较：若相等，则查找成功并返回此位置，否则须确定新的查找区间，继续二分查找，具体方法如下：</p>
+<pre><code>①  若R[mid].key&gt;K，则由表的有序性可知R[mid..n].keys均大于K，因此若表中存在关键字等于K的结点，则该结点必定是在位置mid左边的子表R[1..mid-1]中，故新的查找区间是左子表R[1..mid-1]。
+
+②  若R[mid].key&lt;K，则要查找的K必在mid的右子表R[mid+1..n]中，即新的查找区间是右子表R[mid+1..n]。下一次查找是针对新的查找区间进行的。
+
+因此，从初始的查找区间R[1..n]开始，每经过一次与当前查找区间的中点位置上的结点关键字的比较，就可确定查找是否成功，不成功则当前的查找区间就缩小一半。这一过程重复直至找到关键字为K的结点，或者直至当前的查找区间为空(即查找失败)时为止。
+</code></pre><p>3、存储结构<br>    二分查找只适用顺序存储结构。`<br>4.伪代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 二分查找，找到该值在数组中的下标，否则为-1</span><br><span class="line"> */</span><br><span class="line">static int binarySerach(int[] array, int key) &#123;</span><br><span class="line">    int low = 0;</span><br><span class="line">    int high = array.length - 1;</span><br><span class="line"></span><br><span class="line">    // 这里必须是 &lt;=</span><br><span class="line">    while (low &lt;= high) &#123;</span><br><span class="line">        int mid = (low + high) / 2;</span><br><span class="line">        if (array[mid] == key) &#123;</span><br><span class="line">            return mid;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (array[mid] &lt; key) &#123;</span><br><span class="line">            low = mid + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            height = mid - 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>递归实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">int binarySerach(int[] arr, int key,int low,int high) &#123;</span><br><span class="line">		//求中间元素的下标</span><br><span class="line">		int mid = (low + high) / 2;</span><br><span class="line">		//数组内不含有指定元素，依据下标的规则，退出</span><br><span class="line">		if (low &gt; high)</span><br><span class="line">			return -1;</span><br><span class="line">		//查找到指定元素</span><br><span class="line">		if (key == arr[mid]) &#123;</span><br><span class="line">			return mid;</span><br><span class="line">			//当查找的元素大于中间下标的元素，则改变开始下标的位置</span><br><span class="line">		&#125; else if (key &gt; arr[mid]) &#123;</span><br><span class="line">			return getKey(arr, key, mid + 1, high);</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			//当查找的元素小于中间下标的元素，则改变结束下标的位置</span><br><span class="line">			return getKey(arr, key, low, mid - 1);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><code>`</code></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-二分算法实例1" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -674,83 +825,6 @@
 <p>2</p>
 <p>实现代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">    static boolean check(int mid,Qkl[] qkl,int m) &#123;</span><br><span class="line">    	//求分出的块的数量</span><br><span class="line">    	int sum = 0;</span><br><span class="line">    	for(int i = 0; i &lt;qkl.length ; i++)&#123;</span><br><span class="line">    		sum += (qkl[i].hi / mid ) * (qkl[i].wi / mid);</span><br><span class="line">    	&#125;</span><br><span class="line">    	return sum &gt;= m;</span><br><span class="line">    	</span><br><span class="line">    &#125;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">	    Scanner scanner=new Scanner(System.in);</span><br><span class="line">		int n;//n块巧克里</span><br><span class="line">		int m;//m块</span><br><span class="line">		n=scanner.nextInt();</span><br><span class="line">		m=scanner.nextInt();</span><br><span class="line">		Qkl[] qkl=new Qkl[n];</span><br><span class="line">        for(int i=0;i&lt;qkl.length;i++) &#123;</span><br><span class="line">        	Qkl q=new Qkl();</span><br><span class="line">        	q.hi=scanner.nextInt();</span><br><span class="line">        	q.wi=scanner.nextInt();</span><br><span class="line">        	qkl[i]=q;</span><br><span class="line">        &#125;</span><br><span class="line">        //要求是求最大边长,最通用的就是一个一个枚举求出最大边长因速度慢所以采用二分举例求最大边长</span><br><span class="line">        int l=1;</span><br><span class="line">        int r=10000;</span><br><span class="line">        int mid;</span><br><span class="line">         //二分寻找边长要求边长最大所以循环全部进行</span><br><span class="line">        while(l &lt; r)&#123;</span><br><span class="line">    		mid = (l+r+1)/2;</span><br><span class="line">    		if(check(mid,qkl,m))</span><br><span class="line">    			l = mid;</span><br><span class="line">    		else</span><br><span class="line">    			r = mid - 1;</span><br><span class="line">    	&#125; </span><br><span class="line"></span><br><span class="line">        System.out.println(l);</span><br><span class="line">        </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class Qkl&#123;</span><br><span class="line">	int hi;</span><br><span class="line">	int wi;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-二分算法" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/12/01/二分算法/" class="article-date">
-      <time datetime="2018-12-01T14:08:35.000Z" itemprop="datePublished">2018-12-01</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/01/二分算法/">二分算法</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>1、定义<br>    二分查找又称折半查找，它是一种效率较高的查找方法。</p>
-<pre><code>二分查找要求：线性表是有序表，即表中结点按关键字有序，并且要用向量作为表的存储结构。不妨设有序表是递增有序的。
-</code></pre><p>2、基本思想<br>    二分查找的基本思想是：</p>
-<pre><code>设R[low..high]是当前的查找区间
-</code></pre><p> （1）首先确定该区间的中点位置：</p>
-<p> （2）然后将待查的K值与R[mid].key比较：若相等，则查找成功并返回此位置，否则须确定新的查找区间，继续二分查找，具体方法如下：</p>
-<pre><code>①  若R[mid].key&gt;K，则由表的有序性可知R[mid..n].keys均大于K，因此若表中存在关键字等于K的结点，则该结点必定是在位置mid左边的子表R[1..mid-1]中，故新的查找区间是左子表R[1..mid-1]。
-
-②  若R[mid].key&lt;K，则要查找的K必在mid的右子表R[mid+1..n]中，即新的查找区间是右子表R[mid+1..n]。下一次查找是针对新的查找区间进行的。
-
-因此，从初始的查找区间R[1..n]开始，每经过一次与当前查找区间的中点位置上的结点关键字的比较，就可确定查找是否成功，不成功则当前的查找区间就缩小一半。这一过程重复直至找到关键字为K的结点，或者直至当前的查找区间为空(即查找失败)时为止。
-</code></pre><p>3、存储结构<br>    二分查找只适用顺序存储结构。`<br>4.伪代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 二分查找，找到该值在数组中的下标，否则为-1</span><br><span class="line"> */</span><br><span class="line">static int binarySerach(int[] array, int key) &#123;</span><br><span class="line">    int low = 0;</span><br><span class="line">    int high = array.length - 1;</span><br><span class="line"></span><br><span class="line">    // 这里必须是 &lt;=</span><br><span class="line">    while (low &lt;= high) &#123;</span><br><span class="line">        int mid = (low + high) / 2;</span><br><span class="line">        if (array[mid] == key) &#123;</span><br><span class="line">            return mid;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (array[mid] &lt; key) &#123;</span><br><span class="line">            low = mid + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            height = mid - 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>递归实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">int binarySerach(int[] arr, int key,int low,int high) &#123;</span><br><span class="line">		//求中间元素的下标</span><br><span class="line">		int mid = (low + high) / 2;</span><br><span class="line">		//数组内不含有指定元素，依据下标的规则，退出</span><br><span class="line">		if (low &gt; high)</span><br><span class="line">			return -1;</span><br><span class="line">		//查找到指定元素</span><br><span class="line">		if (key == arr[mid]) &#123;</span><br><span class="line">			return mid;</span><br><span class="line">			//当查找的元素大于中间下标的元素，则改变开始下标的位置</span><br><span class="line">		&#125; else if (key &gt; arr[mid]) &#123;</span><br><span class="line">			return getKey(arr, key, mid + 1, high);</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			//当查找的元素小于中间下标的元素，则改变结束下标的位置</span><br><span class="line">			return getKey(arr, key, low, mid - 1);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><code>`</code></p>
 
       
     </div>
@@ -893,116 +967,6 @@ return t;
       
 
       
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-如何用github-hexo搭建个人博客" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/11/30/如何用github-hexo搭建个人博客/" class="article-date">
-      <time datetime="2018-11-30T06:59:31.000Z" itemprop="datePublished">2018-11-30</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/30/如何用github-hexo搭建个人博客/">如何用github+hexo搭建个人博客</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>找了很多教程，发现都不太全，所以写个最新版本的Github+hexo搭建属于自己的博客，第一次写，勿喷！！！</p>
-<p>搭建环境准备：</p>
-<p>1.下载Node.js安装文件（现在电脑基本都是64位的，我就放64位的下载地址）：<a href="https://nodejs.org/dist/v8.9.4/node-v8.9.4-x64.msi" target="_blank" rel="noopener">https://nodejs.org/dist/v8.9.4/node-v8.9.4-x64.msi</a></p>
-<p>或者自行到官网下载最新版本： <a href="https://nodejs.org" target="_blank" rel="noopener">https://nodejs.org</a></p>
-<p>2.安装Git： Git下载包（64位）   Git下载包（32位） </p>
-<p>教程</p>
-<p>下载完成后（全部按NEXT就好），按下WIN+R，调出运行窗口，打cmd，会出现如下图：</p>
-<p>检查node是否安装正确，输入下面两条指令</p>
-<p>node -v<br>npm -v<br>出现如下图就代表安装成功：</p>
-<p>检查Git是否安装正确，输入</p>
-<p>git –version<br>出现如下图就代表安装成功：</p>
-<p>安装成功后，先在Github注册一个账号:<a href="https://github.com/，点右上角的Sign" target="_blank" rel="noopener">https://github.com/，点右上角的Sign</a> up</p>
-<p>输入信息，确认无误后按create：</p>
-<p>第二步直接按继续，然后按右上角的</p>
-<p>如图：</p>
-<p>然后去邮箱那里验证：</p>
-<p>验证完之后就再按一次，会出现这个界面：</p>
-<p>创建成功会出现下图：</p>
-<p>先在某一个盘上创建一个文件夹，例如在E盘建立一个blog文件夹：       </p>
-<p>文件夹右键，点Git Bash ,进入这个界面：</p>
-<p>全局配置设置到淘宝源：</p>
-<p>npm config set registry <a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a></p>
-<p>设置全局配置user.name 和user.email</p>
-<p>git config –-global user.name “55kaikainiubi”  //(“”的账号是刚才Github里面自己注册的账号)<br>git config –-global user.email “<a href="mailto:836508484@qq.com" target="_blank" rel="noopener">836508484@qq.com</a>” //(“”的邮箱是你自己注册的邮箱)<br>成功配置：</p>
-<p>生成SSH密钥设置到Github(需先设置user.name和user.email)</p>
-<p>cd ~/.ssh<br>ssh-keygen -t rsa -C “<a href="mailto:836508484@qq.com" target="_blank" rel="noopener">836508484@qq.com</a>” //打自己的邮箱<br>出现下图：</p>
-<p>设置ssh key到GitHub<br>默认生成ssh key在C:\Users\username.ssh文件夹中，复制 id_rsa.pub文件到 github-&gt;settings-&gt;SSH and GPG key-&gt;new ssh key 如图 </p>
-<p>把里面的代码，复制到刚才网站注册的地方：</p>
-<p>ssh设置是否成功测试</p>
-<p>ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
-<p>安装hexo插件</p>
-<p>输入以下代码：</p>
-<p>  cd / #进入根目录，实际上是git安装的根目录<br>  pwd /<br>npm install hexo-cli -g #安装hexo，阿里云源 大概10s安装</p>
-<p>安装之后，输入以下代码：</p>
-<p>cd /<br>hexo init Hexo<br>cd /Hexo<br>npm instal<br>hexo generate（可简写为hexo g）<br>hexo sever（可简写为hexo s）</p>
-<p>发现到最后已经有网址，复制+粘贴到浏览器访问</p>
-<p>假如4000打不开，换一个端口，输入以下代码：</p>
-<p>hexo s -p 5000<br>本地搭建hexo博客插件完成。</p>
-<p>上传hexo博客的静态文档到GitHub</p>
-<p>查看hexo插件的版本</p>
-<p>hexo -V</p>
-<p>大于hexo 3.0的上传到github的方法： </p>
-<p>安装部署到github插件依赖</p>
-<p>npm install –save hexo-deployer-git</p>
-<p>然后打开我的电脑搜索Hexo文件夹</p>
-<p>deploy:<br>type: git<br>repo: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:55kaikainiubi/55kaikainiubi.github.io.git  //（改成自己的用户名和用户名加域名）<br>branch: master</p>
-<p>再将gitbash部署hexo到github</p>
-<p>hexo deploy<br>看到这样的进程，代表成功部署hexo到github</p>
-<p>等待10分钟左右，打开用户名.github.io,会出现如下界面（代表成功搭建博客）：</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分享/">分享</a></li></ul>
-    </div>
-
       
       <div class="clearfix"></div>
     </div>
