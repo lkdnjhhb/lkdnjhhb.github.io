@@ -907,77 +907,6 @@ return t;
 
 
   
-    <article id="post-prim算法" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/11/30/prim算法/" class="article-date">
-      <time datetime="2018-11-30T06:18:09.000Z" itemprop="datePublished">2018-11-30</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/30/prim算法/">最小生成树之prim算法</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>如果一个算法文字描述不清楚，就说明思路不清楚，也不可能写好。</p>
-<p>prim算法是实现图的最小生成树。既然是图，就假设包含n个顶点，m条边。prim算法是从顶点出发的，其算法时间复杂度与顶点数目有关系。</p>
-<p>（注意：prim算法适合稠密图，其时间复杂度为O(n^2)，其时间复杂度与边得数目无关，而kruskal算法的时间复杂度为O(eloge)跟边的数目有关，适合稀疏图。）</p>
-<p>算法思路：从某个顶点开始，假设v0，此时v0属于最小生成树结点中的一个元素，该集合假设u，剩下的V-v0为待判定的点，此时选取u中的顶点到V-v0中顶点的一个路径最小的边，并且将其中非u中的顶点加入到u中，循环直到u中的顶点包含图所有的顶点为止。<br>算法在选取最小路径的时候需要优化，具体思路：w[]数组保存各个顶点的最短路径，b[]数组保存到i顶点最短路径的顶点，比如，到0号顶点最短的路径是&lt;v0,v3&gt;，那么w[0]=&lt;v0,v3&gt;，b[0]=3；这样每次找最小路径就不是o(n*n)的代价。代码实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">//prim算法</span><br><span class="line">template&lt;class VertexType, class ArcType&gt;</span><br><span class="line">void prim(MGraph&lt;VertexType,ArcType&gt; G) &#123;</span><br><span class="line">	shortEdge&lt;VertexType, ArcType&gt; *shortedge=new shortEdge&lt;VertexType, ArcType&gt;[G.vertexNum];</span><br><span class="line">	for (int i = 0; i &lt; G.vertexNum; i++) &#123;</span><br><span class="line">		shortedge[i].lowcost = G.arc[0][i];</span><br><span class="line">		shortedge[i].adjvex = G.vertex[0];</span><br><span class="line">	&#125;</span><br><span class="line">	shortedge[0].lowcost = 0;</span><br><span class="line">	for (int i = 1; i &lt; G.vertexNum; i++) &#123;</span><br><span class="line">		int k = MinEnge(shortedge, G.vertexNum);</span><br><span class="line">		cout &lt;&lt; &quot;(&quot; &lt;&lt; shortedge[k].adjvex &lt;&lt; G.vertex[k] &lt;&lt; &quot;)&quot; &lt;&lt; shortedge[k].lowcost &lt;&lt; endl;</span><br><span class="line">		shortedge[k].lowcost = 0;</span><br><span class="line">		for (int j = 1; j &lt; G.vertexNum; j++) &#123;</span><br><span class="line">			if (G.arc[k][j] &lt; shortedge[j].lowcost) &#123;</span><br><span class="line">				shortedge[j].lowcost = G.arc[k][j];</span><br><span class="line">				shortedge[j].adjvex = G.vertex[k];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">template&lt;class VertexType, class ArcType&gt; </span><br><span class="line">//查找集合中最短边</span><br><span class="line">int  MinEnge(shortEdge&lt;VertexType, ArcType&gt; shortenge[],int vertexNum) &#123;</span><br><span class="line">	int k;</span><br><span class="line">	for (int i = 0; i &lt; vertexNum; i++) &#123;</span><br><span class="line">		if (shortenge[i].lowcost != 0) &#123;</span><br><span class="line">			k = i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	for (int i = 0; i &lt; vertexNum; i++) &#123;</span><br><span class="line">		if (shortenge[i].lowcost != 0 &amp;&amp; shortenge[i].lowcost &lt; shortenge[k].lowcost)</span><br><span class="line">			k = i;</span><br><span class="line">	&#125;</span><br><span class="line">	return k;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><code>`</code></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/c-算法/">c++/算法</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
     <article id="post-最小生成树之ksuak算法" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -1025,6 +954,77 @@ return t;
 <p><2>　在Ｅ中选择一条具有最小权植的边时，若该边的两个顶点落在不同的连通分量上，则将此边加入到Ｔ中；否则，即这条边的两个顶点落到同一连通分量      上，则将此边舍去（此后永不选用这条边），重新选择一条权植最小的边。</2></p>
 <p><3>　如此重复下去，直到所有顶点在同一连通分量上为止。</3></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">void Kruskal(MGraph&lt;VertexType, ArcType&gt; G) &#123;</span><br><span class="line">	EdgeType&lt; VertexType, ArcType&gt; *edge = new EdgeType&lt; VertexType, ArcType&gt;[G.arcNum*2];</span><br><span class="line">	//初始化边集数组</span><br><span class="line">	int k = 0;</span><br><span class="line">	for (int i = 0; i &lt; G.vertexNum; i++) &#123;</span><br><span class="line">		for (int j = 0; j &lt; G.vertexNum; j++) &#123;</span><br><span class="line">			if (G.arc[i][j] != MaxInt) &#123;</span><br><span class="line">				edge[k].from = G.vertex[i];</span><br><span class="line">				edge[k].to = G.vertex[j];</span><br><span class="line">				edge[k].weight = G.arc[i][j];</span><br><span class="line">				k++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	soft(edge, G.arcNum*2);</span><br><span class="line">	int *parent = new int[G.vertexNum];</span><br><span class="line">	for (int i = 0; i &lt; G.vertexNum; i++) parent[i] = -1;</span><br><span class="line">	for (int num = 0, i = 0; i &lt; G.arcNum*2; i++) &#123;</span><br><span class="line">		int vex1 = FindRoot(parent, G.LocateVex(edge[i].from));</span><br><span class="line">		int  vex2 = FindRoot(parent, G.LocateVex(edge[i].to));</span><br><span class="line">		if (vex1 != vex2) &#123;</span><br><span class="line">			cout &lt;&lt; &quot;(&quot; &lt;&lt; edge[i].from &lt;&lt; edge[i].to &lt;&lt; &quot;)&quot; &lt;&lt; edge[i].weight &lt;&lt; endl;</span><br><span class="line">			parent[vex2] = vex1;</span><br><span class="line">			num++;</span><br><span class="line">			if (num == G.vertexNum - 1) return;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">template&lt;class VertexType, class ArcType&gt;</span><br><span class="line">//对边集进行排序的函数</span><br><span class="line">void soft(EdgeType&lt; VertexType, ArcType&gt; *edge, int length) &#123;</span><br><span class="line">	for (int i = 0; i &lt; length - 1; i++) &#123;</span><br><span class="line">		for (int j = 0; j &lt; length - i - 1; j++) &#123;</span><br><span class="line">			if (edge[j].weight &gt; edge[j + 1].weight) &#123;</span><br><span class="line">				EdgeType&lt; VertexType, ArcType&gt; e;</span><br><span class="line">				e = edge[j];</span><br><span class="line">				edge[j] = edge[j + 1];</span><br><span class="line">				edge[j + 1] = e;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//寻找根节点</span><br><span class="line">static int FindRoot(int parent[], int v) &#123;</span><br><span class="line">	int t = v;</span><br><span class="line"></span><br><span class="line">	while(parent[t] &gt; -1) t = parent[t];</span><br><span class="line">	return t;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/c-算法/">c++/算法</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-prim算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/30/prim算法/" class="article-date">
+      <time datetime="2018-11-30T06:18:09.000Z" itemprop="datePublished">2018-11-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/prim算法/">最小生成树之prim算法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>如果一个算法文字描述不清楚，就说明思路不清楚，也不可能写好。</p>
+<p>prim算法是实现图的最小生成树。既然是图，就假设包含n个顶点，m条边。prim算法是从顶点出发的，其算法时间复杂度与顶点数目有关系。</p>
+<p>（注意：prim算法适合稠密图，其时间复杂度为O(n^2)，其时间复杂度与边得数目无关，而kruskal算法的时间复杂度为O(eloge)跟边的数目有关，适合稀疏图。）</p>
+<p>算法思路：从某个顶点开始，假设v0，此时v0属于最小生成树结点中的一个元素，该集合假设u，剩下的V-v0为待判定的点，此时选取u中的顶点到V-v0中顶点的一个路径最小的边，并且将其中非u中的顶点加入到u中，循环直到u中的顶点包含图所有的顶点为止。<br>算法在选取最小路径的时候需要优化，具体思路：w[]数组保存各个顶点的最短路径，b[]数组保存到i顶点最短路径的顶点，比如，到0号顶点最短的路径是&lt;v0,v3&gt;，那么w[0]=&lt;v0,v3&gt;，b[0]=3；这样每次找最小路径就不是o(n*n)的代价。代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">//prim算法</span><br><span class="line">template&lt;class VertexType, class ArcType&gt;</span><br><span class="line">void prim(MGraph&lt;VertexType,ArcType&gt; G) &#123;</span><br><span class="line">	shortEdge&lt;VertexType, ArcType&gt; *shortedge=new shortEdge&lt;VertexType, ArcType&gt;[G.vertexNum];</span><br><span class="line">	for (int i = 0; i &lt; G.vertexNum; i++) &#123;</span><br><span class="line">		shortedge[i].lowcost = G.arc[0][i];</span><br><span class="line">		shortedge[i].adjvex = G.vertex[0];</span><br><span class="line">	&#125;</span><br><span class="line">	shortedge[0].lowcost = 0;</span><br><span class="line">	for (int i = 1; i &lt; G.vertexNum; i++) &#123;</span><br><span class="line">		int k = MinEnge(shortedge, G.vertexNum);</span><br><span class="line">		cout &lt;&lt; &quot;(&quot; &lt;&lt; shortedge[k].adjvex &lt;&lt; G.vertex[k] &lt;&lt; &quot;)&quot; &lt;&lt; shortedge[k].lowcost &lt;&lt; endl;</span><br><span class="line">		shortedge[k].lowcost = 0;</span><br><span class="line">		for (int j = 1; j &lt; G.vertexNum; j++) &#123;</span><br><span class="line">			if (G.arc[k][j] &lt; shortedge[j].lowcost) &#123;</span><br><span class="line">				shortedge[j].lowcost = G.arc[k][j];</span><br><span class="line">				shortedge[j].adjvex = G.vertex[k];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">template&lt;class VertexType, class ArcType&gt; </span><br><span class="line">//查找集合中最短边</span><br><span class="line">int  MinEnge(shortEdge&lt;VertexType, ArcType&gt; shortenge[],int vertexNum) &#123;</span><br><span class="line">	int k;</span><br><span class="line">	for (int i = 0; i &lt; vertexNum; i++) &#123;</span><br><span class="line">		if (shortenge[i].lowcost != 0) &#123;</span><br><span class="line">			k = i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	for (int i = 0; i &lt; vertexNum; i++) &#123;</span><br><span class="line">		if (shortenge[i].lowcost != 0 &amp;&amp; shortenge[i].lowcost &lt; shortenge[k].lowcost)</span><br><span class="line">			k = i;</span><br><span class="line">	&#125;</span><br><span class="line">	return k;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>`</code></p>
+
       
     </div>
     
