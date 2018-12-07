@@ -198,7 +198,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/c/" style="font-size: 13.33px;">c++</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
+                        <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/c/" style="font-size: 12.5px;">c++</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 17.5px;">算法</a>
                     </div>
                 </section>
                 
@@ -280,6 +280,83 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-二分算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/01/二分算法/" class="article-date">
+      <time datetime="2018-12-01T14:08:35.000Z" itemprop="datePublished">2018-12-01</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/01/二分算法/">二分算法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>1、定义<br>    二分查找又称折半查找，它是一种效率较高的查找方法。</p>
+<pre><code>二分查找要求：线性表是有序表，即表中结点按关键字有序，并且要用向量作为表的存储结构。不妨设有序表是递增有序的。
+</code></pre><p>2、基本思想<br>    二分查找的基本思想是：</p>
+<pre><code>设R[low..high]是当前的查找区间
+</code></pre><p> （1）首先确定该区间的中点位置：</p>
+<p> （2）然后将待查的K值与R[mid].key比较：若相等，则查找成功并返回此位置，否则须确定新的查找区间，继续二分查找，具体方法如下：</p>
+<pre><code>①  若R[mid].key&gt;K，则由表的有序性可知R[mid..n].keys均大于K，因此若表中存在关键字等于K的结点，则该结点必定是在位置mid左边的子表R[1..mid-1]中，故新的查找区间是左子表R[1..mid-1]。
+
+②  若R[mid].key&lt;K，则要查找的K必在mid的右子表R[mid+1..n]中，即新的查找区间是右子表R[mid+1..n]。下一次查找是针对新的查找区间进行的。
+
+因此，从初始的查找区间R[1..n]开始，每经过一次与当前查找区间的中点位置上的结点关键字的比较，就可确定查找是否成功，不成功则当前的查找区间就缩小一半。这一过程重复直至找到关键字为K的结点，或者直至当前的查找区间为空(即查找失败)时为止。
+</code></pre><p>3、存储结构<br>    二分查找只适用顺序存储结构。`<br>4.伪代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 二分查找，找到该值在数组中的下标，否则为-1</span><br><span class="line"> */</span><br><span class="line">static int binarySerach(int[] array, int key) &#123;</span><br><span class="line">    int low = 0;</span><br><span class="line">    int high = array.length - 1;</span><br><span class="line"></span><br><span class="line">    // 这里必须是 &lt;=</span><br><span class="line">    while (low &lt;= high) &#123;</span><br><span class="line">        int mid = (low + high) / 2;</span><br><span class="line">        if (array[mid] == key) &#123;</span><br><span class="line">            return mid;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (array[mid] &lt; key) &#123;</span><br><span class="line">            low = mid + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            height = mid - 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>递归实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">int binarySerach(int[] arr, int key,int low,int high) &#123;</span><br><span class="line">		//求中间元素的下标</span><br><span class="line">		int mid = (low + high) / 2;</span><br><span class="line">		//数组内不含有指定元素，依据下标的规则，退出</span><br><span class="line">		if (low &gt; high)</span><br><span class="line">			return -1;</span><br><span class="line">		//查找到指定元素</span><br><span class="line">		if (key == arr[mid]) &#123;</span><br><span class="line">			return mid;</span><br><span class="line">			//当查找的元素大于中间下标的元素，则改变开始下标的位置</span><br><span class="line">		&#125; else if (key &gt; arr[mid]) &#123;</span><br><span class="line">			return getKey(arr, key, mid + 1, high);</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			//当查找的元素小于中间下标的元素，则改变结束下标的位置</span><br><span class="line">			return getKey(arr, key, low, mid - 1);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><code>`</code></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
   
     <article id="post-图的完整操作" class="article article-type-post" itemscope="" itemprop="blogPost">
   

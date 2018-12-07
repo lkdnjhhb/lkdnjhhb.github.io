@@ -7,20 +7,20 @@
   
   
   
-  <title>字符串中字符排序 | LDY博客</title>
+  <title>java实现走迷宫问题 | LDY博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="【问题描述】编写一个程序，从键盘接收一个字符串，然后按照字符顺序从小到大进行排序，并删除重复的字符。【输入形式】用户在第一行输入一个字符串。【输出形式】程序按照字符(ASCII)顺序从小到大排序字符串，并删除重复的字符进行输出。【样例输入】badacgegfacb【样例输出】abcdefg【样例说明】用户输入字符串badacgegfacb，程序对其进行按从小到大(ASCII)顺序排序，并删除重复的">
+  <meta name="description" content="回溯法的基本思想是：对一个包括有很多结点，每个结点有若干个搜索分支的问题，把原问题分解为对若干个子问题求解的算法。当搜索到某个结点、发现无法再继续搜索下去时，就让搜索过程回溯（即退回）到该结点的前一结点，继续搜索这个结点的其他尚未搜索过的分支；如果发现这个结点也无法再继续搜索下去时，就让搜索过程回溯到这个结点的前一结点继续这样的搜索过程；这样的搜索过程一直进行到搜索到问题的解或搜索完了全部可搜索分">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="字符串中字符排序">
-<meta property="og:url" content="https://lkdnjhhb.github.io/2018/12/04/字符串中字符排序/index.html">
+<meta property="og:title" content="java实现走迷宫问题">
+<meta property="og:url" content="https://lkdnjhhb.github.io/2018/12/07/java实现走迷宫问题/index.html">
 <meta property="og:site_name" content="LDY博客">
-<meta property="og:description" content="【问题描述】编写一个程序，从键盘接收一个字符串，然后按照字符顺序从小到大进行排序，并删除重复的字符。【输入形式】用户在第一行输入一个字符串。【输出形式】程序按照字符(ASCII)顺序从小到大排序字符串，并删除重复的字符进行输出。【样例输入】badacgegfacb【样例输出】abcdefg【样例说明】用户输入字符串badacgegfacb，程序对其进行按从小到大(ASCII)顺序排序，并删除重复的">
+<meta property="og:description" content="回溯法的基本思想是：对一个包括有很多结点，每个结点有若干个搜索分支的问题，把原问题分解为对若干个子问题求解的算法。当搜索到某个结点、发现无法再继续搜索下去时，就让搜索过程回溯（即退回）到该结点的前一结点，继续搜索这个结点的其他尚未搜索过的分支；如果发现这个结点也无法再继续搜索下去时，就让搜索过程回溯到这个结点的前一结点继续这样的搜索过程；这样的搜索过程一直进行到搜索到问题的解或搜索完了全部可搜索分">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-04T05:10:02.597Z">
+<meta property="og:updated_time" content="2018-12-07T12:47:02.206Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="字符串中字符排序">
-<meta name="twitter:description" content="【问题描述】编写一个程序，从键盘接收一个字符串，然后按照字符顺序从小到大进行排序，并删除重复的字符。【输入形式】用户在第一行输入一个字符串。【输出形式】程序按照字符(ASCII)顺序从小到大排序字符串，并删除重复的字符进行输出。【样例输入】badacgegfacb【样例输出】abcdefg【样例说明】用户输入字符串badacgegfacb，程序对其进行按从小到大(ASCII)顺序排序，并删除重复的">
+<meta name="twitter:title" content="java实现走迷宫问题">
+<meta name="twitter:description" content="回溯法的基本思想是：对一个包括有很多结点，每个结点有若干个搜索分支的问题，把原问题分解为对若干个子问题求解的算法。当搜索到某个结点、发现无法再继续搜索下去时，就让搜索过程回溯（即退回）到该结点的前一结点，继续搜索这个结点的其他尚未搜索过的分支；如果发现这个结点也无法再继续搜索下去时，就让搜索过程回溯到这个结点的前一结点继续这样的搜索过程；这样的搜索过程一直进行到搜索到问题的解或搜索完了全部可搜索分">
   
     <link rel="alternative" href="/atom.xml" title="LDY博客" type="application/atom+xml">
   
@@ -281,11 +281,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-字符串中字符排序" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-java实现走迷宫问题" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/12/04/字符串中字符排序/" class="article-date">
-      <time datetime="2018-12-04T05:02:31.000Z" itemprop="datePublished">2018-12-04</time>
+      <a href="/2018/12/07/java实现走迷宫问题/" class="article-date">
+      <time datetime="2018-12-07T12:34:49.000Z" itemprop="datePublished">2018-12-07</time>
 </a>
 
     </div>
@@ -299,7 +299,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      字符串中字符排序
+      java实现走迷宫问题
     </h1>
   
 
@@ -321,8 +321,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>【问题描述】编写一个程序，从键盘接收一个字符串，然后按照字符顺序从小到大进行排序，并删除重复的字符。<br>【输入形式】用户在第一行输入一个字符串。<br>【输出形式】程序按照字符(ASCII)顺序从小到大排序字符串，并删除重复的字符进行输出。<br>【样例输入】badacgegfacb<br>【样例输出】abcdefg<br>【样例说明】用户输入字符串badacgegfacb，程序对其进行按从小到大(ASCII)顺序排序，并删除重复的字符，最后输出为abcdefg<br>题目描述清晰，本题解题时应先将字符串转变成字符数组，然后在对字符数组进行排序去重，具体分为了2个小函数。<br>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Test2 &#123;</span><br><span class="line">    static void  soft(char []ch) &#123;</span><br><span class="line">    	for(int i=0;i&lt;ch.length-1;i++) &#123;</span><br><span class="line">    		for(int j=0;j&lt;ch.length-i-1;j++) &#123;</span><br><span class="line">    			if(ch[j]&gt;ch[j+1]) &#123;</span><br><span class="line">    				char c=ch[j];</span><br><span class="line">    				ch[j]=ch[j+1];</span><br><span class="line">    				ch[j+1]=c;</span><br><span class="line">    			&#125;</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    static void overwrite(char[]ch) &#123;</span><br><span class="line">        char []ch2=new char[ch.length];</span><br><span class="line">        ch2[0]=ch[0];</span><br><span class="line">        int length=1;</span><br><span class="line">        for(int i=1;i&lt;ch.length;i++) &#123;</span><br><span class="line">        	if(ch[i]!=ch[i-1]) ch2[length++]=ch[i];</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=0;i&lt;length;i++)</span><br><span class="line">        	System.out.print(ch2[i]);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		Scanner scanner=new Scanner(System.in);</span><br><span class="line">		String string;</span><br><span class="line">		string=scanner.nextLine();</span><br><span class="line">		char []ch=string.toCharArray();</span><br><span class="line">        soft(ch);</span><br><span class="line">        overwrite(ch);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>回溯法的基本思想是：对一个包括有很多结点，每个结点有若干个搜索分支的问题，把原问题分解为对若干个子问题求解的算法。当搜索到某个结点、发现无法再继续搜索下去时，就让搜索过程回溯（即退回）到该结点的前一结点，继续搜索这个结点的其他尚未搜索过的分支；如果发现这个结点也无法再继续搜索下去时，就让搜索过程回溯到这个结点的前一结点继续这样的搜索过程；这样的搜索过程一直进行到搜索到问题的解或搜索完了全部可搜索分支没有解存在为止。</p>
+<p>　　该方法可以使用堆栈实现。也可以使用递归实现，递归实现的话代码比较简单，较难理解建议自己打断点一步步跟踪理解<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">	public static int count=0;</span><br><span class="line">    public static List&lt;Luji&gt; list=new ArrayList&lt;Luji&gt;();//集合容器放可行点组成路径</span><br><span class="line">    public static void DFS(int [][]arc,int[][] visit,int i1,int i2,int i3,int i4) &#123;</span><br><span class="line">    	if(i1&lt;0||i2&lt;0||i1&gt;4||i2&gt;3) return;//下标超出迷宫点直接返回上一成</span><br><span class="line">        if(arc[i1][i2]==0) &#123;</span><br><span class="line">        	visit[i1][i2]=1;//表示此点不可走 以后也不走</span><br><span class="line">        	return;&#125;//当前元素为零表示不可走</span><br><span class="line">    	if(i1==i3&amp;&amp;i2==i4) &#123;//如果传递参数等于i3,i4,表示找到出路执行输出，输出路径</span><br><span class="line">    		System.out.println(&quot;------------------&quot;);</span><br><span class="line">    		for(Luji s:list) &#123;</span><br><span class="line">    			System.out.print(&quot;(&quot;+s.x+&quot;,&quot;+s.y+&quot;)&quot;+&quot;-&gt;&quot;);</span><br><span class="line">    		    &#125;//遍历集合元素输出</span><br><span class="line">    		System.out.println(&quot;(&quot;+(i1+1)+&quot;,&quot;+(i2+1)+&quot;)&quot;);</span><br><span class="line">    		count++;</span><br><span class="line">    		return;</span><br><span class="line">    	&#125;</span><br><span class="line">    	if(arc[i1][i2]==1)&#123;</span><br><span class="line">    		if(visit[i1][i2]==0) &#123;//如果没有这一步则会在下面的递归中回到上一步陷入死循环</span><br><span class="line">    		visit[i1][i2]=1;//代表路径被走，不可在访问</span><br><span class="line">    	    list.add(new Luji(i1+1, i2+1));//加入路径</span><br><span class="line">    		DFS(arc, visit, i1, i2-1, i3, i4);</span><br><span class="line">    		DFS(arc, visit, i1-1, i2, i3, i4);</span><br><span class="line">            DFS(arc, visit, i1, i2+1, i3, i4);</span><br><span class="line">    	    DFS(arc, visit, i1+1, i2, i3, i4);</span><br><span class="line">    	    list.remove(list.size()-1);</span><br><span class="line">    		visit[i1][i2]=0;//它的上下左右被走完路径，该点在赋值为没被访问</span><br><span class="line">    		return;</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">	   Scanner scanner=new Scanner(System.in);</span><br><span class="line">	   int m;</span><br><span class="line">       int n;</span><br><span class="line">       m=scanner.nextInt();</span><br><span class="line">       n=scanner.nextInt();</span><br><span class="line">       int [][] arc=new int[m][n];//边集数组</span><br><span class="line">       for(int i=0;i&lt;m;i++) &#123;</span><br><span class="line">    	   for(int j=0;j&lt;n;j++) &#123;</span><br><span class="line">    		   arc[i][j]=scanner.nextInt();//为边集初始化</span><br><span class="line">    	   &#125;</span><br><span class="line">       &#125;</span><br><span class="line">        //出发点</span><br><span class="line">       int i1=scanner.nextInt();</span><br><span class="line">       int i2=scanner.nextInt();</span><br><span class="line">        //终点</span><br><span class="line">       int i3=scanner.nextInt();</span><br><span class="line">       int i4=scanner.nextInt();</span><br><span class="line">        //顶点有无被走标记数组</span><br><span class="line">       int[][]visit=new int[m][n];</span><br><span class="line">       int[][]maze=new int[m][n];</span><br><span class="line">       DFS(arc, visit, i1-1, i2-1, i3-1, i4-1);</span><br><span class="line">       System.out.println(count+&quot;条道路&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">class Luji&#123;</span><br><span class="line">	int x;</span><br><span class="line">	int y;</span><br><span class="line">    public Luji() &#123;</span><br><span class="line">		// TODO Auto-generated constructor stub</span><br><span class="line">	&#125;</span><br><span class="line">	public Luji(int x,int y) &#123;</span><br><span class="line">		// TODO Auto-generated constructor stub</span><br><span class="line">	    this.x=x;</span><br><span class="line">	    this.y=y;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -331,13 +331,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/12/04/字符串中字符排序/">字符串中字符排序</a></p>
+        <p><span>本文标题:</span><a href="/2018/12/07/java实现走迷宫问题/">java实现走迷宫问题</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 林德雨 的个人博客">林德雨</a></p>
-        <p><span>发布时间:</span>2018年12月04日 - 13时02分</p>
-        <p><span>最后更新:</span>2018年12月04日 - 13时10分</p>
+        <p><span>发布时间:</span>2018年12月07日 - 20时34分</p>
+        <p><span>最后更新:</span>2018年12月07日 - 20时47分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/12/04/字符串中字符排序/" title="字符串中字符排序">https://lkdnjhhb.github.io/2018/12/04/字符串中字符排序/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://lkdnjhhb.github.io/2018/12/04/字符串中字符排序/　　作者: 林德雨" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/12/07/java实现走迷宫问题/" title="java实现走迷宫问题">https://lkdnjhhb.github.io/2018/12/07/java实现走迷宫问题/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://lkdnjhhb.github.io/2018/12/07/java实现走迷宫问题/　　作者: 林德雨" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -348,18 +348,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2018/12/04/求差集/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          求差集
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/12/04/集合-Arrlist/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">集合 Arrlist</div>
+    <a href="/2018/12/06/java 多线程经典模型--生产者与消费者模型/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">java多线程-生产者与消费者模型</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -516,13 +507,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/12/04/求差集/" title="上一篇: 求差集">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2018/12/04/集合-Arrlist/" title="下一篇: 集合 Arrlist">
+            <a href="/2018/12/06/java 多线程经典模型--生产者与消费者模型/" title="下一篇: java多线程-生产者与消费者模型">
                 <i class="fa fa-angle-right"></i>
             </a>
         
