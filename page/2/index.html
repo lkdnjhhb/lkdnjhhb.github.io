@@ -198,7 +198,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/c/" style="font-size: 13.33px;">c++</a> <a href="/tags/java/" style="font-size: 16.67px;">java</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
+                        <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/c/" style="font-size: 13.33px;">c++</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/分享/" style="font-size: 10px;">分享</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a>
                     </div>
                 </section>
                 
@@ -280,6 +280,76 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-图的完整操作" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/30/图的完整操作/" class="article-date">
+      <time datetime="2018-11-30T07:05:36.000Z" itemprop="datePublished">2018-11-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/图的完整操作/">图的完整操作</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>#include”MGraph.h”<br>//———-构造图的邻接矩阵——————-<br>template<class vertextype,="" class="" arctype=""><br>MGraph&lt;VertexType, ArcType&gt;::MGraph(int n, int e) {<br>    vertexNum = n;<br>    arcNum = e;<br>    //开辟顶点集合边集<br>    vertex = new VertexType[vertexNum];<br>    arc = new ArcType*[vertexNum];<br>    visit = new int[vertexNum];<br>    for (int i = 0; i &lt; vertexNum; i++)<br>        arc[i] = new ArcType[vertexNum];<br>    for (int i = 0; i &lt; vertexNum; i++)<br>        for (int j = 0; j &lt; vertexNum; j++)<br>            arc[i][j] = MaxInt;<br>    //顶点、边集、标记数值赋值<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        VertexType elem;<br>        cin &gt;&gt; elem;<br>        vertex[i] = elem;<br>    }<br>    for (int k = 0; k &lt; arcNum; k++) {<br>        VertexType v1, v2;<br>        ArcType weight;<br>        cin &gt;&gt; v1 &gt;&gt; v2 &gt;&gt; weight;<br>        int i = LocateVex(v1);<br>        int j = LocateVex(v2);<br>        arc[i][j] = weight;<br>        arc[j][i] = weight;<br>    }<br>    for (int i = 0; i &lt; vertexNum; i++) visit[i] = 0;<br>}<br>//———-析构——————-<br>template<class vertextype,="" class="" arctype=""><br>MGraph&lt;VertexType, ArcType&gt;::~MGraph() {<br>    vertex = NULL;<br>    delete vertex;<br>    arc = NULL;<br>    delete[]arc;<br>}<br>//———-查找某顶点对应的存储序号——————-<br>template<class vertextype,="" class="" arctype=""><br>int MGraph&lt;VertexType, ArcType&gt;::LocateVex(VertexType elem) {<br>    for (int i = 0; i &lt; vertexNum; i++)<br>        if (vertex[i] == elem) return i;<br>    return -1;<br>}</class></class></class></p>
+<p>//———-若存储有向图，输出出度为零的顶底个数——————-<br>template<class vertextype,="" class="" arctype=""><br>int MGraph&lt;VertexType, ArcType&gt;::CountOD() {<br>    int count = 0;<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        for (int j = 0; j &lt; vertexNum; j++) {<br>            if (arc[i][j] != MaxInt) {<br>                count = count + 1;<br>                break;<br>            }<br>        }<br>    }</class></p>
+<pre><code>count = vertexNum - count;
+return count;
+</code></pre><p>}<br>//打印图<br>template<class vertextype,="" class="" arctype=""><br>void MGraph&lt;VertexType, ArcType&gt;::DisplayGraph() {<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        for (int j = 0; j &lt; vertexNum; j++) {<br>            if (arc[i][j] != MaxInt)<br>                cout &lt;&lt; arc[i][j] &lt;&lt; “ “;<br>            else<br>                cout &lt;&lt; “∞” &lt;&lt; “ “;<br>        }<br>        cout &lt;&lt; endl;<br>    }<br>}<br>template<class vertextype,="" class="" arctype=""><br>//深度优先遍历<br>void MGraph&lt;VertexType, ArcType&gt;::DFS(VertexType elem) {<br>    cout &lt;&lt; elem;<br>    visit[LocateVex(elem)] = 1;<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        if (arc[LocateVex(elem)][i] != MaxInt&amp;&amp;visit[i] != 1)<br>            DFS(vertex[i]);<br>    }<br>}<br>template<class vertextype,="" class="" arctype=""><br>//广度优先遍历<br>void MGraph&lt;VertexType, ArcType&gt;::BFS(VertexType elem) {<br>    queue<int> que;<br>    cout &lt;&lt; vertex[LocateVex(elem)];<br>    visit[LocateVex(elem)] = 1;<br>    que.push(LocateVex(elem));<br>    while (que.empty()==false) {<br>        int i = que.front();<br>        que.pop();<br>        for (int j = 0; j &lt; vertexNum; j++) {<br>            if (arc[i][j] != MaxInt&amp;&amp;visit[j] != 1) {<br>                cout &lt;&lt; vertex[j];<br>                visit[j] = 1;<br>                que.push(j);<br>            }<br>        }<br>    }<br>}<br>//prim算法<br>template<class vertextype,="" class="" arctype=""><br>void prim(MGraph&lt;VertexType,ArcType&gt; G) {<br>    shortEdge&lt;VertexType, ArcType&gt; *shortedge=new shortEdge&lt;VertexType, ArcType&gt;[G.vertexNum];<br>    for (int i = 0; i &lt; G.vertexNum; i++) {<br>        shortedge[i].lowcost = G.arc[0][i];<br>        shortedge[i].adjvex = G.vertex[0];<br>    }<br>    shortedge[0].lowcost = 0;<br>    for (int i = 1; i &lt; G.vertexNum; i++) {<br>        int k = MinEnge(shortedge, G.vertexNum);<br>        cout &lt;&lt; “(“ &lt;&lt; shortedge[k].adjvex &lt;&lt; G.vertex[k] &lt;&lt; “)” &lt;&lt; shortedge[k].lowcost &lt;&lt; endl;<br>        shortedge[k].lowcost = 0;<br>        for (int j = 1; j &lt; G.vertexNum; j++) {<br>            if (G.arc[k][j] &lt; shortedge[j].lowcost) {<br>                shortedge[j].lowcost = G.arc[k][j];<br>                shortedge[j].adjvex = G.vertex[k];<br>            }<br>        }<br>    }</class></int></class></class></class></p>
+<p>}<br>template<class vertextype,="" class="" arctype=""><br>//查找集合中最短边<br>int  MinEnge(shortEdge&lt;VertexType, ArcType&gt; shortenge[],int vertexNum) {<br>    int k;<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        if (shortenge[i].lowcost != 0) {<br>            k = i;<br>        }<br>    }<br>    for (int i = 0; i &lt; vertexNum; i++) {<br>        if (shortenge[i].lowcost != 0 &amp;&amp; shortenge[i].lowcost &lt; shortenge[k].lowcost)<br>            k = i;<br>    }<br>    return k;<br>};<br>template<class vertextype,="" class="" arctype=""><br>//KrusKal算法<br>void Kruskal(MGraph&lt;VertexType, ArcType&gt; G) {<br>    EdgeType&lt; VertexType, ArcType&gt; <em>edge = new EdgeType&lt; VertexType, ArcType&gt;[G.arcNum</em>2];<br>    //初始化边集数组<br>    int k = 0;<br>    for (int i = 0; i &lt; G.vertexNum; i++) {<br>        for (int j = 0; j &lt; G.vertexNum; j++) {<br>            if (G.arc[i][j] != MaxInt) {<br>                edge[k].from = G.vertex[i];<br>                edge[k].to = G.vertex[j];<br>                edge[k].weight = G.arc[i][j];<br>                k++;<br>            }<br>        }<br>    }<br>    soft(edge, G.arcNum<em>2);<br>    int </em>parent = new int[G.vertexNum];<br>    for (int i = 0; i &lt; G.vertexNum; i++) parent[i] = -1;<br>    for (int num = 0, i = 0; i &lt; G.arcNum<em>2; i++) {<br>        int vex1 = FindRoot(parent, G.LocateVex(edge[i].from));<br>        int  vex2 = FindRoot(parent, G.LocateVex(edge[i].to));<br>        if (vex1 != vex2) {<br>            cout &lt;&lt; “(“ &lt;&lt; edge[i].from &lt;&lt; edge[i].to &lt;&lt; “)” &lt;&lt; edge[i].weight &lt;&lt; endl;<br>            parent[vex2] = vex1;<br>            num++;<br>            if (num == G.vertexNum - 1) return;<br>        }<br>    }<br>}<br>template<class vertextype,="" class="" arctype=""><br>//对边集进行排序的函数<br>void soft(EdgeType&lt; VertexType, ArcType&gt; </class></em>edge, int length) {<br>    for (int i = 0; i &lt; length - 1; i++) {<br>        for (int j = 0; j &lt; length - i - 1; j++) {<br>            if (edge[j].weight &gt; edge[j + 1].weight) {<br>                EdgeType&lt; VertexType, ArcType&gt; e;<br>                e = edge[j];<br>                edge[j] = edge[j + 1];<br>                edge[j + 1] = e;<br>            }<br>        }<br>    }<br>}<br>//寻找根节点<br>static int FindRoot(int parent[], int v) {<br>    int t = v;</class></class></p>
+<pre><code>while(parent[t] &gt; -1) t = parent[t];
+return t;
+</code></pre><p>}</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
   
     <article id="post-在hexo上写博客的模板" class="article article-type-post" itemscope="" itemprop="blogPost">
   
