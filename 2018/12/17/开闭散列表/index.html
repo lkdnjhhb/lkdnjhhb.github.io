@@ -7,16 +7,20 @@
   
   
   
-  <title>分类 | LDY博客</title>
+  <title>开闭散列表 | LDY博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="https://lkdnjhhb.github.io/tags/index.html">
+  <meta name="description" content="开散列表123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051 include &amp;lt;iostream&amp;gt;using namespace std;struct node&amp;#123;	int data;	node *next;&amp;#125;;int H(int ke">
+<meta name="keywords" content="c++,算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开闭散列表">
+<meta property="og:url" content="https://lkdnjhhb.github.io/2018/12/17/开闭散列表/index.html">
 <meta property="og:site_name" content="LDY博客">
+<meta property="og:description" content="开散列表123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051 include &amp;lt;iostream&amp;gt;using namespace std;struct node&amp;#123;	int data;	node *next;&amp;#125;;int H(int ke">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-30T06:32:52.618Z">
+<meta property="og:updated_time" content="2018-12-17T13:01:35.756Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分类">
+<meta name="twitter:title" content="开闭散列表">
+<meta name="twitter:description" content="开散列表123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051 include &amp;lt;iostream&amp;gt;using namespace std;struct node&amp;#123;	int data;	node *next;&amp;#125;;int H(int ke">
   
     <link rel="alternative" href="/atom.xml" title="LDY博客" type="application/atom+xml">
   
@@ -41,7 +45,7 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
+          isPost: true,
           isArchive: false,
           isTag: false,
           isCategory: false,
@@ -277,11 +281,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-开闭散列表" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/tags/index.html" class="article-date">
-      <time datetime="2018-11-30T05:15:21.000Z" itemprop="datePublished">2018-11-30</time>
+      <a href="/2018/12/17/开闭散列表/" class="article-date">
+      <time datetime="2018-12-17T12:58:48.000Z" itemprop="datePublished">2018-12-17</time>
 </a>
 
     </div>
@@ -295,7 +299,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      分类
+      开闭散列表
     </h1>
   
 
@@ -304,8 +308,16 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/c-算法/">c++/算法</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -313,123 +325,85 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta {
-        display: none;
-    }
-    #container .article .article-title {
-        padding-right: 0;
-    }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover {
-        border-left: none;
-    }
-    .article-title {
-        font-size: 1.6em
-    }
-    .article-meta {
-        display: none;
-    }
-    .article-entry hr {
-        margin: 0;
-    }
-    #container .article-info-post.article-info {
-      display: none;
-      }
-    #container .article .article-title {
-    padding: 0;
-    }
-</style>
+        <p>开散列表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"> include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">struct node</span><br><span class="line">&#123;</span><br><span class="line">	int data;</span><br><span class="line">	node *next;</span><br><span class="line">&#125;;</span><br><span class="line">int H(int key, int mod) &#123;</span><br><span class="line">	return key%mod;</span><br><span class="line">&#125;</span><br><span class="line">void CreateHash(node* hash[], int num[],int numlength,int mod) &#123;</span><br><span class="line">	for (int i = 0; i &lt; numlength; i++) &#123;</span><br><span class="line">		int ideax = H(num[i], mod);</span><br><span class="line">		node *s = new node;</span><br><span class="line">		s-&gt;data = num[i];</span><br><span class="line">		s-&gt;next = hash[ideax];</span><br><span class="line">		hash[ideax] = s;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int HashSearch(node* hash[], int key, int mod) &#123;</span><br><span class="line">	int ideax = H(key, mod);</span><br><span class="line">	node*pre = hash[ideax];</span><br><span class="line">	while (pre!= NULL&amp;&amp;pre-&gt;data!=key) &#123;</span><br><span class="line">		pre = pre-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	if (pre != NULL) return ideax;</span><br><span class="line">	else &#123;</span><br><span class="line">		node *s = new node;</span><br><span class="line">		s-&gt;data = key;</span><br><span class="line">		s-&gt;next = hash[ideax];</span><br><span class="line">		hash[ideax] = s;</span><br><span class="line">		cout &lt;&lt; &quot;成功插入&quot; &lt;&lt; &quot; &quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line"></span><br><span class="line">	node *hash[11];</span><br><span class="line">	for (int i = 0; i &lt; 11; i++) &#123;</span><br><span class="line">		hash[i] = NULL;</span><br><span class="line">	&#125;</span><br><span class="line">	int mod = 11;</span><br><span class="line">	int num[] = &#123; 47,7,29,11,16,92,22,8,3 &#125;;</span><br><span class="line">	int numlength = 9;</span><br><span class="line">	CreateHash(hash, num,numlength,mod);</span><br><span class="line">	int key = 11;</span><br><span class="line">	cout&lt;&lt;HashSearch(hash, key, mod)&lt;&lt;endl;</span><br><span class="line">	key = 33;</span><br><span class="line">	cout&lt;&lt;HashSearch(hash, key, mod)&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>闭散列表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">//散列地址计算函数</span><br><span class="line">int H(int key,int mod) &#123;</span><br><span class="line">	return key%mod;</span><br><span class="line">&#125;</span><br><span class="line">//闭散列表构造函数</span><br><span class="line">void CreatHashMap(int num[],int hk[]) &#123;</span><br><span class="line">	for (int i = 0; i &lt; 8; i++) &#123;</span><br><span class="line">		int ideax = H(num[i], 11);</span><br><span class="line">		if (hk[ideax] == 0) hk[ideax] = num[i];</span><br><span class="line">		else &#123;</span><br><span class="line">			for (int j = 1; j &lt; 11 - 1; j++) &#123;</span><br><span class="line">				ideax = H(ideax + j, 11);</span><br><span class="line">				if (hk[ideax] == 0) &#123;</span><br><span class="line">					hk[ideax] = num[i];</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//散列表 余数 关键码</span><br><span class="line">int HashSearch(int hk[], int m, int key) &#123;</span><br><span class="line">	int ideax = H(key, 11);</span><br><span class="line">	if (hk[ideax] == key) &#123; cout &lt;&lt; &quot;查找成功&quot; &lt;&lt; &quot; &quot;; return ideax; &#125;</span><br><span class="line">	else if (hk[ideax] == 0) &#123; hk[ideax] = key; cout &lt;&lt; &quot;成功插入&quot; &lt;&lt; &quot; &quot;; return ideax; &#125;</span><br><span class="line">	int ideax1 = H(ideax + 1, 11);</span><br><span class="line">	while (hk[ideax1] != 0 &amp;&amp; ideax1 != ideax) &#123;</span><br><span class="line">		if (hk[ideax1] == key) &#123; cout &lt;&lt; &quot;查找成功&quot; &lt;&lt; &quot; &quot;; return ideax1; &#125;</span><br><span class="line">		else ideax1 = H(ideax1 + 1, 11);</span><br><span class="line">	&#125;</span><br><span class="line">	if (ideax1 == ideax) throw&quot;溢出&quot;;</span><br><span class="line">	else &#123; hk[ideax1] = key; cout &lt;&lt; &quot;成功插入&quot; &lt;&lt; &quot; &quot;; return ideax1; &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int num[9];</span><br><span class="line">	int hk[11] = &#123;0&#125;;</span><br><span class="line">	for (int i = 0; i &lt; 8; i++) &#123;</span><br><span class="line">		cin &gt;&gt; num[i];</span><br><span class="line">	&#125;</span><br><span class="line">	CreatHashMap(num, hk);</span><br><span class="line">	cout&lt;&lt;HashSearch(hk, 11, 22);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-
-    <!-- Tag Cloud Page -->
-    <hr>
-    <br>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/c-算法/">c++/算法</a><span class="category-list-count">4</span></li></ul>
-
-    <p class="count"></p>
-    <div class="tags">
-        <a href="/tags/Java/" style="font-size: 22.33px; color: #aaa">Java</a> <a href="/tags/c/" style="font-size: 22.33px; color: #aaa">c++</a> <a href="/tags/java/" style="font-size: 28.67px; color: #d5d5d5">java</a> <a href="/tags/分享/" style="font-size: 16px; color: #808080">分享</a> <a href="/tags/数据结构/" style="font-size: 16px; color: #808080">数据结构</a> <a href="/tags/算法/" style="font-size: 35px; color: #fff">算法</a>
-    </div>
-    <style>
-        .category-list li{
-            display: inline-block;
-            margin: 0 1em .5em 0;
-            padding: 4px;
-            border: 1px solid lightgray;
-            font-size: 1.2em;
-        }
-        .category-list a {
-            color: gray;
-        }
-        .category-list-item:hover a {
-            color: gray;
-            text-decoration: none;
-        }
-        .category-list-count {
-            margin-left: 2px;
-            font-size: .9em;
-        }
-        .article-entry ul li:before{
-            display: none;
-        }
-        .article-inner  {
-            text-align: center;
-        }
-        .tags {
-            max-width: 40em;
-            margin: 2em auto;
-            margin-top: 0em;
-        }
-        .tags a {
-            margin-right: 1em;
-            line-height: 65px;
-            border-bottom: 1px solid gray;
-            white-space: nowrap;
-        }
-        .tags a:hover {
-            border-bottom: 2px solid black;
-            text-decoration: none;
-            font-style: italic;
-        }
-        #count > span {
-            margin: auto .2em;
-            font-weight: bold;
-        }
-    </style>
-
-    <!-- Count tags and categories -->
-
-    
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-    <p id="count">
-            已有<span><script>document.write($(".category-list-item").length)</script></span>个分类，
-            共计<span><script>document.write($(".tags > a").length)</script></span>个标签。
-    </p>
-    <script>
-        $('#count').appendTo('.count');
-    </script>
-
-
-          
-        
       
     </div>
     
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/12/17/开闭散列表/">开闭散列表</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 林德雨 的个人博客">林德雨</a></p>
+        <p><span>发布时间:</span>2018年12月17日 - 20时58分</p>
+        <p><span>最后更新:</span>2018年12月17日 - 21时01分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/12/17/开闭散列表/" title="开闭散列表">https://lkdnjhhb.github.io/2018/12/17/开闭散列表/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://lkdnjhhb.github.io/2018/12/17/开闭散列表/　　作者: 林德雨" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2018/12/17/常见排序算法1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">常见排序算法1-直接插入排序和折半查找排序</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
 
 
 <div class="share">
@@ -534,6 +508,41 @@
     
 
 
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2018/12/17/常见排序算法1/" title="下一篇: 常见排序算法1-直接插入排序和折半查找排序">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/17/开闭散列表/">开闭散列表</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/17/常见排序算法1/">常见排序算法1-直接插入排序和折半查找排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/07/java实现走迷宫问题/">java实现走迷宫问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/06/java 多线程经典模型--生产者与消费者模型/">java多线程-生产者与消费者模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/06/java实现AOV网拓扑排序/">java实现AOV网拓扑排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/06/java多线程-Thread/">java多线程-Thread</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/04/求差集/">求差集</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/04/字符串中字符排序/">字符串中字符排序</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/04/集合-Arrlist/">集合 Arrlist</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/01/图像识别/">图片检索</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/01/二分算法实例2/">二分算法实例2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/01/二分算法实例1/">二分算法实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/01/二分算法/">二分算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/图的完整操作/">图的完整操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/在hexo上写博客的模板/">在hexo上写博客的模板</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/如何用github-hexo搭建个人博客/">如何用github+hexo搭建个人博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/java常用类库/">java常用类库</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/prim算法/">最小生成树之prim算法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/30/最小生成树之ksuak算法/">最小生成树之ksuak算法</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
 
 
 
