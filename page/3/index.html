@@ -7,11 +7,11 @@
   
   
   
-  <title>Archives: 2018 | LDY博客</title>
+  <title>LDY博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="LDY博客">
-<meta property="og:url" content="https://lkdnjhhb.github.io/archives/2018/index.html">
+<meta property="og:url" content="https://lkdnjhhb.github.io/page/3/index.html">
 <meta property="og:site_name" content="LDY博客">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
@@ -29,6 +29,9 @@
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   
+    
+    
+  
   
       <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
   
@@ -39,9 +42,9 @@
       var yiliaConfig = {
           fancybox: true,
           animate: true,
-          isHome: false,
+          isHome: true,
           isPost: false,
-          isArchive: true,
+          isArchive: false,
           isTag: false,
           isCategory: false,
           open_in_new: false
@@ -278,221 +281,82 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-prim算法" class="article article-type-post" itemscope="" itemprop="blogPost">
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/12/21/常用排序算法-冒泡排序，一次划分排序，选择排序/" class="archive-article-date">
-      <time datetime="2018-12-21T08:48:30.000Z" itemprop="datePublished">12-21</time>
+    <div class="article-meta">
+      <a href="/2018/11/30/prim算法/" class="article-date">
+      <time datetime="2018-11-30T06:18:09.000Z" itemprop="datePublished">2018-11-30</time>
 </a>
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/21/常用排序算法-冒泡排序，一次划分排序，选择排序/">常用排序算法-冒泡排序，一次划分排序，选择排序</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
     </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
     
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/12/18/希尔排序/" class="archive-article-date">
-      <time datetime="2018-12-18T11:17:11.015Z" itemprop="datePublished">12-18</time>
-</a>
-
-        </div>
-         
-
-        <div class="article-info info-on-archive">
-          
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/12/17/开闭散列表/" class="archive-article-date">
-      <time datetime="2018-12-17T12:58:48.000Z" itemprop="datePublished">12-17</time>
-</a>
-
-        </div>
-         
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/17/开闭散列表/">开闭散列表</a>
+      <a class="article-title" href="/2018/11/30/prim算法/">最小生成树之prim算法</a>
     </h1>
   
 
 
-        <div class="article-info info-on-archive">
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
           
+        <p>如果一个算法文字描述不清楚，就说明思路不清楚，也不可能写好。</p>
+<p>prim算法是实现图的最小生成树。既然是图，就假设包含n个顶点，m条边。prim算法是从顶点出发的，其算法时间复杂度与顶点数目有关系。</p>
+<p>（注意：prim算法适合稠密图，其时间复杂度为O(n^2)，其时间复杂度与边得数目无关，而kruskal算法的时间复杂度为O(eloge)跟边的数目有关，适合稀疏图。）</p>
+<p>算法思路：从某个顶点开始，假设v0，此时v0属于最小生成树结点中的一个元素，该集合假设u，剩下的V-v0为待判定的点，此时选取u中的顶点到V-v0中顶点的一个路径最小的边，并且将其中非u中的顶点加入到u中，循环直到u中的顶点包含图所有的顶点为止。<br>算法在选取最小路径的时候需要优化，具体思路：w[]数组保存各个顶点的最短路径，b[]数组保存到i顶点最短路径的顶点，比如，到0号顶点最短的路径是&lt;v0,v3&gt;，那么w[0]=&lt;v0,v3&gt;，b[0]=3；这样每次找最小路径就不是o(n*n)的代价。代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">//prim算法</span><br><span class="line">template&lt;class VertexType, class ArcType&gt;</span><br><span class="line">void prim(MGraph&lt;VertexType,ArcType&gt; G) &#123;</span><br><span class="line">	shortEdge&lt;VertexType, ArcType&gt; *shortedge=new shortEdge&lt;VertexType, ArcType&gt;[G.vertexNum];</span><br><span class="line">	for (int i = 0; i &lt; G.vertexNum; i++) &#123;</span><br><span class="line">		shortedge[i].lowcost = G.arc[0][i];</span><br><span class="line">		shortedge[i].adjvex = G.vertex[0];</span><br><span class="line">	&#125;</span><br><span class="line">	shortedge[0].lowcost = 0;</span><br><span class="line">	for (int i = 1; i &lt; G.vertexNum; i++) &#123;</span><br><span class="line">		int k = MinEnge(shortedge, G.vertexNum);</span><br><span class="line">		cout &lt;&lt; &quot;(&quot; &lt;&lt; shortedge[k].adjvex &lt;&lt; G.vertex[k] &lt;&lt; &quot;)&quot; &lt;&lt; shortedge[k].lowcost &lt;&lt; endl;</span><br><span class="line">		shortedge[k].lowcost = 0;</span><br><span class="line">		for (int j = 1; j &lt; G.vertexNum; j++) &#123;</span><br><span class="line">			if (G.arc[k][j] &lt; shortedge[j].lowcost) &#123;</span><br><span class="line">				shortedge[j].lowcost = G.arc[k][j];</span><br><span class="line">				shortedge[j].adjvex = G.vertex[k];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">template&lt;class VertexType, class ArcType&gt; </span><br><span class="line">//查找集合中最短边</span><br><span class="line">int  MinEnge(shortEdge&lt;VertexType, ArcType&gt; shortenge[],int vertexNum) &#123;</span><br><span class="line">	int k;</span><br><span class="line">	for (int i = 0; i &lt; vertexNum; i++) &#123;</span><br><span class="line">		if (shortenge[i].lowcost != 0) &#123;</span><br><span class="line">			k = i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	for (int i = 0; i &lt; vertexNum; i++) &#123;</span><br><span class="line">		if (shortenge[i].lowcost != 0 &amp;&amp; shortenge[i].lowcost &lt; shortenge[k].lowcost)</span><br><span class="line">			k = i;</span><br><span class="line">	&#125;</span><br><span class="line">	return k;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>`</code></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/c-算法/">c++/算法</a>
     </div>
 
 
-          
+      
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/12/17/常见排序算法1/" class="archive-article-date">
-      <time datetime="2018-12-17T12:52:29.000Z" itemprop="datePublished">12-17</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/17/常见排序算法1/">常见排序算法1-直接插入排序和折半查找排序</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/c-算法/">c++/算法</a>
+      
+      <div class="clearfix"></div>
     </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+    
   </div>
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/12/07/java实现走迷宫问题/" class="archive-article-date">
-      <time datetime="2018-12-07T12:34:49.000Z" itemprop="datePublished">12-07</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/07/java实现走迷宫问题/">java实现走迷宫问题</a>
-    </h1>
-  
 
 
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/12/06/java多线程-Thread/" class="archive-article-date">
-      <time datetime="2018-12-06T12:53:34.000Z" itemprop="datePublished">12-06</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/06/java多线程-Thread/">java多线程-Thread</a>
-    </h1>
-  
 
 
-        <div class="article-info info-on-archive">
-          
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-    </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
+
+
+
+
   
   
-    </div></section>
-  
-
-    
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2018/page/2/">2</a><a class="page-number" href="/archives/2018/page/3/">3</a><a class="page-number" href="/archives/2018/page/4/">4</a><a class="extend next" rel="next" href="/archives/2018/page/2/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
     </nav>
   
-
 
 </div>
       <footer id="footer">
@@ -605,18 +469,6 @@ MathJax.Hub.Queue(function() {
         };
     })
 </script>
-
-    <button class="hide-labels">TAG 开关</button>
-    
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            $("button").click(function() {
-                $(".article-info").toggle(200);
-            });
-        });
-    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>

@@ -281,6 +281,72 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-集合-Arrlist" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/04/集合-Arrlist/" class="article-date">
+      <time datetime="2018-12-04T05:00:50.000Z" itemprop="datePublished">2018-12-04</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/04/集合-Arrlist/">集合 Arrlist</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>问题描述】对分行输入的若干字符串按字典序（由小到大）进行排序并输出。<br>【输入形式】控制台输入多行字符串，各个字符串可能含有空格，以#结束<br>【输出形式】输出按字典序（由小到大）进行排序后的字符串。<br>【样例输入】<br>zwtr<br>fhoenf<br>hefe<br>afe geg<br>#</p>
+<p>【样例输出】<br>afe geg<br>fhoenf<br>hefe<br>zwtr<br>【样例说明】输入多行字符串：<br>zwtr<br>fhoenf<br>hefe<br>afe geg<br>#</p>
+<p>输出字典序的字符串为：<br>afe geg<br>fhoenf<br>hefe<br>zwtr</p>
+<p>题目描述很清晰，就是对一组字符串进行字典排序，然后进行格式输出。因为不知道一开始不知道有多少字符串进行输入排序，所以本题采用了用集合容器来进行字符串的存储，<br>因为string类型继承实现了compare方法，所以此题直接采用了调取集合排序方法（collection.soft(list)）。<br>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Collections;</span><br><span class="line">import java.util.LinkedList;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Test1 &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		Scanner scanner=new Scanner(System.in);</span><br><span class="line">        List&lt;String&gt; linklist=new LinkedList&lt;&gt;();</span><br><span class="line">        String string;</span><br><span class="line">        do &#123;</span><br><span class="line">            string=scanner.nextLine();</span><br><span class="line">        	if(string.equals(&quot;#&quot;)==false)</span><br><span class="line">        		linklist.add(string);</span><br><span class="line">        &#125;while(string.equals(&quot;#&quot;)==false);</span><br><span class="line">        Collections.sort(linklist);</span><br><span class="line">	    for(String s:linklist) &#123;</span><br><span class="line">	    	System.out.println(s);</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-图像识别" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -1222,80 +1288,9 @@ return t;
 
 
   
-    <article id="post-prim算法" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/11/30/prim算法/" class="article-date">
-      <time datetime="2018-11-30T06:18:09.000Z" itemprop="datePublished">2018-11-30</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/30/prim算法/">最小生成树之prim算法</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>如果一个算法文字描述不清楚，就说明思路不清楚，也不可能写好。</p>
-<p>prim算法是实现图的最小生成树。既然是图，就假设包含n个顶点，m条边。prim算法是从顶点出发的，其算法时间复杂度与顶点数目有关系。</p>
-<p>（注意：prim算法适合稠密图，其时间复杂度为O(n^2)，其时间复杂度与边得数目无关，而kruskal算法的时间复杂度为O(eloge)跟边的数目有关，适合稀疏图。）</p>
-<p>算法思路：从某个顶点开始，假设v0，此时v0属于最小生成树结点中的一个元素，该集合假设u，剩下的V-v0为待判定的点，此时选取u中的顶点到V-v0中顶点的一个路径最小的边，并且将其中非u中的顶点加入到u中，循环直到u中的顶点包含图所有的顶点为止。<br>算法在选取最小路径的时候需要优化，具体思路：w[]数组保存各个顶点的最短路径，b[]数组保存到i顶点最短路径的顶点，比如，到0号顶点最短的路径是&lt;v0,v3&gt;，那么w[0]=&lt;v0,v3&gt;，b[0]=3；这样每次找最小路径就不是o(n*n)的代价。代码实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">//prim算法</span><br><span class="line">template&lt;class VertexType, class ArcType&gt;</span><br><span class="line">void prim(MGraph&lt;VertexType,ArcType&gt; G) &#123;</span><br><span class="line">	shortEdge&lt;VertexType, ArcType&gt; *shortedge=new shortEdge&lt;VertexType, ArcType&gt;[G.vertexNum];</span><br><span class="line">	for (int i = 0; i &lt; G.vertexNum; i++) &#123;</span><br><span class="line">		shortedge[i].lowcost = G.arc[0][i];</span><br><span class="line">		shortedge[i].adjvex = G.vertex[0];</span><br><span class="line">	&#125;</span><br><span class="line">	shortedge[0].lowcost = 0;</span><br><span class="line">	for (int i = 1; i &lt; G.vertexNum; i++) &#123;</span><br><span class="line">		int k = MinEnge(shortedge, G.vertexNum);</span><br><span class="line">		cout &lt;&lt; &quot;(&quot; &lt;&lt; shortedge[k].adjvex &lt;&lt; G.vertex[k] &lt;&lt; &quot;)&quot; &lt;&lt; shortedge[k].lowcost &lt;&lt; endl;</span><br><span class="line">		shortedge[k].lowcost = 0;</span><br><span class="line">		for (int j = 1; j &lt; G.vertexNum; j++) &#123;</span><br><span class="line">			if (G.arc[k][j] &lt; shortedge[j].lowcost) &#123;</span><br><span class="line">				shortedge[j].lowcost = G.arc[k][j];</span><br><span class="line">				shortedge[j].adjvex = G.vertex[k];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">template&lt;class VertexType, class ArcType&gt; </span><br><span class="line">//查找集合中最短边</span><br><span class="line">int  MinEnge(shortEdge&lt;VertexType, ArcType&gt; shortenge[],int vertexNum) &#123;</span><br><span class="line">	int k;</span><br><span class="line">	for (int i = 0; i &lt; vertexNum; i++) &#123;</span><br><span class="line">		if (shortenge[i].lowcost != 0) &#123;</span><br><span class="line">			k = i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	for (int i = 0; i &lt; vertexNum; i++) &#123;</span><br><span class="line">		if (shortenge[i].lowcost != 0 &amp;&amp; shortenge[i].lowcost &lt; shortenge[k].lowcost)</span><br><span class="line">			k = i;</span><br><span class="line">	&#125;</span><br><span class="line">	return k;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><code>`</code></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/c-算法/">c++/算法</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 

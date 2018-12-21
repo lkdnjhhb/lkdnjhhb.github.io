@@ -7,19 +7,20 @@
   
   
   
-  <title>LDY博客</title>
+  <title>常用排序算法-冒泡排序，一次划分排序，选择排序 | LDY博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: 希尔排序date: 2018-12-18 19:17:10toc: truetags:  c++ 算法 java  希尔排序是对直接插入排序的一种改进，改进的范围是若排序的关键码基本有序，那么排序的效率将得到提高，希尔排序在数据量较大的情况下算法的时间复杂度比直接插入排序低，空间复杂度相同。希尔排序同直接插入排序折半插入排序相同，是稳定的排序方式。 实现思想  希尔排序最先处理的问">
+  <meta name="description" content="冒泡排序，一次划分排序，选择排序，都是常用的简单的交换排序算法，它们不同于插入排序，没有数据移动，它们排序是基于比较和交换数据来进行的。冒泡排序是稳定的排序算法，一次换分排序是基于冒泡排序的，但是它是一种不稳定的排序算法。选择排序算法也是不稳定的排序算法，这里不稳定指的是相同大小的元素在进行排序后相对位置没有发生改变。 实现冒泡排序对排序数组进行遍历比较每次比较如果满足交换条件，就进行交换，每次遍">
+<meta name="keywords" content="java,算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LDY博客">
-<meta property="og:url" content="https://lkdnjhhb.github.io/2018/12/18/希尔排序/index.html">
+<meta property="og:title" content="常用排序算法-冒泡排序，一次划分排序，选择排序">
+<meta property="og:url" content="https://lkdnjhhb.github.io/2018/12/21/常用排序算法-冒泡排序，一次划分排序，选择排序/index.html">
 <meta property="og:site_name" content="LDY博客">
-<meta property="og:description" content="title: 希尔排序date: 2018-12-18 19:17:10toc: truetags:  c++ 算法 java  希尔排序是对直接插入排序的一种改进，改进的范围是若排序的关键码基本有序，那么排序的效率将得到提高，希尔排序在数据量较大的情况下算法的时间复杂度比直接插入排序低，空间复杂度相同。希尔排序同直接插入排序折半插入排序相同，是稳定的排序方式。 实现思想  希尔排序最先处理的问">
+<meta property="og:description" content="冒泡排序，一次划分排序，选择排序，都是常用的简单的交换排序算法，它们不同于插入排序，没有数据移动，它们排序是基于比较和交换数据来进行的。冒泡排序是稳定的排序算法，一次换分排序是基于冒泡排序的，但是它是一种不稳定的排序算法。选择排序算法也是不稳定的排序算法，这里不稳定指的是相同大小的元素在进行排序后相对位置没有发生改变。 实现冒泡排序对排序数组进行遍历比较每次比较如果满足交换条件，就进行交换，每次遍">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-18T12:02:40.998Z">
+<meta property="og:updated_time" content="2018-12-21T09:25:20.828Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LDY博客">
-<meta name="twitter:description" content="title: 希尔排序date: 2018-12-18 19:17:10toc: truetags:  c++ 算法 java  希尔排序是对直接插入排序的一种改进，改进的范围是若排序的关键码基本有序，那么排序的效率将得到提高，希尔排序在数据量较大的情况下算法的时间复杂度比直接插入排序低，空间复杂度相同。希尔排序同直接插入排序折半插入排序相同，是稳定的排序方式。 实现思想  希尔排序最先处理的问">
+<meta name="twitter:title" content="常用排序算法-冒泡排序，一次划分排序，选择排序">
+<meta name="twitter:description" content="冒泡排序，一次划分排序，选择排序，都是常用的简单的交换排序算法，它们不同于插入排序，没有数据移动，它们排序是基于比较和交换数据来进行的。冒泡排序是稳定的排序算法，一次换分排序是基于冒泡排序的，但是它是一种不稳定的排序算法。选择排序算法也是不稳定的排序算法，这里不稳定指的是相同大小的元素在进行排序后相对位置没有发生改变。 实现冒泡排序对排序数组进行遍历比较每次比较如果满足交换条件，就进行交换，每次遍">
   
     <link rel="alternative" href="/atom.xml" title="LDY博客" type="application/atom+xml">
   
@@ -280,11 +281,11 @@
         </header>
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-希尔排序" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-常用排序算法-冒泡排序，一次划分排序，选择排序" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/12/18/希尔排序/" class="article-date">
-      <time datetime="2018-12-18T11:17:11.015Z" itemprop="datePublished">2018-12-18</time>
+      <a href="/2018/12/21/常用排序算法-冒泡排序，一次划分排序，选择排序/" class="article-date">
+      <time datetime="2018-12-21T08:48:30.000Z" itemprop="datePublished">2018-12-21</time>
 </a>
 
     </div>
@@ -294,20 +295,37 @@
       <input type="hidden" class="isFancy">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      常用排序算法-冒泡排序，一次划分排序，选择排序
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
           
-        <hr>
-<p>title: 希尔排序<br>date: 2018-12-18 19:17:10<br>toc: true<br>tags:</p>
-<ul>
-<li>c++</li>
-<li>算法</li>
-<li><h2 id="java"><a href="#java" class="headerlink" title="java"></a>java</h2></li>
-</ul>
-<p>希尔排序是对直接插入排序的一种改进，改进的范围是若排序的关键码基本有序，那么排序的效率将得到提高，希尔排序在数据量较大的情况下算法的时间复杂度比直接插入排序低，空间复杂度相同。希尔排序同直接插入排序折半插入排序相同，是稳定的排序方式。</p>
-<h1 id="实现思想"><a href="#实现思想" class="headerlink" title="实现思想"></a>实现思想</h1><p>  希尔排序最先处理的问题就是增量的选择，一般情况下增量(d)的初始值为排序元素个数(n)的一半;以后每次进行一次排序d=d/2;d&gt;=1;当d=1时排序完成。同直接插入排序相同，首先应找到一组排序元素的第二个元素，假设第一个元素为有序的，将带插入的排序元素进行保存，当满足插入条件(第一个比他小或者第一个比他大的后一个位置或者走到一组数据的头)时，进行元素的移动和插入。</p>
-<h2 id="java版"><a href="#java版" class="headerlink" title="java版"></a>java版</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">public class Shellsost &#123;</span><br><span class="line">    //下标零当做哨兵进行使用</span><br><span class="line">    public static void soft(int[]array) &#123;</span><br><span class="line">        for(int d=(array.length-1)/2;d&gt;=1;d=d/2) &#123;</span><br><span class="line">            for(int i=d+1;i&lt;array.length;i++) &#123;//d一开始就是带插入的靠后元素</span><br><span class="line">                array[0]=array[i];</span><br><span class="line">                for(int j=i-d;j&gt;0;j=j-d) &#123;</span><br><span class="line">                    if(array[0]&lt;array[j]) &#123;</span><br><span class="line">                        array[j+d]=array[j];</span><br><span class="line">                        array[j]=array[0];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // TODO Auto-generated method stub</span><br><span class="line">        int []a= &#123;0,9,8,7,6,5,4,3,2,1&#125;;</span><br><span class="line">        Shellsost.soft(a);</span><br><span class="line">        System.out.println(Arrays.toString(a));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="c-版"><a href="#c-版" class="headerlink" title="c++版"></a>c++版</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">//array 待排序数组，length元素长度</span><br><span class="line">void Shellsoft(int array[], int length) &#123;</span><br><span class="line">	for (int d = length / 2; d &gt;= 1; d = d / 2) &#123;//d一开始为待插入元素</span><br><span class="line">		for (int i = d + 1; i &lt;= length; i++) &#123;</span><br><span class="line">			array[0] = array[i];</span><br><span class="line">			for (int j = i - d; j &gt; 0 &amp;&amp; array[0] &lt; array[j]; j = j - d) &#123;</span><br><span class="line">				array[j + d] = array[j];</span><br><span class="line">				array[j] = array[0];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	int a[10] = &#123;0,9,8,7,6,5,4,3,2,1&#125;;</span><br><span class="line">    Shellsoft(a, 9);</span><br><span class="line">	for (int i = 1; i &lt; 10; i++)cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>冒泡排序，一次划分排序，选择排序，都是常用的简单的交换排序算法，它们不同于插入排序，没有数据移动，它们排序是基于比较和交换数据来进行的。冒泡排序是稳定的排序算法，一次换分排序是基于冒泡排序的，但是它是一种不稳定的排序算法。选择排序算法也是不稳定的排序算法，这里不稳定指的是相同大小的元素在进行排序后相对位置没有发生改变。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><pre><code>对排序数组进行遍历比较每次比较如果满足交换条件，就进行交换，每次遍历把最大或最小元素移动到最后。一共数组长度-1次这种遍历比较。
+</code></pre><h2 id="一次划分排序"><a href="#一次划分排序" class="headerlink" title="一次划分排序"></a>一次划分排序</h2><pre><code>一次划分排序是冒泡排序的一种优化，优化在排序速度，但是牺牲了排序的稳定性，一次划分排序是把排序进行多次划分，随着划分的层数越多，划分的区间也就越多，一次划分排序，每次在排序前选取一个轴值，通常选取划分区间的第一个元素当做轴值，每次在区间内每个元素与轴值对比，比轴值大在右区间或相反区间，当出现元素没有在指定区间时就进行交换，交换时改变比较下标的位置。
+</code></pre><h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><pre><code>选择排序是非常简单的排序每次从排序元素中选取最小或最大元素，移动到指定位置，共进行元素个数-1次选择过程
+</code></pre><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class testmain &#123;</span><br><span class="line"> //冒泡排序</span><br><span class="line"> public static  void BUffSoft(int[]array)&#123;</span><br><span class="line">     for(int i=0;i&lt;array.length-1;i++)&#123;</span><br><span class="line">        int flag=0;</span><br><span class="line">         for(int j=0;j&lt;array.length-i-1;j++)&#123;</span><br><span class="line">             if(array[j]&gt;array[j+1])&#123;</span><br><span class="line">                 int tem=array[j];</span><br><span class="line">                 array[j]=array[j+1];</span><br><span class="line">                 array[j+1]=tem;</span><br><span class="line">                 flag=1;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         if(flag==0) return;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> //快速排序一次划分排序首先选取轴值一般情况下选取起始位置作为轴值</span><br><span class="line"> public static int Partition(int[]array,int first,int end)&#123;</span><br><span class="line">     //一次划分区间</span><br><span class="line">     int i=first;</span><br><span class="line">     int j=end;</span><br><span class="line">     while(i&lt;j)&#123;</span><br><span class="line">     while(i&lt;j&amp;&amp;array[j]&gt;array[i]) j--;</span><br><span class="line">     //跳出上层循环说明array[j]&lt;array[i]或者i&lt;j</span><br><span class="line">     if(i&lt;j)&#123;</span><br><span class="line">         int tem=array[j];</span><br><span class="line">         array[j]=array[i];</span><br><span class="line">         array[i]=tem;</span><br><span class="line">         i++;</span><br><span class="line">     &#125;</span><br><span class="line">     while(i&lt;j&amp;&amp;array[i]&lt;array[j]) i++;</span><br><span class="line">     if(i&lt;j)&#123;</span><br><span class="line">         int tem=array[j];</span><br><span class="line">         array[j]=array[i];</span><br><span class="line">         array[i]=tem;</span><br><span class="line">         j--;</span><br><span class="line">     &#125;&#125;</span><br><span class="line">     //返回轴值</span><br><span class="line">     return i;</span><br><span class="line"> &#125;</span><br><span class="line"> public static void QuickSoft(int[]array,int first,int end)&#123;</span><br><span class="line">     if(first&lt;=end)&#123;//进行划分排序</span><br><span class="line">         int pivot=Partition(array,first,end);</span><br><span class="line">         //递归调用对左右进行划分</span><br><span class="line">         QuickSoft(array,first,pivot-1);</span><br><span class="line">         QuickSoft(array,pivot+1,end);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> //选择排序</span><br><span class="line"> public  static void SelectSoft(int[]array)&#123;</span><br><span class="line">     for(int i=0;i&lt;array.length-1;i++)&#123;</span><br><span class="line">         int ideax=i;</span><br><span class="line">         for(int j=i+1;j&lt;array.length;j++)&#123;</span><br><span class="line">             if(array[j]&lt;array[ideax]) ideax=j;</span><br><span class="line">         &#125;</span><br><span class="line">         if(ideax!=i)&#123;</span><br><span class="line">             int tem=array[ideax];</span><br><span class="line">             array[ideax]=array[i];</span><br><span class="line">             array[i]=tem;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> public static  void main(String[]arg)&#123;</span><br><span class="line">     Scanner scanner=new Scanner(System.in);</span><br><span class="line">     int n;</span><br><span class="line">     n=scanner.nextInt();</span><br><span class="line">     int[] arary=new int[n];</span><br><span class="line">     for(int i=0;i&lt;arary.length;i++) arary[i]=scanner.nextInt();</span><br><span class="line">    // BUffSoft(arary);</span><br><span class="line">     // QuickSoft(arary,0,arary.length-1);</span><br><span class="line">     SelectSoft(arary);</span><br><span class="line">     System.out.println(Arrays.toString(arary));</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -316,13 +334,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/12/18/希尔排序/"></a></p>
+        <p><span>本文标题:</span><a href="/2018/12/21/常用排序算法-冒泡排序，一次划分排序，选择排序/">常用排序算法-冒泡排序，一次划分排序，选择排序</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 林德雨 的个人博客">林德雨</a></p>
-        <p><span>发布时间:</span>2018年12月18日 - 19时17分</p>
-        <p><span>最后更新:</span>2018年12月18日 - 20时02分</p>
+        <p><span>发布时间:</span>2018年12月21日 - 16时48分</p>
+        <p><span>最后更新:</span>2018年12月21日 - 17时25分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/12/18/希尔排序/" title="">https://lkdnjhhb.github.io/2018/12/18/希尔排序/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://lkdnjhhb.github.io/2018/12/18/希尔排序/　　作者: 林德雨" title=""></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/12/21/常用排序算法-冒泡排序，一次划分排序，选择排序/" title="常用排序算法-冒泡排序，一次划分排序，选择排序">https://lkdnjhhb.github.io/2018/12/21/常用排序算法-冒泡排序，一次划分排序，选择排序/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://lkdnjhhb.github.io/2018/12/21/常用排序算法-冒泡排序，一次划分排序，选择排序/　　作者: 林德雨" title=""></span>
         </p>
         <p>
             <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target="_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
@@ -333,18 +351,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2018/12/21/常用排序算法-冒泡排序，一次划分排序，选择排序/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          常用排序算法-冒泡排序，一次划分排序，选择排序
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/12/17/开闭散列表/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">开闭散列表</div>
+    <a href="/2018/12/18/希尔排序/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -356,8 +365,8 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#java"><span class="toc-number">1.</span> <span class="toc-text">java</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#实现思想"><span class="toc-number"></span> <span class="toc-text">实现思想</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#java版"><span class="toc-number">1.</span> <span class="toc-text">java版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c-版"><span class="toc-number">2.</span> <span class="toc-text">c++版</span></a></li></ol>
-</li></div>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#实现"><span class="toc-number">1.</span> <span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#冒泡排序"><span class="toc-number">1.1.</span> <span class="toc-text">冒泡排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一次划分排序"><span class="toc-number">1.2.</span> <span class="toc-text">一次划分排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择排序"><span class="toc-number">1.3.</span> <span class="toc-text">选择排序</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码"><span class="toc-number">2.</span> <span class="toc-text">代码</span></a></li></ol>
+</div>
 <style>
     .left-col .switch-btn {
         display: none;
@@ -501,13 +510,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/12/21/常用排序算法-冒泡排序，一次划分排序，选择排序/" title="上一篇: 常用排序算法-冒泡排序，一次划分排序，选择排序">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2018/12/17/开闭散列表/" title="下一篇: 开闭散列表">
+            <a href="/2018/12/18/希尔排序/" title="下一篇: ">
                 <i class="fa fa-angle-right"></i>
             </a>
         

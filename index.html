@@ -281,6 +281,72 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-常用排序算法-冒泡排序，一次划分排序，选择排序" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/21/常用排序算法-冒泡排序，一次划分排序，选择排序/" class="article-date">
+      <time datetime="2018-12-21T08:48:30.000Z" itemprop="datePublished">2018-12-21</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/21/常用排序算法-冒泡排序，一次划分排序，选择排序/">常用排序算法-冒泡排序，一次划分排序，选择排序</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>冒泡排序，一次划分排序，选择排序，都是常用的简单的交换排序算法，它们不同于插入排序，没有数据移动，它们排序是基于比较和交换数据来进行的。冒泡排序是稳定的排序算法，一次换分排序是基于冒泡排序的，但是它是一种不稳定的排序算法。选择排序算法也是不稳定的排序算法，这里不稳定指的是相同大小的元素在进行排序后相对位置没有发生改变。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><pre><code>对排序数组进行遍历比较每次比较如果满足交换条件，就进行交换，每次遍历把最大或最小元素移动到最后。一共数组长度-1次这种遍历比较。
+</code></pre><h2 id="一次划分排序"><a href="#一次划分排序" class="headerlink" title="一次划分排序"></a>一次划分排序</h2><pre><code>一次划分排序是冒泡排序的一种优化，优化在排序速度，但是牺牲了排序的稳定性，一次划分排序是把排序进行多次划分，随着划分的层数越多，划分的区间也就越多，一次划分排序，每次在排序前选取一个轴值，通常选取划分区间的第一个元素当做轴值，每次在区间内每个元素与轴值对比，比轴值大在右区间或相反区间，当出现元素没有在指定区间时就进行交换，交换时改变比较下标的位置。
+</code></pre><h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><pre><code>选择排序是非常简单的排序每次从排序元素中选取最小或最大元素，移动到指定位置，共进行元素个数-1次选择过程
+</code></pre><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class testmain &#123;</span><br><span class="line"> //冒泡排序</span><br><span class="line"> public static  void BUffSoft(int[]array)&#123;</span><br><span class="line">     for(int i=0;i&lt;array.length-1;i++)&#123;</span><br><span class="line">        int flag=0;</span><br><span class="line">         for(int j=0;j&lt;array.length-i-1;j++)&#123;</span><br><span class="line">             if(array[j]&gt;array[j+1])&#123;</span><br><span class="line">                 int tem=array[j];</span><br><span class="line">                 array[j]=array[j+1];</span><br><span class="line">                 array[j+1]=tem;</span><br><span class="line">                 flag=1;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         if(flag==0) return;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> //快速排序一次划分排序首先选取轴值一般情况下选取起始位置作为轴值</span><br><span class="line"> public static int Partition(int[]array,int first,int end)&#123;</span><br><span class="line">     //一次划分区间</span><br><span class="line">     int i=first;</span><br><span class="line">     int j=end;</span><br><span class="line">     while(i&lt;j)&#123;</span><br><span class="line">     while(i&lt;j&amp;&amp;array[j]&gt;array[i]) j--;</span><br><span class="line">     //跳出上层循环说明array[j]&lt;array[i]或者i&lt;j</span><br><span class="line">     if(i&lt;j)&#123;</span><br><span class="line">         int tem=array[j];</span><br><span class="line">         array[j]=array[i];</span><br><span class="line">         array[i]=tem;</span><br><span class="line">         i++;</span><br><span class="line">     &#125;</span><br><span class="line">     while(i&lt;j&amp;&amp;array[i]&lt;array[j]) i++;</span><br><span class="line">     if(i&lt;j)&#123;</span><br><span class="line">         int tem=array[j];</span><br><span class="line">         array[j]=array[i];</span><br><span class="line">         array[i]=tem;</span><br><span class="line">         j--;</span><br><span class="line">     &#125;&#125;</span><br><span class="line">     //返回轴值</span><br><span class="line">     return i;</span><br><span class="line"> &#125;</span><br><span class="line"> public static void QuickSoft(int[]array,int first,int end)&#123;</span><br><span class="line">     if(first&lt;=end)&#123;//进行划分排序</span><br><span class="line">         int pivot=Partition(array,first,end);</span><br><span class="line">         //递归调用对左右进行划分</span><br><span class="line">         QuickSoft(array,first,pivot-1);</span><br><span class="line">         QuickSoft(array,pivot+1,end);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> //选择排序</span><br><span class="line"> public  static void SelectSoft(int[]array)&#123;</span><br><span class="line">     for(int i=0;i&lt;array.length-1;i++)&#123;</span><br><span class="line">         int ideax=i;</span><br><span class="line">         for(int j=i+1;j&lt;array.length;j++)&#123;</span><br><span class="line">             if(array[j]&lt;array[ideax]) ideax=j;</span><br><span class="line">         &#125;</span><br><span class="line">         if(ideax!=i)&#123;</span><br><span class="line">             int tem=array[ideax];</span><br><span class="line">             array[ideax]=array[i];</span><br><span class="line">             array[i]=tem;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> public static  void main(String[]arg)&#123;</span><br><span class="line">     Scanner scanner=new Scanner(System.in);</span><br><span class="line">     int n;</span><br><span class="line">     n=scanner.nextInt();</span><br><span class="line">     int[] arary=new int[n];</span><br><span class="line">     for(int i=0;i&lt;arary.length;i++) arary[i]=scanner.nextInt();</span><br><span class="line">    // BUffSoft(arary);</span><br><span class="line">     // QuickSoft(arary,0,arary.length-1);</span><br><span class="line">     SelectSoft(arary);</span><br><span class="line">     System.out.println(Arrays.toString(arary));</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-希尔排序" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -871,75 +937,9 @@
 
 
   
-    <article id="post-集合-Arrlist" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/12/04/集合-Arrlist/" class="article-date">
-      <time datetime="2018-12-04T05:00:50.000Z" itemprop="datePublished">2018-12-04</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/04/集合-Arrlist/">集合 Arrlist</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>问题描述】对分行输入的若干字符串按字典序（由小到大）进行排序并输出。<br>【输入形式】控制台输入多行字符串，各个字符串可能含有空格，以#结束<br>【输出形式】输出按字典序（由小到大）进行排序后的字符串。<br>【样例输入】<br>zwtr<br>fhoenf<br>hefe<br>afe geg<br>#</p>
-<p>【样例输出】<br>afe geg<br>fhoenf<br>hefe<br>zwtr<br>【样例说明】输入多行字符串：<br>zwtr<br>fhoenf<br>hefe<br>afe geg<br>#</p>
-<p>输出字典序的字符串为：<br>afe geg<br>fhoenf<br>hefe<br>zwtr</p>
-<p>题目描述很清晰，就是对一组字符串进行字典排序，然后进行格式输出。因为不知道一开始不知道有多少字符串进行输入排序，所以本题采用了用集合容器来进行字符串的存储，<br>因为string类型继承实现了compare方法，所以此题直接采用了调取集合排序方法（collection.soft(list)）。<br>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Collections;</span><br><span class="line">import java.util.LinkedList;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Test1 &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		Scanner scanner=new Scanner(System.in);</span><br><span class="line">        List&lt;String&gt; linklist=new LinkedList&lt;&gt;();</span><br><span class="line">        String string;</span><br><span class="line">        do &#123;</span><br><span class="line">            string=scanner.nextLine();</span><br><span class="line">        	if(string.equals(&quot;#&quot;)==false)</span><br><span class="line">        		linklist.add(string);</span><br><span class="line">        &#125;while(string.equals(&quot;#&quot;)==false);</span><br><span class="line">        Collections.sort(linklist);</span><br><span class="line">	    for(String s:linklist) &#123;</span><br><span class="line">	    	System.out.println(s);</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
